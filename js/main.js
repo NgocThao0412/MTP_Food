@@ -876,19 +876,7 @@ window.onscroll = () => {
     }
 }
 
-// Auto hide header on scroll
-// giấu menu công cụ
-const headerNav = document.querySelector(".header-bottom");
-let lastScrollY = window.scrollY;
 
-window.addEventListener("scroll", () => {
-    if(lastScrollY < window.scrollY) {
-        headerNav.classList.add("hide")
-    } else {
-        headerNav.classList.remove("hide")
-    }
-    lastScrollY = window.scrollY;
-})
 
 // Danh sách sp trên trang web
 function renderProducts(showProduct) {

@@ -120,32 +120,33 @@ function createProduct() {
 }
 function createAdminAccount() {
     let accounts = localStorage.getItem("accounts");
-    if(!accounts){
+    if (!accounts) {
         accounts = [];
         accounts.push({
-            fullname:"Lê Thị Ngọc Thảo",
-            phone:"NgocThao0412",
-            password: "123456@",
-            address: 'https://github.com/NgocThao0412',
+            fullname: "Lê Thị Ngọc Thảo",
+            phone: "NgocThao0412",
+            password: "123456",
+            address: 'https://github.com/hgbaodev',
             email: 'happyhappy123@gmail.com',
             status: 1,
             join: new Date(),
-            cart:[],
-            usertype: 1
-    })
-    accounts.push({
-        fullname:"Đặng Ngọc Minh Anh",
-        phone:"1234567890",
-        address:'',
-        status: 1,
-        join: new Date(),
-        cart:[],
-        userType:1
-    })
-    localStorage.setItem('accounts', JSON.stringify(accounts));
+            cart: [],
+            userType: 1
+        })
+        accounts.push({
+            fullname: "Đặng Ngọc Minh Anh",
+            phone: "0123456789",
+            password: "123456",
+            address: '',
+            email: '',
+            status: 1,
+            join: new Date(),
+            cart: [],
+            userType: 1
+        })
+        localStorage.setItem('accounts', JSON.stringify(accounts));
     }
 }
-window.addEventListener('load', () => {
-    createProduct();
-    createAdminAccount();
-});
+
+window.onload = createProduct();
+window.onload = createAdminAccount();

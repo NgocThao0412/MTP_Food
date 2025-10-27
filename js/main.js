@@ -6,9 +6,8 @@ function vnd(price) {
 // Close popup 
 // querySelector và querySelectorAll dùng để láy phần tử và lấy nhóm phần tử
 const body = document.querySelector("body");
-let modalContainer = document.querySelectorAll('.modal'); // modalContainer lấy tất cả phần tử có lớp .modal
-let modalBox = document.querySelectorAll('.mdl-cnt'); // modalBox lấy tất cả phần tử có lớp .mdl-cnt
-let formLogSign = document.querySelector('.forms'); // formLogSign lấy 1 phần tử đầu có lớp .forms
+let modalContainer = document.querySelectorAll('.modal, .modal-cart'); // Thêm .modal-cart 
+let modalBox = document.querySelectorAll('.mdl-cnt, .cart-container'); // Thêm .cart-container // formLogSign lấy 1 phần tử đầu có lớp .forms
 
 // Click vùng ngoài sẽ tắt Popup
 // addEventListener gắn hành động click cho một phần tử item trong modalContainer sẽ thực hiện closeModal
@@ -29,12 +28,11 @@ modalBox.forEach(item => {
 // Hàm đóng cửa sổ 
 function closeModal() {
     modalContainer.forEach(item => {
-        item.classList.remove('open');  
+        item.classList.remove('open');
     });
     console.log(modalContainer)
     body.style.overflow = "auto";
 }
-
 // Tăng số lượng sản phẩm muốn mua
 function increasingNumber(e) {
     let qty = e.parentNode.querySelector('.input-qty');
@@ -62,16 +60,15 @@ function decreasingNumber(e) {
 }
 
 //Xem chi tiết sản phẩm
-function detailProduct(index, event) {
+function detailProduct(index) {
     // lấy phần tử modal để hiển thị chi tiết sản phẩm
     let modal = document.querySelector('.modal.product-detail');
     // lấy danh sách sản phẩm từ localStorage và chuyển từ chuỗi JSON thành mảng đối tượng sản phẩm
     let products = JSON.parse(localStorage.getItem('products'));
-    // Ngăn hành vi mặc định của phần tử khi click (ví dụ: thẻ <a> sẽ không bị chuyển trang hoặc tải lại trang)
-    event.preventDefault();
     // Tìm sản phẩm trong mảng products có id trùng với index
+    event.preventDefault();
     let infoProduct = products.find(sp => {
-        return sp.id === index;
+        return sp.id == index;
     })
     // Tạo nội dung HTML cho cửa sổ chi tiết sản phẩm
     let modalHtml = `<div class="modal-header">
@@ -172,15 +169,25 @@ function addCart(index) {
     // toast({ title: 'Success', message: 'Thêm thành công sản phẩm vào giỏ hàng', type: 'success', duration: 3000 });
 }
 
+// Mở giỏ hàng
+function openCart() {
+    showCart();
+    document.querySelector('.modal-cart').classList.add('open');
+    body.style.overflow = "hidden";
+}
+// Đóng giỏ hàng
+function closeCart() {
+    document.querySelector('.modal-cart').classList.remove('open');
+    body.style.overflow = "auto";
+    updateAmount();
+}
+
 //Hiển thị giỏ hàng
 function showCart() {
     if (localStorage.getItem('currentuser') != null) {
         let currentuser = JSON.parse(localStorage.getItem('currentuser'));
-        // nếu giỏ hàng có sp
         if (currentuser.cart.length != 0) {
-            // ẩn thông báo "giỏ hàng trống"
             document.querySelector('.gio-hang-trong').style.display = 'none';
-            // bật nút thanh toán
             document.querySelector('button.thanh-toan').classList.remove('disabled');
             let productcarthtml = '';
             currentuser.cart.forEach(item => {
@@ -208,27 +215,25 @@ function showCart() {
             document.querySelector('.cart-list').innerHTML = productcarthtml;
             updateCartTotal();
             saveAmountCart();
-        } 
-        // giỏ hàng rỗng
-        else {
+        } else {
             document.querySelector('.gio-hang-trong').style.display = 'flex'
         }
     }
     let modalCart = document.querySelector('.modal-cart');
     let containerCart = document.querySelector('.cart-container');
     let themmon = document.querySelector('.them-mon');
-    // click ra ngoài giỏ hàng -> đóng giỏ hàng
-    modalCart.onclick = function () {
-        closeCart();
+    
+    modalCart.onclick = function() {
+        closeModal();
     }
-    // click thêm món -> đóng giỏ hàng
-    themmon.onclick = function () {
-        closeCart();
+    
+    themmon.onclick = function() {
+        closeModal();
     }
-    // ngăn chặn click lan ra
-    containerCart.addEventListener('click', (e) => {
+    
+    containerCart.onclick = function(e) {
         e.stopPropagation();
-    })
+    }
 }
 
 // Xóa sp khỏi giỏ hàng
@@ -237,7 +242,7 @@ function deleteCartItem(id, el) {
     cartParent.remove();
     let currentUser = JSON.parse(localStorage.getItem('currentuser'));
     // tìm vị trí sp trong giỏ ròi xóa
-    let vitri = currentUser.cart.findIndex(item => item.id === id)
+    let vitri = currentUser.cart.findIndex(item => item.id = id)
     currentUser.cart.splice(vitri, 1);
 
     // Nếu trống thì hiển thị giỏ hàng trống
@@ -278,6 +283,9 @@ function getProduct(item) {
     return product;
 }
 
+window.onload = updateAmount();
+window.onload = updateCartTotal();
+
 // Lấy số lượng sp trong giỏ 
 function getAmountCart() {
     let currentuser = JSON.parse(localStorage.getItem('currentuser'))
@@ -312,19 +320,6 @@ function saveAmountCart() {
             updateCartTotal();
         })
     });
-}
-
-// Mở giỏ hàng
-function openCart() {
-    showCart();
-    document.querySelector('.modal-cart').classList.add('open');
-    body.style.overflow = "hidden";
-}
-// Đóng giỏ hàng
-function closeCart() {
-    document.querySelector('.modal-cart').classList.remove('open');
-    body.style.overflow = "auto";
-    updateAmount();
 }
 
 // Mở tìm kiếm nâng cao khi bấm filter
@@ -588,13 +583,8 @@ function checkAdmin() {
     } 
 }
 
-// sau khi web tải xong thì thực hiện các chức năng
-window.addEventListener('load', () => {
-    updateAmount();
-    updateCartTotal();
-    kiemtradangnhap();
-    checkAdmin();
-});
+window.onload = kiemtradangnhap();
+window.onload = checkAdmin();
 
 // Chuyển đổi trang chủ và trang thông tin tài khoản
 function myAccount() {

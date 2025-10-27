@@ -12,7 +12,7 @@ function createProduct() {
         },
         {
             id: 2,
-            status:'1',
+            status:1,
             title:'Gà Luộc',
             img:'./assets/img/products/ga-luoc.jpg',
             category: 'Món mặn',
@@ -22,7 +22,7 @@ function createProduct() {
         },
          {
             id: 3,
-            status:'1',
+            status:1,
             title:'Chè Thái',
             img:'./assets/img/products/che-thai.jpg',
             category: 'Món tráng miệng',
@@ -32,7 +32,7 @@ function createProduct() {
         },
         {
             id: 4,
-            status:'1',
+            status:1,
             title:'Milo Dầm',
             img:'./assets/img/products/milo-dam.jpg',
             category: 'Nước uống',
@@ -41,8 +41,8 @@ function createProduct() {
       
         },
         {
-            id: '5',
-            status:'1',
+            id: 5,
+            status:1,
             title:'Gỏi Cuốn',
             img:'./assets/img/products/goi-cuon.jpg',
             category: 'Món mặn',
@@ -51,8 +51,8 @@ function createProduct() {
       
         },
          {
-            id: '6',
-            status:'1',
+            id: 6,
+            status:1,
             title:'Gỏi Khô Bò',
             img:'./assets/img/products/goi-kho-bo.jpg',
             category: 'Món vặt',
@@ -61,8 +61,8 @@ function createProduct() {
       
         },
         {
-            id: '7',
-            status:'1',
+            id: 7,
+            status:1,
             title:'Bánh Cuốn',
             img:'./assets/img/products/banh-cuon.jpg',
             category: 'Món mặn',
@@ -70,8 +70,8 @@ function createProduct() {
             desc:'Bánh cuốn mềm mịn, nhân thịt đậm đà, hành phi thơm lừng, chả lụa dai nhẹ, rau sống tươi mát, thêm miếng tôm chiên giòn rụm — chấm nước mắm pha chua ngọt cay cay, đúng là hương vị Việt Nam không thể lẫn vào đâu được.',
         },
         {
-            id: '8',
-            status:'1',
+            id: 8,
+            status:1,
             title:'Bánh Trán Trộn',
             img:'./assets/img/products/banh-trang-tron.jpg',
             category: 'Món vặt',
@@ -79,8 +79,8 @@ function createProduct() {
             desc:'Bánh tráng trộn thơm ngon, gồm bánh tráng cắt sợi dai mềm, khô bò cay ngọt, trứng cút béo bùi, xoài xanh chua nhẹ, rau răm thơm nồng, đậu phộng giòn tan và hành phi vàng ruộm. Trộn đều với sa tế, nước tắc, muối tôm đậm vị Việt, khiến từng miếng bánh vừa cay vừa chua, thơm ngon khó cưỡng, ăn là ghiền.',
         },
          {
-            id: '9',
-            status:'1',
+            id: 9,
+            status:1,
             title:'Há Cảo',
             img:'./assets/img/products/ha-cao.jpg',
             category: 'Món vặt',
@@ -88,8 +88,8 @@ function createProduct() {
             desc:'Há cảo gồm lớp vỏ mỏng dai, nhân tôm thịt ngọt thơm, hấp nóng vừa tới. Ăn kèm nước tương pha chua ngọt, cay nhẹ, rắc thêm hành phi và rau thơm, đậm vị Việt, khiến từng miếng há cảo mềm mại, đậm đà, tan ngay trong miệng.',
         },
           {
-            id: '10',
-            status:'1',
+            id: 10,
+            status:1,
             title:'Lẩu Thái',
             img:'./assets/img/products/lau-thai.jpg',
             category: 'Món mặn',
@@ -97,8 +97,8 @@ function createProduct() {
             desc:'Lẩu Thái với nước dùng chua cay đặc trưng, thơm nồng mùi sả, lá chanh và ớt tươi. Tôm, mực, thịt bò và rau nhúng được nấu vừa tới, giữ trọn độ ngọt tự nhiên. Khi ăn, chấm cùng nước mắm pha tỏi ớt, thêm chút rau thơm và hành phi, tạo nên hương vị đậm đà, hài hòa giữa vị cay, chua, mặn, ngọt. Từng miếng hải sản mềm ngọt, thấm vị nước lẩu, khiến thực khách xuýt xoa, khó quên.',
         },
         {
-            id: '11',
-            status:'1',
+            id: 11,
+            status:1,
             title:'Nước Ép Dâu Tây',
             img:'./assets/img/products/nuoc-ep-dau-tay.jpg',
             category: 'Nước uống',
@@ -106,16 +106,16 @@ function createProduct() {
             desc:'Nước ép dâu tây mát lạnh, đỏ rực như nắng hè, mang hương thơm dịu ngọt đặc trưng của trái cây chín mọng. Từng quả dâu được chọn kỹ, xay nhuyễn cùng chút đường và nước lọc, giữ nguyên vị chua thanh, ngọt nhẹ. Khi uống, cảm nhận lớp nước ép mịn màng, mát lạnh lan tỏa nơi đầu lưỡi, đánh thức mọi giác quan. Thêm vài lá bạc hà và đá viên, ly nước ép trở nên sảng khoái, tươi mới, khiến người thưởng thức như được thả mình giữa vườn dâu mùa hè.'
         },
         {
-            id: '12',
-            status:'1',
+            id: 12,
+            status:1,
             title:'Phá Lấu',
             img:'./assets/img/products/pha-lau.jpg',
             category: 'Món mặn',
             price: 210000,
             desc:'Phá lấu nóng hổi, vàng óng như nắng chiều, tỏa hương thơm đậm đà của ngũ vị hương và nước dừa béo ngậy. Từng miếng lòng bò được làm sạch kỹ, hầm mềm trong nồi nước dùng sánh đặc, thấm đều gia vị, vừa dai vừa mềm, tan nhẹ nơi đầu lưỡi. Khi ăn, vị ngọt thanh của nước dừa quyện cùng chút cay nồng của sa tế, thêm chút chua nhẹ từ nước mắm tắc, khiến vị giác như được đánh thức sau giấc ngủ dài. Chấm cùng bánh mì giòn rụm, phá lấu trở thành bản giao hưởng của hương vị, khiến người thưởng thức như lạc vào góc phố Sài Gòn chiều mưa, nơi từng hơi thở cũng mang mùi thơm của ký ức.'
         },
-
       ]
+      localStorage.setItem('products', JSON.stringify(products));
     }
 }
 function createAdminAccount() {
@@ -144,8 +144,8 @@ function createAdminAccount() {
     })
     localStorage.setItem('accounts', JSON.stringify(accounts));
     }
-    Window.onload = function(){
-        createProduct();
-        createAdminAccount();
-    }
 }
+window.addEventListener('load', () => {
+    createProduct();
+    createAdminAccount();
+});

@@ -116,42 +116,6 @@ function paginationChange(page, productAll, currentPage) {
     return node;
 }
 
-function getPurchaseOrders() {
-    return localStorage.getItem("purchaseOrders") ? JSON.parse(localStorage.getItem("purchaseOrders")) : [];
-}
- 
-function updateStock(productId, quantityChange) {
-    let products = JSON.parse(localStorage.getItem("products"));
-    let productIndex = products.findIndex(p => p.id == productId);
-    if(productIndex !== -1) {
-        products[productIndex].stock += quantityChange;
-        localStorage.setItem("products", JSON.stringify(products));
-    }
-}
-
-/** 
-  * @param {string} purchaseId
-*/
-
-function completePurchaseOrder(purchaseId) {
-    let purchaseOrders = getPurchaseOrders ();
-    let poIndex = purchaseOrders.findIndex (po => po.id == purchaseId);
-    if (poIndex === - 1 || purchaseOrders[poIndex].status === 'completed') {
-        toast({ title: 'Lỗi', message: 'Phiếu nhập không tồn tại hoặc đã hoàn thành!', type: 'error', duration: 3000});
-        return;
-    }
-    if (confirm("Bạn có chắc muốn hoàn thành phiếu nhập này? Tồn kho sẽ được cập nhật và không thể sửa phiếu nữa.")) {
-        purchaseOrders[poIndex].items.forEach(item => {
-            updateStock(item.productId, item.quantity);
-        });
-        purchaseOrders[poIndex].status = 'completed';
-        purchaseOrders[poIndex].completedDate = new Date();
-        localStorage.setItem("purchaseOrders", JSON.stringify(purchaseOrders));
-        toast({ title: 'Thành công', message: 'Đã hoàn thành phiếu nhập và cập nhật tồn kho!', type: 'success', duration: 3000 });
-        showProduct(); 
-    }
-}
-
 // Hiển thị danh sách sản phẩm 
 function showProductArr(arr) {
     let productHtml = "";
@@ -159,7 +123,6 @@ function showProductArr(arr) {
         productHtml = `<div class="no-result"><div class="no-result-i"><i class="fa-light fa-face-sad-cry"></i></div><div class="no-result-h">Không có sản phẩm để hiển thị</div></div>`;
     } else {
         arr.forEach(product => {
-            let stockWarning = product.stock <= 10 ? `<span class="stock-warning">Sắp hết hàng! (Còn ${product.stock})</span>` : `<span>Tồn kho: ${product.stock}</span>`;
             let btnCtl = product.status == 1 ? 
             `<button class="btn-delete" onclick="deleteProduct(${product.id})"><i class="fa-regular fa-trash"></i></button>` :
             `<button class="btn-delete" onclick="changeStatusProduct(${product.id})"><i class="fa-regular fa-eye"></i></button>`;
@@ -188,67 +151,6 @@ function showProductArr(arr) {
         });
     }
     document.getElementById("show-product").innerHTML = productHtml;
-}
-
-/**
- * Tìm giá vốn (costPrice) gần nhất của một sản phẩm
- * @param {number} productId
- * @returns {number} - Trả về giá vốn gần nhất, hoặc 0 nếu không tìm thấy
- */
-
-function getLatesCostPrice(productId) {
-    let purchaseOrders = getPurchaseOrders()
-    .filter(po => po.status === 'completed')
-    .sort((a, b) => new Date(b. completedDate) - new Date(a.completedDate));
-    for (const po of purchaseOrders) {
-        const item = po.items.find(i => i.procutId == productId);
-        if(item) {
-            return item.costPrice;
-        }
-    }
-    return 0;
-}
-
-//Hiển thị bảng quản lý giá
-function showPriceManagement() {
-    let products = localStorage.getItem("products") ? JSON.parse(localStorage.getItem("product")) : [];
-    let tableHtml = `
-        <table class="styled-table">
-            <thead>
-                <tr>
-                    <th>Tên sản phẩm</th>
-                    <th>Giá vốn</th>
-                    <th>Giá bán</th>
-                    <th>Lợi nhuận</th>
-                </tr>
-            </thead>
-            <tbody>
-    `;
-    products.forEach(product => {
-        let costPrice = getLatestCostPrice(product.id);
-        let sellingPrice = product.price;
-        let profit = 0;
-        let profitPercentage = "N/A";
-
-        if (costPrice > 0) {
-            profit = sellingPrice - costPrice;
-            profitPercentage = ((profit / costPrice) * 100).toFixed(1) + '%';
-        }
-
-        tableHtml += `
-            <tr>
-                <td>${product.title}</td>
-                <td>${vnd(costPrice)}</td>
-                <td>${vnd(sellingPrice)}</td>
-                <td>${vnd(profit)} (${profitPercentage})</td>
-            </tr>
-        `;
-    });
-    tableHtml += `</tbody></table>`;
-    const priceSection = document.querySelectorAll(".section")[4];
-    if(priceSection) {
-        priceSection.innerHTML = tableHtml;
-    }
 }
 
 function showProduct() {
@@ -405,8 +307,7 @@ btnAddProductIn.addEventListener("click", (e) => {
                 category: categoryText,
                 price: price,
                 desc: moTa,
-                status:1,
-                stock: 0
+                status:1
             };
             products.unshift(product);
             localStorage.setItem("products", JSON.stringify(products));
@@ -464,24 +365,12 @@ function changeStatus(id, el) {
     let order = orders.find((item) => {
         return item.id == id;
     });
-    if (order.trangthai == 0) {
-        if(confirm("Xác nhận xử lý đơn hàng? Tồn kho sản phẩm sẽ bị trừ đi.")) {
-            let orderDetails = getOrderDetails(id);
-            orderDetails.forEach(item => {
-                updateStock(item.id, -item.soluong);
-            });
-            order.trangthai = 1;
-            el.classList.remove("btn-chuaxuly");
-            el.classList.add("btn-daxuly");
-            el.innerHTML = "Đã xử lý";
-            localStorage.setItem("order", JSON.stringify(orders));
-            toast({ title: 'Thành công', message: 'Đơn hàng đã được xử lý và tồn kho đã được cập nhật!', type: 'success', duration: 3000 });
-            findOrder(orders);
-        }
-    } else {
-        toast({ title: 'Thông báo', message: 'Đơn hàng này đã được xử lý trước đó.', type: 'info', duration: 3000 });
-    }
-
+    order.trangthai = 1;
+    el.classList.remove("btn-chuaxuly");
+    el.classList.add("btn-daxuly");
+    el.innerHTML = "Đã xử lý";
+    localStorage.setItem("order", JSON.stringify(orders));
+    findOrder(orders);
 }
 
 // Format Date

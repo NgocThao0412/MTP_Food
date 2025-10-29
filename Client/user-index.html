@@ -5,23 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MTP Food</title>
-    <link href="../Img/favicon.png" rel="icon" type="image/x-icon" />
-    <link rel="icon" href="../Img/mtp-food.png" type="image/x-icon" />
-
-    <link rel="stylesheet" href="../css/login.css">
-    <link rel="stylesheet" href="../font/font-awesome-pro-v6-6.2.0/css/all.min.css" />
+    <link rel="stylesheet" href="../css/user-index.css">
+     <link rel="stylesheet" href="../font/font-awesome-pro-v6-6.2.0/css/all.min.css" />
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> 
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     <link rel="icon" href="../Img/favicon.png" type="image/x-icon" class="icon-page" />
+    <title>MTP Food</title>
 </head>
 
 <body>
@@ -125,126 +120,66 @@
         </div>
     </div>
 
-
-    <!-- <div class="blur-overlay"></div> -->
-    <!-- main screen -->
-    <div class="Home_main">
-        <!--wrapper-->
-        <div class="wrapper">
-            <!-- <span class="icon-close">
-                <ion-icon name="close-outline"></ion-icon>
-            </span> -->
-
-
-
-            <!--login account-->
-            <div class="login-box">
-                <h2>Đăng nhập</h2>
-                <form id="loginForm">
-                    <div class="input-box">
-                         <span class="icon">
-                            <ion-icon name="mail-outline"></ion-icon>
-                        </span>
-                        <input type="text"  id="loginUserName"  name="username" required="">
-                        <label>Tên đăng nhập</label>
-                    </div>
-                    <div class="input-box">
-                        <span class="icon">
-                            <ion-icon name="lock-closed-outline"></ion-icon>
-                        </span>
-                        <input type="password"  id="loginPassword" name="password" required="">
-                        <label>Mật khẩu</label>
-                    </div>
-
-                    <div class="remember-forgot">
-                        <label><input type="checkbox">Ghi nhớ đăng nhập</label>
-                        <a href="#">Quên mật khẩu</a>
-                    </div>
-                    <button id="btnLogin" type="submit" class="btn">Đăng nhập</button>
-                    <div class="login-register">
-                        <p>Không tìm thấy tài khoản ? <a href="#" class="register-link">Đăng ký</a></p>
-                    </div>
-                </form>
+    <main class="main-wrapper">
+        <div class="container" id="trangchu">
+            <div class="home-slider">
+                <img src="../Img/banner-1.png" alt="">
+                <!-- <img src="./Img/banner-2.png" alt=""> -->
             </div>
 
-            <!--register account-->
-            <div class="register-box">
-                <h2>Đăng ký</h2>
-                   <form id="registerForm">
-                     <div class="input-infor">
-
-                    <div class="left-input">
-                     <div class="input-box">
-                        <span class="icon">
-                             <ion-icon name="person-outline"></ion-icon>
-                         </span>
-                        <input id="registerUsername" type="text"   name="username" required="">
-                        <label>Tên đăng nhập<span style="color: red;">*</span></label>
-                      </div>
-
-                    <div class="input-box">
-                         <span class="icon">
-                            <ion-icon name="mail-outline"></ion-icon>
-                         </span>
-                        <input  id="registerEmail" type="email" name="email" required="">
-                        <label>Email<span style="color: red;">*</span></label>
+            <div class="home-service" id="home-service">
+                <div class="home-service-item">
+                    <div class="home-service-item-icon">
+                        <i class="fa-light fa-person-carry-box"></i>
                     </div>
-
-                      <div class="input-box">
-                        <span class="icon">
-                             <ion-icon name="lock-closed-outline"></ion-icon>
-                        </span>
-                        <input id="registerPassword" type="password" name="password" required="">
-                        <label>Mật khẩu<span style="color: red;">*</span></label>
-                      </div>
+                    <div class="home-service-item-content">
+                        <h4 class="home-service-item-content-h">GIAO HÀNG NHANH</h4>
+                        <p class="home-service-item-content-desc">Cho tất cả đơn hàng</p>
                     </div>
+                </div>
 
-                        <div class="right-input">
-                            <div class="input-box">
-                                <span class="icon">
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </span>
-                                <input id="registerPhone" type="number" required>
-                                <label>Số điện thoại<span style="color: red;">*</span></label>
-                            </div>
-                            
-        
-                            <div class="input-box">
-                                <span class="icon">
-                                    <ion-icon name="lock-closed-outline"></ion-icon>
-                                </span>
-                                <input id="registerAddress" type="text"  required>
-                                <label>Địa chỉ<span style="color: red;">*</span></label>
-                            </div>
-
-                            <div class="input-box">
-                                <span class="icon">
-                                    <ion-icon name="lock-closed-outline"></ion-icon>
-                                </span>
-                                <input id="registerConfirmPassword" type="password" required>
-                                <label>Xác nhận mật khẩu<span style="color: red;">*</span></label>
-                            </div>
-                            <div class="form-message-password" style="color: red; font-size: 14px; margin-top: 4px;"></div>
-                        </div>
-
+                <div class="home-service-item">
+                    <div class="home-service-item-icon">
+                        <i class="fa-light fa-shield-heart"></i>
                     </div>
+                    <div class="home-service-item-content">
+                        <h4 class="home-service-item-content-h">SẢN PHẨM AN TOÀN</h4>
+                        <p class="home-service-item-content-desc">Cam kết chất lượng</p>
+                    </div>
+                </div>
 
-                    <div class="remember-forgot">
-                       <label>
-                              <input type="checkbox" id="termsCheckbox">Tôi đồng ý với chính sách của trang web
-                        </label>
-                     <div class="form-message-checkbox" style="color: red; font-size: 14px; margin-top: 4px;"></div>
+                <div class="home-service-item">
+                    <div class="home-service-item-icon">
+                        <i class="fa-light fa-headset"></i>
                     </div>
-                    <button type="submit" class="btn">Đăng ký</button>
-                    <div class="login-register">
-                        <p>Tài khoản đã tồn tại ? <a href="#" class="login-link">Đăng nhập</a></p>
+                    <div class="home-service-item-content">
+                        <h4 class="home-service-item-content-h">HỖ TRỢ 24/7</h4>
+                        <p class="home-service-item-content-desc">Tất cả ngày trong tuần</p>
                     </div>
-                </form>
+                </div>
+
+                <div class="home-service-item">
+                    <div class="home-service-item-icon">
+                        <i class="fa-light fa-circle-dollar"></i>
+                    </div>
+                    <div class="home-service-item-content">
+                        <h4 class="home-service-item-content-h">HOÀN LẠI TIỀN</h4>
+                        <p class="home-service-item-content-desc">Nếu không hài lòng</p>
+                    </div>
+                </div>
             </div>
 
-        </div>     
+            <div class="home-title-block" id="home-title">
+                <h2 class="home-title">Khám phá thực đơn của chúng tôi</h2>
+            </div>
 
-</div>
+            <div class="home-products" id="home-products"></div>
+
+            <div class="page-nav">
+                <ul class="page-nav-list"></ul>
+            </div>
+        </div>
+    </main>
     
     <!-- Footer -->
     <footer class="footer">
@@ -382,8 +317,38 @@
         <a href="#"><i class="fa-regular fa-arrow-up"></i></a>
     </div>
 
-    <script src="../js/login.js"></script>
-    <!-- <script src="js/login.js"></script> -->
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+  // ✅ Lấy trạng thái đăng nhập
+  const loggedIn = localStorage.getItem("loggedIn");
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  const authContainer = document.querySelector(".auth-container");
+  const menu = document.querySelector(".header-middle-right-menu");
+
+  // ✅ Nếu đã đăng nhập
+  if (loggedIn === "true" && currentUser) {
+    authContainer.innerHTML = `
+      <span class="text-tk">Xin chào, <b>${currentUser.username}</b> <i class="fa-sharp fa-solid fa-caret-down"></i></span>
+    `;
+
+    menu.innerHTML = `
+      <li><a href="javascript:;" id="logout"><i class="fa-light fa-right-from-bracket"></i> Đăng xuất</a></li>
+    `;
+  }
+
+  // ✅ Xử lý đăng xuất
+  document.addEventListener("click", function(e) {
+    if (e.target.id === "logout") {
+      localStorage.removeItem("loggedIn");
+      localStorage.removeItem("currentUser");
+      alert("Bạn đã đăng xuất!");
+      window.location.reload();
+    }
+  });
+});
+    </script>
+    <script src="../js/user-index.js"></script>
 </body>
 
 </html>

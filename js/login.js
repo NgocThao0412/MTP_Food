@@ -95,8 +95,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Lưu thông tin người dùng hiện tại sau khi đăng nhập
     function setCurrentUser(user) {
-        localStorage.setItem('UserStr', JSON.stringify(user));
-    }
+    localStorage.setItem('currentUser', JSON.stringify(user));
+}
+
 
     // Tạo sẵn 1 user mẫu “Client”
     function initializeUsers() {
@@ -117,8 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     initializeUsers(); // Gọi hàm khởi tạo
 
-
-    /* --- FORM ĐĂNG NHẬP --- */
+       /* --- FORM ĐĂNG NHẬP --- */
     document.getElementById('loginForm').addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -139,62 +139,83 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-    /* --- FORM ĐĂNG KÝ --- */
-    document.getElementById('registerForm').addEventListener('submit', function(event) {
-        event.preventDefault();
+const registerFormEl = document.getElementById('registerForm');
+console.log('Register form:', registerFormEl); // <-- Thêm dòng này
 
-        const username = document.getElementById('registerUsername').value;
-        const email = document.getElementById('registerEmail').value;
-        const password = document.getElementById('registerPassword').value;
-        const confirmPassword = document.getElementById('registerConfirmPassword').value;
-        const phone = document.getElementById('registerPhone').value;
-        const address = document.getElementById('registerAddress').value;
+    // ✅ FORM ĐĂNG KÝ — CHỈ CẦN NÀY LÀ ĐỦ
+if (registerFormEl) {
+  registerFormEl.addEventListener('submit', function(event) {
+    event.preventDefault();
 
-        const regex = /[\s\u00C0-\u1EF9]/; // kiểm tra ký tự có dấu hoặc khoảng trắng
+    const username = document.getElementById('registerUsername').value.trim();
+    const email = document.getElementById('registerEmail').value.trim();
+    const password = document.getElementById('registerPassword').value;
+    const confirmPasswordInput = document.getElementById('registerConfirmPassword');
+    const confirmPassword = confirmPasswordInput.value;
+    const phone = document.getElementById('registerPhone').value.trim();
+    const address = document.getElementById('registerAddress').value.trim();
+    const termsCheckbox = document.getElementById('termsCheckbox');
+    const checkboxError = document.querySelector('.form-message-checkbox');
+    const passwordError = document.querySelector('.form-message-password');
+    const regex = /[\s\u00C0-\u1EF9]/;
+    const users = getStoredUsers();
 
-        const users = getStoredUsers();
+    if (!termsCheckbox.checked) {
+      checkboxError.innerHTML = 'Vui lòng đồng ý với điều khoản trước khi đăng ký!';
+      return;
+    } else {
+      checkboxError.innerHTML = '';
+    }
 
-        // Kiểm tra tài khoản trùng
-        if (users.find(user => user.email === email || user.username === username)) {
-            alert('Email hoặc tên đăng nhập đã tồn tại!');
-        } 
-        else {
-            if (phone.length !== 10) {
-                alert('Số điện thoại phải có 10 chữ số!');
-                return;
-            }
+    if (users.find(u => u.email === email || u.username === username)) {
+      alert('Email hoặc tên đăng nhập đã tồn tại!');
+      return;
+    }
 
-            if (regex.test(username)) {
-                alert('Tên đăng nhập không được chứa ký tự có dấu hoặc khoảng trắng!');
-                return;
-            }
-            
-            if (password !== confirmPassword) {
-                alert('Mật khẩu xác nhận không khớp!');
-                return;
-            }
+    if (phone.length !== 10) {
+      alert('Số điện thoại phải có 10 chữ số!');
+      return;
+    }
 
-            // Thêm user mới
-            users.push({ username, email, password, phone, address , role: 'client'});
-            saveUsers(users);
+    if (regex.test(username)) {
+      alert('Tên đăng nhập không được chứa ký tự có dấu hoặc khoảng trắng!');
+      return;
+    }
 
-            alert('Đăng ký thành công!');
-            localStorage.setItem("loggedIn", "true");
-            window.location.href = '../index.html';
-        }
-    });
+    if (password !== confirmPassword) {
+      passwordError.innerHTML = 'Mật khẩu xác nhận không khớp!';
+      confirmPasswordInput.classList.add('error');
+      return;
+    } else {
+      passwordError.innerHTML = '';
+      confirmPasswordInput.classList.remove('error');
+    }
+
+    // ✅ Lưu user mới
+    users.push({ username, email, password, phone, address, role: 'client' });
+    saveUsers(users);
+
+    localStorage.setItem("loggedIn", "true");
+    localStorage.setItem("currentUser", JSON.stringify({ username, email }));
+
+    alert('Đăng ký thành công!');
+    setTimeout(() => {
+      window.location.href = '../Client/user-index.html';
+    }, 200);
+  });
+}
 
 
     /* --- LẤY NGƯỜI DÙNG ĐANG ĐĂNG NHẬP --- */
     function getCurrentUser() {
-        const currentUser = localStorage.getItem('UserStr');
-        return currentUser ? JSON.parse(currentUser) : null;
-    }
+    const currentUser = localStorage.getItem('currentUser');
+    return currentUser ? JSON.parse(currentUser) : null;
+}
+    // Kiểm tra trạng thái đăng nhập
 
     function isLoggedIn() {
         return !!getCurrentUser(); // Trả về true nếu đã đăng nhập
     }
-
 
     /* --- XỬ LÝ GIỎ HÀNG (nếu chưa login thì bật form đăng nhập) --- */
     const cartBtn = document.querySelectorAll('.sp-cart');
@@ -412,3 +433,9 @@ if (searchInput) {
         hintContainer.style.display = 'none';
     }
 });
+
+window.getStoredUsers = function() {
+    const users = localStorage.getItem('users');
+    return users ? JSON.parse(users) : [];
+};
+

@@ -347,8 +347,30 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
-    </script>
+    
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const loginBtn = document.getElementById('login');
+    const signupBtn = document.getElementById('signup');
+
+    if (loginBtn) {
+        loginBtn.addEventListener('click', function() {
+            window.location.href = '../Home/login.html';
+        });
+    }
+
+    if (signupBtn) {
+        signupBtn.addEventListener('click', function() {
+            window.location.href = '../Home/login.html';
+        });
+    }
+});
+
+</script>
     <script src="../js/user-index.js"></script>
+    
 </body>
 
 </html>

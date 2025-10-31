@@ -1,0 +1,310 @@
+/* ============================= */
+/* GIAO DIỆN QUẢN LÝ ĐƠN HÀNG */
+/* ============================= */
+
+.main-content {
+  margin-left: 0;
+  padding: 30px 40px;
+  background-color: var(--lightest-gray);
+  min-height: 100vh;
+  transition: margin-left 0.3s ease;
+}
+
+/* Khối tổng */
+.admin-control-center {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 25px 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  width: 100%;
+}
+
+/* Thanh điều khiển trên */
+.admin-control-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+  gap: 15px;
+}
+
+/* Cụm bên trái */
+.admin-control-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ============================= */
+/* Ô tìm kiếm + ngày tháng */
+/* ============================= */
+.form-control-search,
+.form-control-date {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  background-color: #fff;
+  color: #222;
+  transition: border-color 0.15s ease; 
+  outline: none; 
+  cursor: text; 
+}
+
+/* Hover */
+.form-control-date:hover {
+  border-color: #c9c9c9;
+}
+
+/* Focus */
+.form-control-date:focus {
+  border-color: #b5292f;
+  box-shadow: none;
+  outline: none;
+}
+
+/* Disabled */
+.form-control-date:disabled {
+  background-color: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+  border-color: #ddd;
+}
+
+
+/* Kích thước riêng cho ô tìm kiếm */
+.form-control-search {
+  width: 250px;
+}
+
+/* ============================= */
+/* Bộ lọc ngày */
+/* ============================= */
+.fillter-date {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fillter-date label {
+  font-size: 13px;
+  color: #333;
+  margin-right: 4px;
+}
+
+/* ============================= */
+/* Nút reset */
+/* ============================= */
+.btn-reset-order {
+  background-color: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-reset-order:hover {
+  background-color: #9e2227; /* đỏ đậm hơn thay vì trắng */
+  color: #fff;
+}
+
+/* ====== Bảng ====== */
+.admin-control-bottom {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th {
+  background-color: #f3f3f3;
+  color: #333;
+  text-align: left;
+  padding: 12px 15px;
+  font-weight: 600;
+}
+
+.admin-table td {
+  border-bottom: 1px solid #ffffff;
+  padding: 12px 15px;
+  font-size: 14px;
+}
+
+.admin-table tr:hover {
+  background-color: #ffffff;
+  transition: 0.2s;
+}
+
+/* Responsive */
+@media only screen and (max-width: 786px) {
+  .main-content {
+    margin-left: 0;
+    padding: 15px;
+  }
+
+  .admin-control-top {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-control-search {
+    width: 100%;
+  }
+}
+
+
+
+/* ============================= */
+/* SELECT */
+/* ============================= */
+.form-control-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 6px 20px 6px 12px; 
+  font-size: 14px;
+  color: #222;
+  cursor: pointer;
+  line-height: 1.4;
+  transition: border-color 0.2s ease;
+  outline: none !important;
+  background-clip: padding-box;
+  width: 120px;
+
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23222' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 8px center; 
+  background-size: 14px; /* 🔹 mũi tên nhỏ hơn chút cho cân */
+}
+
+/* Ẩn mũi tên mặc định trình duyệt */
+.form-control-select::-ms-expand {
+  display: none;
+}
+.form-control-select::-webkit-inner-spin-button,
+.form-control-select::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+/* Hover — viền xám đậm hơn nhẹ */
+.form-control-select:hover {
+  border-color: #c9c9c9;
+}
+
+/* Focus — giữ sạch, không bóng */
+.form-control-select:focus {
+  border-color: #b5292f !important; /* đỏ thương hiệu khi focus */
+  box-shadow: none !important;
+  outline: none !important;
+  background-color: #fff;
+}
+
+/* Khi chuột rời ra — trả về viền gốc */
+.form-control-select:not(:hover):not(:focus) {
+  border-color: #e0e0e0;  /* ✅ trở lại màu cũ */
+}
+
+/* Option styling */
+.form-control-select option {
+  background-color: #fff;
+  color: #222;
+  border: none;
+  padding: 6px 10px;
+}
+
+/* Hover option */
+.form-control-select option:hover {
+  background-color: #f5f5f5;
+}
+
+/* Disabled */
+.form-control-select:disabled {
+  background-color: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+  border-color: #ddd;
+}
+
+
+/* ============================= */
+/* Ô NGÀY (DATE PICKER) GIAO DIỆN SẠCH */
+/* ============================= */
+.form-control-date {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  background-color: #fff;
+  color: #222;
+  transition: border-color 0.15s ease;
+  outline: none; 
+  cursor: text; 
+}
+
+/* Hover */
+.form-control-date:hover {
+  border-color: #c9c9c9;
+}
+
+/* Focus */
+.form-control-date:focus {
+  border-color: #b5292f;
+  box-shadow: none;
+  outline: none;
+}
+
+/* Disabled */
+.form-control-date:disabled {
+  background-color: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+  border-color: #ddd;
+}
+
+
+
+/* Nút thao tác trong bảng */
+.admin-table td button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 6px 8px;
+  transition: 0.2s ease;
+}
+
+.admin-table td button:hover {
+  color: #b5292f;
+  transform: scale(1.15);
+}
+
+.btn-view, .btn-cancel {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 6px;
+  transition: 0.2s;
+}
+
+.btn-view:hover {
+  color: #17a2b8;
+}
+
+.btn-cancel:hover {
+  color: #dc3545;
+}
+

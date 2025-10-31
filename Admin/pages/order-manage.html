@@ -16,15 +16,8 @@
   </head>
 
   <body>
-    <header class="header">
-      <button class="menu-icon-btn">
-        <div class="menu-icon">
-          <i class="fa-regular fa-bars"></i>
-        </div>
-      </button>
-    </header>
-
     <div class="container">
+      <!-- SIDEBAR -->
       <aside class="sidebar open">
         <div class="top-sidebar">
           <a href="#" class="channel-logo">
@@ -36,98 +29,98 @@
         </div>
 
         <div class="middle-sidebar">
-  <ul class="sidebar-list">
-    <li class="sidebar-list-item tab-content">
-      <a href="./manager-user.html" class="sidebar-link active">
-        <div class="sidebar-icon"><i class="fa-light fa-house"></i></div>
-        <div class="hidden-sidebar">Trang tổng quan</div>
-      </a>
-    </li>
+          <ul class="sidebar-list">
+            <li class="sidebar-list-item tab-content">
+              <a href="./manager-user.html" class="sidebar-link active">
+                <div class="sidebar-icon"><i class="fa-light fa-house"></i></div>
+                <div class="hidden-sidebar">Trang tổng quan</div>
+              </a>
+            </li>
 
-    <li class="sidebar-list-item tab-content">
-      <a href="javascript:void(0)" class="sidebar-link" onclick="toggleSubmenu(this,'product-submenu')">
-        <div class="sidebar-icon">
-          <i class="fa-light fa-chart-simple"></i>
-        </div>
-        <div class="hidden-sidebar">Sản phẩm</div>
-        <i class="fa-light fa-chevron-right menu-arrow"></i>
-      </a>
-      <ul class="submenu" id="product-submenu" style="display: none; margin-left: 20px">
-        <li class="sidebar-list-item">
-          <a href="./list-product.html" class="sidebar-link">
-            <div class="sidebar-icon">
-              <i class="fa-light fa-basket-shopping"></i>
-            </div>
-            <div class="hidden-sidebar">Thông tin sản phẩm</div>
-          </a>
-        </li>
-        <li class="sidebar-list-item">
-          <a href="./price-manage.html" class="sidebar-link">
-            <div class="sidebar-icon">
-              <i class="fa-light fa-users"></i>
-            </div>
-            <div class="hidden-sidebar">Quản lý giá</div>
-          </a>
-        </li>
-      </ul>
-    </li>
+            <li class="sidebar-list-item tab-content">
+              <a href="javascript:void(0)" class="sidebar-link" onclick="toggleSubmenu(this,'product-submenu')">
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-chart-simple"></i>
+                </div>
+                <div class="hidden-sidebar">Sản phẩm</div>
+                <i class="fa-light fa-chevron-right menu-arrow"></i>
+              </a>
+              <ul class="submenu" id="product-submenu" style="display: none; margin-left: 20px">
+                <li class="sidebar-list-item">
+                  <a href="./list-product.html" class="sidebar-link">
+                    <div class="sidebar-icon">
+                      <i class="fa-light fa-basket-shopping"></i>
+                    </div>
+                    <div class="hidden-sidebar">Thông tin sản phẩm</div>
+                  </a>
+                </li>
+                <li class="sidebar-list-item">
+                  <a href="./price-manage.html" class="sidebar-link">
+                    <div class="sidebar-icon">
+                      <i class="fa-light fa-users"></i>
+                    </div>
+                    <div class="hidden-sidebar">Quản lý giá</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
 
-    <li class="sidebar-list-item tab-content">
-      <a href="./add-product.html" class="sidebar-link">
-        <div class="sidebar-icon">
-          <i class="fa-light fa-boxes-stacked"></i>
-        </div>
-        <div class="hidden-sidebar">Nhập hàng</div>
-      </a>
-    </li>
+            <li class="sidebar-list-item tab-content">
+              <a href="./add-product.html" class="sidebar-link">
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-boxes-stacked"></i>
+                </div>
+                <div class="hidden-sidebar">Nhập hàng</div>
+              </a>
+            </li>
 
-    <li class="sidebar-list-item tab-content">
-      <a href="./order-manage.html" class="sidebar-link">
-        <div class="sidebar-icon">
-          <i class="fa-light fa-basket-shopping"></i>
-        </div>
-        <div class="hidden-sidebar">Đơn hàng</div>
-      </a>
-    </li>
+            <li class="sidebar-list-item tab-content">
+              <a href="./order-manage.html" class="sidebar-link">
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-basket-shopping"></i>
+                </div>
+                <div class="hidden-sidebar">Đơn hàng</div>
+              </a>
+            </li>
 
-    <li class="sidebar-list-item tab-content">
-      <a href="./customers.html" class="sidebar-link">
-        <div class="sidebar-icon">
-          <i class="fa-light fa-users"></i>
-        </div>
-        <div class="hidden-sidebar">Khách hàng</div>
-      </a>
-    </li>
+            <li class="sidebar-list-item tab-content">
+              <a href="./customers.html" class="sidebar-link">
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-users"></i>
+                </div>
+                <div class="hidden-sidebar">Khách hàng</div>
+              </a>
+            </li>
 
-    <li class="sidebar-list-item tab-content">
-      <a href="javascript:void(0)" class="sidebar-link" onclick="toggleSubmenu(this,'statistical-submenu')">
-        <div class="sidebar-icon">
-          <i class="fa-light fa-chart-simple"></i>
+            <li class="sidebar-list-item tab-content">
+              <a href="javascript:void(0)" class="sidebar-link" onclick="toggleSubmenu(this,'statistical-submenu')">
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-chart-simple"></i>
+                </div>
+                <div class="hidden-sidebar">Thống kê</div>
+                <i class="fa-light fa-chevron-right menu-arrow"></i>
+              </a>
+              <ul class="submenu" id="statistical-submenu" style="display: none; margin-left: 20px">
+                <li class="sidebar-list-item">
+                  <a href="./statistical-product.html" class="sidebar-link">
+                    <div class="sidebar-icon">
+                      <i class="fa-light fa-basket-shopping"></i>
+                    </div>
+                    <div class="hidden-sidebar">Thống kê sản phẩm</div>
+                  </a>
+                </li>
+                <li class="sidebar-list-item">
+                  <a href="./statistical-users.html" class="sidebar-link">
+                    <div class="sidebar-icon">
+                      <i class="fa-light fa-users"></i>
+                    </div>
+                    <div class="hidden-sidebar">Thống kê người dùng</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
-        <div class="hidden-sidebar">Thống kê</div>
-        <i class="fa-light fa-chevron-right menu-arrow"></i>
-      </a>
-      <ul class="submenu" id="statistical-submenu" style="display: none; margin-left: 20px">
-        <li class="sidebar-list-item">
-          <a href="./statistical-product.html" class="sidebar-link">
-            <div class="sidebar-icon">
-              <i class="fa-light fa-basket-shopping"></i>
-            </div>
-            <div class="hidden-sidebar">Thống kê sản phẩm</div>
-          </a>
-        </li>
-        <li class="sidebar-list-item">
-          <a href="./statistical-users.html" class="sidebar-link">
-            <div class="sidebar-icon">
-              <i class="fa-light fa-users"></i>
-            </div>
-            <div class="hidden-sidebar">Thống kê người dùng</div>
-          </a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</div>
 
         <div class="bottom-sidebar">
           <ul class="sidebar-list">
@@ -159,35 +152,88 @@
         </div>
       </aside>
 
-      
+      <!-- MAIN CONTENT -->
+      <main class="main-content">
+        <section class="admin-control-center">
+          <!-- Bộ lọc và tìm kiếm -->
+          <div class="admin-control-top">
+            <div class="admin-control-left">
+              <select id="filterStatus" class="form-control-select">
+                <option value="all">Tất cả</option>
+                <option value="pending">Chờ xác nhận</option>
+                <option value="shipping">Đang giao</option>
+                <option value="completed">Hoàn thành</option>
+                <option value="cancelled">Đã hủy</option>
+              </select>
 
-        <div class="header">
-          <div class="text-heading">
-            <h1>Quản lý người dùng</h1>
-          </div>
+              <select id="sortWard" class="form-control-select">
+                <option value="">Sắp xếp theo phường</option>
+                <option value="asc">Phường A → Z</option>
+                <option value="desc">Phường Z → A</option>
+              </select>
 
-          <nav class="navigation">
-            <button id="login-btn" class="btnLogin-popup">Đăng nhập</button>
-            <div class="Function-cl">
-              <div class="logout">
-                <button id="logout-btn" class="btnLogout-popup">
-                  Đăng xuất
-                </button>
-              </div>
+              <input
+                type="text"
+                id="searchOrder"
+                class="form-control-search"
+                placeholder="Tìm kiếm mã đơn, khách hàng..."
+              />
             </div>
-          </nav>
 
-          <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+            <div class="admin-control-right fillter-date">
+              <div>
+                <label for="startDate">Từ</label>
+                <input type="date" id="startDate" class="form-control-date" />
+              </div>
+              <div>
+                <label for="endDate">Đến</label>
+                <input type="date" id="endDate" class="form-control-date" />
+              </div>
+              <button id="filterBtn" class="btn-reset-order">
+                <i class="fa-light fa-rotate"></i>
+              </button>
+            </div>
           </div>
-        </div>
-      </main>
+
+          <!-- Bảng dữ liệu -->
+          <div class="admin-control-bottom">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>MÃ ĐƠN</th>
+                  <th>KHÁCH HÀNG</th>
+                  <th>NGÀY ĐẶT</th>
+                  <th>TỔNG TIỀN</th>
+                  <th>TRẠNG THÁI</th>
+                  <th>ĐỊA CHỈ</th>
+                  <th>THAO TÁC</th>
+                </tr>
+              </thead>
+              <tbody id="orderTableBody">
+                <tr>
+                  <td colspan="7" style="text-align: center; padding: 20px">
+                    Không có dữ liệu
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- KHUNG CHI TIẾT ĐƠN -->
+             <div id="orderDetail" style="display:none; margin-top:20px;">
+                <h3>Chi tiết đơn hàng</h3>
+                  <div id="orderDetailContent"></div>
+                  <div class="detail-actions">
+                  <button id="btnBack"><i class="fa-light fa-arrow-left"></i> Quay lại danh sách</button>
+                  </div>
+                </div>
+             </section>
+         </main>
+
     </div>
 
     <div id="toast"></div>
     <script src="../js/price-manage.js"></script>
-    <script src="./js/order-manage.js"></script>
+    <script src="../js/order-manage.js"></script>
   </body>
 </html>

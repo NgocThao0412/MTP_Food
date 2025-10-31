@@ -2990,27 +2990,43 @@ input[type=number] {
     padding-top: 20px;
 }
 
-.pagination a {
-       display: inline-block;
+/* Màu mặc định: Nền trắng, Chữ đỏ, Viền đỏ (Trang KHÔNG active) */
+.pagination a.page-link {
+    background-color: white;  
+    color: #a30000;
+    border: 2px solid #a30000;
+    /* Giữ nguyên các định dạng kích thước khác của bạn */
+    display: inline-block;
     width: 40px;
     height: 40px;
     line-height: 40px;
     text-align: center;
     border-radius: 50%;
-    background-color: #a30000;  /* Màu đỏ chủ đạo */
-    color: #fff;
     font-weight: bold;
     text-decoration: none;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
 }
 
-.pagination a:hover {
-    background-color: white;
-    color: #a30000;
-    border-color: #a30000;
+/* Khi rê chuột */
+.pagination a.page-link:hover {
+    background-color: #a30000;
+    color: white;
 }
 
+/* 🚨 Trạng thái ACTIVE (Trang Đang chạy): Nền đỏ, Chữ trắng */
+.pagination a.page-link.active {
+    background-color: #a30000; /* Nền đỏ */
+    color: white;              /* Chữ trắng */
+    border: 2px solid #a30000;
+    
+    /* Đảm bảo trạng thái active GHI ĐÈ lên hover */
+    /* Dùng !important nếu các kiểu khác đang ghi đè */
+    /* background-color: #a30000 !important; 
+       color: white !important; */
+    
+    /* Ngăn người dùng click lại vào trang đang active */
+    pointer-events: none; 
+}
 .pagination.active {
     background-color: #a30000;
     color: #fff;
@@ -3047,16 +3063,26 @@ input[type=number] {
   box-shadow: 0 0 25px rgba(0,0,0,0.2);
   overflow: hidden;
 }
-.hinh-anh-mon-an img {
-  width: 650px;
-  height: 550px;
-  border-radius: 10px;
+.hinh-anh-mon-an {
+  width: 100%; 
+  height: 425px; /* Chiều cao cố định của khung hiển thị */
+  overflow: hidden; /* BẮT BUỘC: Ẩn phần ảnh bị cắt */
+  border-radius: 10px; 
 }
+
+.hinh-anh-mon-an img {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; /* Giữ tỷ lệ ảnh và lấp đầy khung */
+  object-position: center; /* *Căn giữa ảnh, cắt đều trên và dưới* */
+}
+
 .tieu-de-mon-an {
   font-size: 26px;
   margin-bottom: 10px;
   color: #333;
   font-weight: 600;
+  margin-top: 10 px;
 }
 /* Mô tả món ăn */
 .mo-ta-mon-an {

@@ -1,0 +1,416 @@
+/* --- Biến CSS (Để dễ dàng thay đổi màu sắc) --- */
+:root {
+    --primary-red: #c0392b; /* Màu đỏ chủ đạo (giống trong hình) */
+    --light-red: #e74c3c;
+    --light-gray-bg: #f8f9fa; /* Màu nền của trang */
+    --white: #ffffff;
+    --text-dark: #333333;
+    --text-light: #777777;
+    --border-color: #eeeeee;
+    --border-light: #e0e0e0;
+}
+
+/* --- Cài đặt chung & Reset --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--light-gray-bg);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- Header --- */
+.page-header {
+    background-color: var(--white);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+    position: relative;
+}
+
+.page-header h1 {
+    font-size: 18px;
+    margin: 0;
+    flex-grow: 1; /* Đẩy title vào giữa */
+}
+
+.back-arrow {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    left: 20px;
+}
+
+/* --- Layout chính 2 cột --- */
+.checkout-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Cột trái 2 phần, cột phải 1 phần */
+    gap: 24px;
+    align-items: flex-start; /* Giữ cột phải cố định chiều cao */
+}
+
+/* --- Cột bên trái: Form --- */
+.form-section {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.section-title {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-left: 12px;
+    border-left: 4px solid var(--primary-red);
+    color: var(--text-dark);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.group-title {
+    font-weight: bold;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+/* --- Kiểu nút bấm (Giao hàng, Ngày) --- */
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.toggle-btn {
+    flex: 1; /* Chia đều không gian */
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    background-color: #f5f5f5;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 1.4; /* Cho nút 2 dòng */
+}
+
+.toggle-btn i {
+    margin-right: 5px;
+}
+
+.toggle-btn.active {
+    background-color: var(--primary-red);
+    color: var(--white);
+    border-color: var(--primary-red);
+}
+
+.toggle-btn:not(.active):hover {
+    background-color: #e9e9e9;
+}
+
+/* --- Kiểu Radio & Select --- */
+.radio-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.radio-option label {
+    margin-left: 8px;
+    font-size: 15px;
+}
+
+.radio-option input[type="radio"] {
+    /* Có thể thêm kiểu custom radio tại đây */
+}
+
+.radio-option select {
+    margin-left: 10px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border-light);
+    background-color: #f5f5f5;
+    font-size: 14px;
+}
+
+/* --- Kiểu Input & Textarea --- */
+input[type="text"],
+input[type="tel"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    background-color: #fdfdfd;
+}
+
+input[type="text"]::placeholder,
+input[type="tel"]::placeholder,
+textarea::placeholder {
+    color: #aaa;
+}
+
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* --- Cột bên phải: Tóm tắt đơn hàng --- */
+.order-summary {
+    background-color: var(--white);
+    border: 1px solid var(--primary-red);
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    /* Giữ cho box này ở đúng vị trí khi cuộn trang (nếu cột trái dài) */
+    position: sticky; 
+    top: 20px;
+}
+
+.order-summary h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed var(--border-light);
+}
+
+.order-item span {
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+    font-size: 15px;
+}
+
+.summary-row span {
+    color: var(--text-light);
+}
+
+.summary-row strong {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.terms {
+    font-size: 12px;
+    color: var(--text-light);
+    margin: 20px 0;
+    text-align: left;
+    line-height: 1.5;
+}
+
+.summary-row.total {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.summary-row .total-price {
+    font-size: 20px;
+    color: var(--primary-red);
+    font-weight: bold;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: var(--primary-red);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: var(--light-red);
+}
+
+/* --- Responsive cho di động --- */
+@media (max-width: 768px) {
+    .checkout-layout {
+        grid-template-columns: 1fr; /* Xếp 2 cột chồng lên nhau */
+    }
+
+    .order-summary {
+        position: static; /* Bỏ dính trên di động */
+        margin-top: 24px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+}
+
+#ghi-chu {
+    background-color: #fefcf5; /* <-- Đổi MÀU NỀN ở đây (ví dụ: vàng nhạt) */
+    border-color: #f39c12;     /* <-- Đổi MÀU VIỀN ở đây (ví dụ: vàng đậm) */
+}
+
+/* Tìm và chỉnh sửa đoạn này trong file ../css/user-pay.css */
+.payment-icon {
+  width: 40px; /* Chiều rộng cố định cho tất cả các icon */
+  height: 40px; /* Chiều cao cố định cho tất cả các icon */
+  object-fit: contain; /* Đảm bảo hình ảnh vừa vặn bên trong mà không bị cắt */
+  border-radius: 5px; /* Bo tròn nhẹ các góc của icon */
+  background-color: #fff; /* Nền trắng cho các icon, hữu ích nếu ảnh là PNG trong suốt */
+  border: 1px solid #eee; /* Viền nhẹ để tạo sự tách biệt và đẹp hơn */
+  padding: 3px; /* Thêm chút khoảng đệm bên trong icon nếu cần */
+}
+
+/* === CĂN CHỈNH DÒNG CHỮ THANH TOÁN === */
+
+.payment-option {
+    display: flex;
+    align-items: center; /* Căn radio với toàn bộ label */
+    margin-bottom: 15px;
+}
+
+.payment-option label {
+    display: flex;
+    align-items: center; /* **QUAN TRỌNG:** Căn chữ với icon */
+    gap: 15px; 
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/*****Thông báo********/
+/* === TOAST NOTIFICATION STYLES === */
+
+.toast-notification {
+    /* Định vị cố định ở góc trên bên phải */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    
+    /* Kiểu dáng chung */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 15px;
+    width: 300px; /* Chiều rộng cố định */
+    z-index: 1000; /* Đảm bảo nó luôn nằm trên các thành phần khác */
+    
+    display: flex;
+    align-items: center;
+    border-left: 5px solid var(--primary-red); /* Dải màu đỏ bên trái như trong ảnh */
+
+    /* Animation ẩn/hiện */
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Kiểu dáng cho thông báo thành công */
+.success-toast {
+    border-left-color: #2ecc71; /* Màu xanh lá cây cho thành công */
+}
+
+/* Định nghĩa trạng thái hiển thị (thêm class này bằng JS) */
+.toast-notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.toast-icon-wrapper {
+    margin-right: 15px;
+}
+
+.toast-icon {
+    font-size: 24px;
+    color: #2ecc71; /* Màu icon check */
+}
+
+.toast-content {
+    flex-grow: 1;
+    line-height: 1.3;
+}
+
+.toast-title {
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--text-dark);
+    display: block;
+    margin-bottom: 3px;
+}
+
+.toast-message {
+    font-size: 14px;
+    color: var(--text-light);
+    margin: 0;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.toast-close:hover {
+    opacity: 1;
+}
+
+/* CSS cho dải tiến trình (Progress Bar) */
+.success-toast::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background-color: #2ecc71;
+    /* Animation sẽ được điều khiển bằng JavaScript */
+    animation: progress-bar 4s linear forwards; 
+}
+
+@keyframes progress-bar {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
+}

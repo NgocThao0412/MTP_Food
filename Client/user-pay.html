@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTP Food</title>
+    <link href="../Img/favicon.png" rel="icon" type="image/x-icon" />
+    <link rel="icon" href="../Img/mtp-food.png" type="image/x-icon" />
+
+    <link rel="stylesheet" href="../css/user-pay.css">
+    <link rel="stylesheet" href="../font/font-awesome-pro-v6-6.2.0/css/all.min.css" />
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <link rel="icon" href="../Img/mtp-food.png" type="image/x-icon" class="icon-page" />
+</head>
+
+<body>
+    <div class="toast-notification success-toast" id="successToast" style="display: none;">
+        <div class="toast-icon-wrapper">
+            <i class="fas fa-check-circle toast-icon"></i>
+        </div>
+        <div class="toast-content">
+            <span class="toast-title">Thành công</span>
+            <p class="toast-message">Đặt hàng thành công!</p>
+        </div>
+        <button type="button" class="toast-close"
+            onclick="document.getElementById('successToast').style.display='none';">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <header class="page-header">
+        <a href="#" class="back-arrow">&lt;</a>
+        <h1>Thanh toán</h1>
+    </header>
+    <main class="container">
+        <div class="checkout-layout">
+
+            <div class="form-column">
+                <form>
+                    <section class="form-section">
+                        <h2 class="section-title">THÔNG TIN ĐƠN HÀNG</h2>
+
+                        <div class="form-group">
+                            <p class="group-title">Hình thức giao nhận</p>
+                            <div style="display: none;">
+                                <input type="radio" name="delivery_option" id="delivery_ship" value="ship" checked>
+                                <input type="radio" name="delivery_option" id="delivery_pickup" value="pickup">
+                            </div>
+
+                            <div class="button-group" id="delivery_option_buttons">
+                                <button type="button" class="toggle-btn active"
+                                    onclick="document.getElementById('delivery_ship').checked = true; updateToggleButtons('delivery_ship'); handleDeliveryOptionChange();">
+                                    <i class="fas fa-truck"></i> Giao tận nơi
+                                </button>
+                                <button type="button" class="toggle-btn"
+                                    onclick="document.getElementById('delivery_pickup').checked = true; updateToggleButtons('delivery_pickup'); handleDeliveryOptionChange();">
+                                    <i class="fas fa-store"></i> Tự đến lấy
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="delivery_date_area">
+                            <p class="group-title">Ngày giao hàng</p>
+                            <div class="button-group date-buttons">
+                                <button type="button" class="toggle-btn active">Hôm nay <br> 29/10</button>
+                                <button type="button" class="toggle-btn">Ngày mai <br> 30/10</button>
+                                <button type="button" class="toggle-btn">Ngày kia <br> 31/10</button>
+                            </div>
+                            <input type="date" id="delivery_date" style="display: none;">
+                        </div>
+
+                        <div class="form-group" id="pickup_location_area" style="display: none;">
+                            <p class="group-title">Lấy hàng tại chi nhánh</p>
+
+                            <div class="radio-option branch-option">
+                                <input type="radio" id="branch_1" name="pickup_branch" value="273 An Dương Vương"
+                                    checked>
+                                <label for="branch_1">273 An Dương Vương, Quận 5, TP Hồ Chí Minh</label>
+                            </div>
+
+                            <div class="radio-option branch-option">
+                                <input type="radio" id="branch_2" name="pickup_branch"
+                                    value="105 Bà Huyện Thanh Quan">
+                                <label for="branch_2">105 Bà Huyện Thanh Quan, Quận 3, TP Hồ Chí Minh</label>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <p class="group-title">Thời gian giao hàng</p>
+                            <div class="radio-option">
+                                <input type="radio" id="giao-ngay" name="thoi-gian" value="ngay" checked>
+                                <label for="giao-ngay">Giao ngay khi xong</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="giao-gio" name="thoi-gian" value="gio">
+                                <label for="giao-gio">Giao vào giờ</label>
+                                <select id="time-select">
+                                    <option>08:00 - 09:00</option>
+                                    <option>09:00 - 10:00</option>
+                                    <option>10:00 - 11:00</option>
+                                    <option>11:00 - 12:00</option>
+                                    <option>12:00 - 13:00</option>
+                                    <option>13:00 - 14:00</option>
+                                    <option>14:00 - 15:00</option>
+                                    <option>15:00 - 16:00</option>
+                                    <option>16:00 - 17:00</option>
+                                    <option>17:00 - 18:00</option>
+                                    <option>18:00 - 19:00</option>
+                                    <option>19:00 - 20:00</option>
+                                    <option>20:00 - 21:00</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <section class="form-section">
+                            <h2 class="section-title">HÌNH THỨC THANH TOÁN</h2>
+
+                            <div class="payment-options-container">
+                                <div class="radio-option payment-option">
+                                    <input type="radio" id="pay-cash" name="payment_method" value="cash" checked>
+                                    <label for="pay-cash">
+                                        <img src="../Img/Pay_final/cash.png" alt="Tiền mặt" class="payment-icon">
+                                        <span>Tiền mặt (Cash)</span>
+                                    </label>
+                                </div>
+
+                                <div class="radio-option payment-option">
+                                    <input type="radio" id="pay-momo" name="payment_method" value="momo">
+                                    <label for="pay-momo">
+                                        <img src="../Img/Pay_final/momo_icon.png" alt="Momo" class="payment-icon">
+                                        <span>Momo</span>
+                                    </label>
+                                </div>
+
+                                <div class="radio-option payment-option">
+                                    <input type="radio" id="pay-card" name="payment_method" value="card">
+                                    <label for="pay-card">
+                                        <img src="../Img/Pay_final/credit-card.png" alt="VISA CARD"
+                                            class="payment-icon">
+                                        <span>VISA CARD</span>
+                                    </label>
+                                </div>
+                                
+                                </div>
+
+                            <div id="credit_card_info" class="payment-details" style="display: none;">
+                                <p class="group-title">Nhập thông tin thẻ</p>
+
+                                <div class="form-group">
+                                    <select id="bank_name" required>
+                                        <option value="" disabled selected>Chọn ngân hàng</option>
+                                        <option value="Vietcombank">Vietcombank</option>
+                                        <option value="Techcombank">Techcombank</option>
+                                        <option value="VietinBank">VietinBank</option>
+                                        <option value="BIDV">BIDV</option>
+                                        <option value="ACB">ACB</option>
+                                        <option value="Sacombank">Sacombank</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="text" id="card_number" placeholder="Số thẻ" required>
+                                </div>
+                                <div class="form-group half-width">
+                                    <input type="text" id="card_expiry" placeholder="Ngày hết hạn (MM/YY)" required>
+                                    <input type="text" id="card_cvv" placeholder="CVV" required>
+                                </div>
+                            </div>
+                            
+                            </section>
+
+                        <div class="form-group">
+                            <label for="ghi-chu" class="group-title">Ghi chú đơn hàng</label>
+                            <textarea id="ghi-chu" placeholder="Nhập ghi chú"></textarea>
+                        </div>
+                    </section>
+
+                    <section class="form-section">
+                        <h2 class="section-title">THÔNG TIN NGƯỜI NHẬN</h2>
+                        <div class="form-group">
+                            <input type="text" id="full_name" placeholder="Tên người nhận" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" placeholder="Số điện thoại nhận hàng" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="address" placeholder="Địa chỉ nhận hàng" required>
+                        </div>
+                    </section>
+                </form>
+            </div>
+
+            <aside class="order-summary">
+                <h3>Đơn hàng</h3>
+                <div class="order-item">
+                    <span>1x</span>
+                    <p>Lẩu Thái</p>
+                </div>
+
+                <div class="summary-row">
+                    <span>Tiền hàng</span>
+                    <strong>319.000 đ</strong>
+                </div>
+                <div class="summary-row" id="shipping_fee_area">
+                    <span>Phí vận chuyển</span>
+                    <strong>30.000 đ</strong>
+                </div>
+
+                <p class="terms">
+                    Bằng việc bấm vào nút "Đặt hàng", tôi đồng ý với chính sách hoạt động của chúng tôi.
+                </p>
+
+                <div class="summary-row total">
+                    <span>Tổng tiền</span>
+                    <strong class="total-price">349.000 đ</strong>
+                </div>
+
+                <button type="submit" class="submit-btn">Đặt hàng</button>
+            </aside>
+
+        </div>
+    </main>
+    <script src="../js/user-pay.js"></script>
+</body>
+
+</html>

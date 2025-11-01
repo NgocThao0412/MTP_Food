@@ -1,17 +1,18 @@
+/*
+    phần trang chủ 
+*/
 @font-face{font-family:'SFProDisplay';src:url('../font/SFPRODISPLAY/SFProDisplay-Regular.ttf') format('truetype');font-weight:400;font-display:fallback}
 @font-face{font-family:'SFProDisplay';src:url('../font/SFPRODISPLAY/SFProDisplay-Light.ttf') format('truetype');font-weight:300;font-display:fallback}
 @font-face{font-family:'SFProDisplay';src:url('../font/SFPRODISPLAY/SFProDisplay-Medium.ttf') format('truetype');font-weight:500;font-display:fallback}
 @font-face{font-family:'SFProDisplay';src:url('../font/SFPRODISPLAY/SFProDisplay-Bold.ttf') format('truetype');font-weight:bold;font-display:fallback}
 @font-face{font-family:'SFProDisplay';src:url('../font/SFPRODISPLAY/SFProDisplay-Semibold.ttf') format('truetype');font-weight:600;font-display:fallback}
 @font-face{font-family:'SFProDisplay';src:url('../font/SFPRODISPLAY/SFProDisplay-Heavy.ttf') format('truetype');font-weight:800;font-display:fallback}
-
 :root {
     --white: #fff;
     --black: #000;
     --text-color: #333;
     --red: #B5292F;
 }
-
 ul,
 li {
     list-style: none;
@@ -74,11 +75,6 @@ body,input,button,textarea,pre {
 input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
 }
 
 /* Custom radio buttons */
@@ -236,14 +232,18 @@ header {
 }
 
 .header-middle-center {
-    padding: 0 30px;
-    flex: 1;
+     flex: 1; /* chiếm phần giữa header */
+    justify-content: center;
+    align-items: center;
+    
 }
-
 .form-search {
     display: flex;
     justify-content: center;
+    align-items: center;
     position: relative;
+    max-width: 700px;
+    width:100%;
 }
 
 .form-search-input {
@@ -255,9 +255,15 @@ header {
     padding-left: 0;
     border-top-right-radius: 99px;
     border-bottom-right-radius: 99px;
-    width: 65%;
+    width: 500px;;
     /* border: 1px solid #e6ecf0;
     background-color: #f5f8fa; */
+}
+
+@media (max-width: 768px) {
+    .advanced-search-price input{
+        width: 70px;
+    }
 }
 
 .filter-btn,.search-btn {
@@ -304,7 +310,12 @@ header {
     align-items: center;
     cursor: pointer;
 }
-
+@media screen and (max-width: 992px) {
+    /* Chỉ hiển thị icon, ẩn chữ */
+    .header-middle-right-item span {
+        display: none;
+    }
+}
 .auth-container {
     display: flex;
     flex-direction: column;
@@ -323,7 +334,7 @@ header {
 }
 
 .header-middle-right-item i {
-    font-size: 25px;
+    font-size: 30px;
     margin-right: 10px;
     color: var(--red);
 }
@@ -447,6 +458,62 @@ header {
 
 .header-middle-right-menu{
     right: 0;
+}
+/* ======================================= */
+/* 1. CSS MẶC ĐỊNH (Màn hình lớn/Desktop)  */
+/* ======================================= */
+
+/* Giả định: Class 'dnone' đang dùng để ẩn icon tìm kiếm di động */
+.dnone {
+    display: none;
+}
+
+
+/* ======================================= */
+/* 2. MEDIA QUERY (Màn hình nhỏ <= 768px) */
+/* ======================================= */
+@media (max-width: 992px) {
+    
+    /* 1. ẨN form tìm kiếm đầy đủ ở trung tâm */
+    .header-middle-center {
+        display: none; 
+    }
+
+    /* 2. HIỆN icon tìm kiếm di động (Loại bỏ hiệu ứng của class 'dnone') */
+    .header-middle-right-item.dnone {
+        display: flex !important; /* HIỂN THỊ icon */
+        align-items: center;
+        /* Loại bỏ padding/margin thừa của li nếu cần */
+        padding: 0;
+        margin: 0 15px 0 0; /* Đặt icon tìm kiếm bên trái icon Đăng nhập */
+        list-style: none;
+        cursor: pointer;
+    }
+    
+    /* 3. TẠO KIỂU cho icon tìm kiếm */
+    .header-middle-right-item.dnone .cart-icon-menu i {
+        /* Yêu cầu: Bự ra */
+        font-size: 30px; 
+        
+        /* Yêu cầu: Mất nền (và màu) */
+        color: #c0392b; /* Điều chỉnh màu sắc icon */
+        background: none;
+        border: none;
+        /* Nếu icon có padding lớn, bạn có thể chỉnh lại ở đây */
+    }
+    
+    /* Ẩn icon đóng (X) nếu bạn chỉ muốn icon kính lúp hiện ra */
+    .header-middle-right-item.close {
+        display: none;
+    }
+
+    /* Đảm bảo list icon được căn chỉnh đúng */
+    .header-middle-right-list {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
 }
 
 .menu-list {
@@ -582,36 +649,62 @@ header {
     object-fit: cover;
     border-radius: 5px;
 }
-
+.home-service-item:hover .home-service-item-icon i {
+    color: #a02020; /* Màu đậm hơn khi hover */
+}
 .home-service{
-    display: flex;
-    margin-top: 30px;
+     display: flex;
+     justify-content: space-between;
     column-gap: 20px;
     scroll-margin-top: 30px;
     white-space: nowrap;
     overflow-x: auto;
-    margin: 10px 0;
     padding:10px 3px;
+    max-width: 1200px;
+    margin: 0 auto; 
+    overflow-x: auto;
+    text-align: center;
 }
 
 .home-service-item{
     box-shadow: 0px 1px 9px 2px #f1f1f1;
+    flex: 0 0 24%; 
     width: 25%;   
     display: flex;
     padding: 20px;
     align-items: center;
+    max-width: 25%;
     border-radius: 5px;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    max-width: 24%;
+    align-self: flex-start;
+    text-align: center;
 }
 
 .home-service-item-icon i{
     font-size: 40px;
     margin-right: 25px;
     color: var(--red);
+     display: flex;
+    justify-content: center;
+    align-items: center;
+     margin-bottom: 5px;
 }
 
-.home-service-item-content-h{
+.home-service-item-content-h {
     font-size: 15px;
-    color: var(--text-color)
+    font-weight: 700; /* In đậm tiêu đề */
+    color: #333; /* Màu chữ tiêu đề */
+    margin-top: 0;
+    margin-bottom: 3px; /* Khoảng cách giữa H4 và P */
+    letter-spacing: 0.5px; /* Thêm khoảng cách chữ nhẹ cho tiêu đề */
+}
+
+.home-service-item-content-desc {
+    font-size: 13px;
+    color: #666; /* Màu chữ mô tả nhạt hơn */
+    margin: 0;
 }
 
 .home-service-item-content-desc{
@@ -619,7 +712,75 @@ header {
     font-size: 14px;
     color:#888
 }
+.home-service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
 
+@media (max-width: 992px) {
+    .home-service {
+        justify-content: space-around; /* Căn đều khi có ít cột hơn */
+    }
+    .home-service-item {
+        /* 3 CỘT: 32% cho mỗi mục (100% / 3 ≈ 33.33%) */
+        flex: 0 0 32%; 
+        max-width: 32%;
+        margin-bottom: 25px; /* Thêm khoảng cách khi các mục xuống hàng */
+    }
+}
+
+/* ------------------------------------------------ */
+/* 3. MEDIA QUERY CHO 2 CỘT (MÀN HÌNH TABLET VÀ NHỎ HƠN) */
+/* ------------------------------------------------ */
+@media (max-width: 768px) {
+    .home-service-item {
+        /* 2 CỘT: 48% cho mỗi mục (100% / 2 = 50%) */
+        flex: 0 0 48%; 
+        max-width: 48%;
+        margin-bottom: 20px;
+    }
+}
+
+/* ------------------------------------------------ */
+/* 4. MEDIA QUERY CHO 1 CỘT (MÀN HÌNH ĐIỆN THOẠI) */
+/* ------------------------------------------------ */
+@media (max-width: 576px) {
+    .home-service {
+        flex-direction: column; /* Xếp chồng theo chiều dọc */
+        padding: 20px;
+    }
+    .home-service-item {
+        /* 1 CỘT: Chiếm gần hết chiều rộng */
+        flex: 1 1 100%; 
+        max-width: 100%;
+        text-align: left; /* Căn trái để dễ đọc hơn trên điện thoại */
+        
+        /* Bố cục Icon và Nội dung nằm ngang (Icon bên trái, chữ bên phải) */
+        display: flex; 
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px dashed #eee; /* Đường kẻ phân cách */
+    }
+    
+    /* Điều chỉnh icon trên điện thoại để nằm cạnh chữ */
+    .home-service-item-icon {
+        margin-right: 15px;
+        margin-bottom: 0;
+    }
+    
+    .home-service-item:last-child {
+        border-bottom: none; /* Bỏ đường kẻ ở mục cuối cùng */
+    }
+}
+@media (max-width: 768px) {
+    /* CONTAINER CHÍNH - HOME-SERVICE */
+    .home-service {
+        /* *KÍCH HOẠT CUỘN NGANG*: Cho phép cuộn khi nội dung tràn */
+        overflow-x: auto;
+        /* *QUAN TRỌNG*: Ngăn không cho các mục xuống hàng */
+        flex-wrap: nowrap;
+    }
+    }
 .home-title {
     /* font-family: 'Lobster', cursive; */
     font-weight: 600;
@@ -1690,7 +1851,10 @@ input[type=number] {
 
 .footer .container {
     margin: 0 auto;
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    gap:20px;
+    justify-content: space-between;
 }
 
 .footer-top {
@@ -1738,6 +1902,7 @@ input[type=number] {
     margin-bottom: 0;
     margin-top: 10px;
 }
+
 
 .form-ground {
     margin-left: 50px;
@@ -1794,7 +1959,397 @@ input[type=number] {
 .widget-row-col {
     width: 15%;
 }
+@media (max-width: 958px) {
+      /* Footer-top hiển thị dọc thay vì ngang */
+    .footer-top-content {
+        display: flex;
+        flex-direction: column; /* Cho logo và đăng ký xuống 2 hàng */
+        align-items: center;    /* Căn giữa cả 2 */
+        gap: 20px;              /* Khoảng cách giữa logo và phần đăng ký */
+    }
 
+    /* Logo hiển thị và chiếm nguyên hàng */
+    .footer-top-img {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom:15px ;
+    }
+
+    .footer-top-img img {
+         width: 220px;        /* tăng kích thước logo */
+         max-width: 80%;      /* vẫn co giãn khi màn hình nhỏ */
+         height: auto; 
+    }
+
+    /* Đăng ký nhận tin căn giữa */
+    .footer-top-subbox {
+        text-align: center;
+        width: 100%;
+    }
+
+
+    /* --- BỐ CỤC CHÍNH --- */
+    .widget-row {
+        display: grid;
+        grid-template-columns: 1.2fr 1.2fr; /* 2 cột bằng nhau */
+        width: 100%;
+        gap: 40px 20px; /* Giãn giữa 2 cột và giữa các hàng */
+        justify-items: start;
+        align-items: start;
+        text-align: left;
+        padding: 0 10px; /* thêm khoảng thở 2 bên */
+    }
+
+    /* --- Mở rộng không gian cho 2 cột Liên kết & Thực đơn --- */
+.widget-row > :nth-child(2),
+.widget-row > :nth-child(3) {
+    padding: 0 15px;         /* thêm khoảng cách hai bên chữ */
+    min-width: 150px;        /* đảm bảo cột không bị bóp nhỏ */
+    word-break: break-word;  /* tránh chữ dài bị tràn */
+    white-space: normal;     /* cho phép chữ xuống dòng thoải mái */
+}
+
+    /* “Về chúng tôi” riêng hàng */
+    .widget-row-col-1:first-of-type {
+        grid-column: 1 / 3;
+        width: 100%;
+    }
+
+    /* “Liên kết” ở cột 1 */
+    .widget-row > :nth-child(2) {
+        grid-column: 1;
+    }
+
+    /* “Thực đơn” ở cột 2 */
+    .widget-row > :nth-child(3) {
+        grid-column: 2;
+    }
+
+    /* “Liên hệ” riêng hàng cuối */
+    .widget-row-col-1:last-of-type {
+        grid-column: 1 / 3;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* --- CĂN CHỮ & GIÃN DÒNG --- */
+    .widget-title {
+        margin-bottom: 10px;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+
+    .widget-contact-item {
+        margin-bottom: 6px; /* mỗi dòng giãn nhẹ */
+        line-height: 1.6;   /* giãn khoảng giữa các dòng */
+    }
+
+    .widget-row-col-content p,
+    .contact-content span {
+        line-height: 1.6;
+        word-wrap: break-word;
+        white-space: normal;
+    }
+     .footer-top-content,
+    .widget-row {
+        padding-left: 70px; /* đẩy toàn phần footer vào giữa */
+        box-sizing: border-box;
+    }
+    
+}
+@media (max-width: 850px) {
+      /* Footer-top hiển thị dọc thay vì ngang */
+    .footer-top-content {
+        display: flex;
+        flex-direction: column; /* Cho logo và đăng ký xuống 2 hàng */
+        align-items: center;    /* Căn giữa cả 2 */
+        gap: 20px;              /* Khoảng cách giữa logo và phần đăng ký */
+    }
+
+    /* Logo hiển thị và chiếm nguyên hàng */
+    .footer-top-img {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom:15px ;
+    }
+
+    .footer-top-img img {
+         width: 220px;        /* tăng kích thước logo */
+         max-width: 80%;      /* vẫn co giãn khi màn hình nhỏ */
+         height: auto; 
+    }
+
+    /* Đăng ký nhận tin căn giữa */
+    .footer-top-subbox {
+        text-align: center;
+        width: 100%;
+    }
+    /* --- BỐ CỤC CHÍNH --- */
+    .widget-row {
+        display: grid;
+        grid-template-columns: 1.2fr 1.2fr; /* 2 cột bằng nhau */
+        width: 100%;
+        gap: 40px 20px; /* Giãn giữa 2 cột và giữa các hàng */
+        justify-items: start;
+        align-items: start;
+        text-align: left;
+        padding: 0 10px; /* thêm khoảng thở 2 bên */
+    }
+
+    /* --- Mở rộng không gian cho 2 cột Liên kết & Thực đơn --- */
+.widget-row > :nth-child(2),
+.widget-row > :nth-child(3) {
+    padding: 0 15px;         /* thêm khoảng cách hai bên chữ */
+    min-width: 150px;        /* đảm bảo cột không bị bóp nhỏ */
+    word-break: break-word;  /* tránh chữ dài bị tràn */
+    white-space: normal;     /* cho phép chữ xuống dòng thoải mái */
+}
+
+    /* “Về chúng tôi” riêng hàng */
+    .widget-row-col-1:first-of-type {
+        grid-column: 1 / 3;
+        width: 100%;
+    }
+
+    /* “Liên kết” ở cột 1 */
+    .widget-row > :nth-child(2) {
+        grid-column: 1;
+    }
+
+    /* “Thực đơn” ở cột 2 */
+    .widget-row > :nth-child(3) {
+        grid-column: 2;
+    }
+
+    /* “Liên hệ” riêng hàng cuối */
+    .widget-row-col-1:last-of-type {
+        grid-column: 1 / 3;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* --- CĂN CHỮ & GIÃN DÒNG --- */
+    .widget-title {
+        margin-bottom: 10px;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+
+    .widget-contact-item {
+        margin-bottom: 6px; /* mỗi dòng giãn nhẹ */
+        line-height: 1.6;   /* giãn khoảng giữa các dòng */
+    }
+
+    .widget-row-col-content p,
+    .contact-content span {
+        line-height: 1.6;
+        word-wrap: break-word;
+        white-space: normal;
+    }
+     .footer-top-content,
+    .widget-row {
+        padding-left: 20px; /* đẩy toàn phần footer vào giữa */
+        box-sizing: border-box;
+    }
+    
+}
+@media (max-width: 750px) {
+      /* Footer-top hiển thị dọc thay vì ngang */
+    .footer-top-content {
+        display: flex;
+        flex-direction: column; /* Cho logo và đăng ký xuống 2 hàng */
+        align-items: center;    /* Căn giữa cả 2 */
+        gap: 20px;              /* Khoảng cách giữa logo và phần đăng ký */
+    }
+
+    /* Logo hiển thị và chiếm nguyên hàng */
+    .footer-top-img {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom:15px ;
+    }
+
+    .footer-top-img img {
+         width: 220px;        /* tăng kích thước logo */
+         max-width: 80%;      /* vẫn co giãn khi màn hình nhỏ */
+         height: auto; 
+    }
+
+    /* Đăng ký nhận tin căn giữa */
+    .footer-top-subbox {
+        text-align: center;
+        width: 100%;
+    }
+    /* --- BỐ CỤC CHÍNH --- */
+    .widget-row {
+        display: grid;
+        grid-template-columns: 1.2fr 1.2fr; /* 2 cột bằng nhau */
+        width: 100%;
+        gap: 40px 20px; /* Giãn giữa 2 cột và giữa các hàng */
+        justify-items: start;
+        align-items: start;
+        text-align: left;
+        padding: 0 10px; /* thêm khoảng thở 2 bên */
+    }
+
+    /* --- Mở rộng không gian cho 2 cột Liên kết & Thực đơn --- */
+.widget-row > :nth-child(2),
+.widget-row > :nth-child(3) {
+    padding: 0 15px;         /* thêm khoảng cách hai bên chữ */
+    min-width: 150px;        /* đảm bảo cột không bị bóp nhỏ */
+    word-break: break-word;  /* tránh chữ dài bị tràn */
+    white-space: normal;     /* cho phép chữ xuống dòng thoải mái */
+}
+
+    /* “Về chúng tôi” riêng hàng */
+    .widget-row-col-1:first-of-type {
+        grid-column: 1 / 3;
+        width: 100%;
+    }
+
+    /* “Liên kết” ở cột 1 */
+    .widget-row > :nth-child(2) {
+        grid-column: 1;
+    }
+
+    /* “Thực đơn” ở cột 2 */
+    .widget-row > :nth-child(3) {
+        grid-column: 2;
+    }
+
+    /* “Liên hệ” riêng hàng cuối */
+    .widget-row-col-1:last-of-type {
+        grid-column: 1 / 3;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* --- CĂN CHỮ & GIÃN DÒNG --- */
+    .widget-title {
+        margin-bottom: 10px;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+
+    .widget-contact-item {
+        margin-bottom: 6px; /* mỗi dòng giãn nhẹ */
+        line-height: 1.6;   /* giãn khoảng giữa các dòng */
+    }
+
+    .widget-row-col-content p,
+    .contact-content span {
+        line-height: 1.6;
+        word-wrap: break-word;
+        white-space: normal;
+    }
+     .footer-top-content,
+    .widget-row {
+        padding-left: 10px; /* đẩy toàn phần footer vào giữa */
+        box-sizing: border-box;
+    }
+    
+}
+
+@media (max-width: 550px) {
+      /* Footer-top hiển thị dọc thay vì ngang */
+    .footer-top-content {
+        display: flex;
+        flex-direction: column; /* Cho logo và đăng ký xuống 2 hàng */
+        align-items: center;    /* Căn giữa cả 2 */
+        gap: 20px;              /* Khoảng cách giữa logo và phần đăng ký */
+    }
+
+    /* Logo hiển thị và chiếm nguyên hàng */
+    .footer-top-img {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom:15px ;
+    }
+
+    .footer-top-img img {
+         width: 220px;        /* tăng kích thước logo */
+         max-width: 80%;      /* vẫn co giãn khi màn hình nhỏ */
+         height: auto; 
+    }
+
+    /* Đăng ký nhận tin căn giữa */
+    .footer-top-subbox {
+        text-align: center;
+        width: 100%;
+    }
+    /* --- BỐ CỤC CHÍNH --- */
+    .widget-row {
+        display: grid;
+        grid-template-columns: 1.2fr 1.2fr; /* 2 cột bằng nhau */
+        width: 100%;
+        gap: 40px 20px; /* Giãn giữa 2 cột và giữa các hàng */
+        justify-items: start;
+        align-items: start;
+        text-align: left;
+        padding: 0 10px; /* thêm khoảng thở 2 bên */
+    }
+
+    /* --- Mở rộng không gian cho 2 cột Liên kết & Thực đơn --- */
+.widget-row > :nth-child(2),
+.widget-row > :nth-child(3) {
+    padding: 0 15px;         /* thêm khoảng cách hai bên chữ */
+    min-width: 150px;        /* đảm bảo cột không bị bóp nhỏ */
+    word-break: break-word;  /* tránh chữ dài bị tràn */
+    white-space: normal;     /* cho phép chữ xuống dòng thoải mái */
+}
+
+    /* “Về chúng tôi” riêng hàng */
+    .widget-row-col-1:first-of-type {
+        grid-column: 1 / 3;
+        width: 100%;
+    }
+
+    /* “Liên kết” ở cột 1 */
+    .widget-row > :nth-child(2) {
+        grid-column: 1;
+    }
+
+    /* “Thực đơn” ở cột 2 */
+    .widget-row > :nth-child(3) {
+        grid-column: 2;
+    }
+
+    /* “Liên hệ” riêng hàng cuối */
+    .widget-row-col-1:last-of-type {
+        grid-column: 1 / 3;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* --- CĂN CHỮ & GIÃN DÒNG --- */
+    .widget-title {
+        margin-bottom: 10px;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+
+    .widget-contact-item {
+        margin-bottom: 6px; /* mỗi dòng giãn nhẹ */
+        line-height: 1.6;   /* giãn khoảng giữa các dòng */
+    }
+
+    .widget-row-col-content p,
+    .contact-content span {
+        line-height: 1.6;
+        word-wrap: break-word;
+        white-space: normal;
+    }
+     .footer-top-content,
+    .widget-row {
+        padding-left: 7px; /* đẩy toàn phần footer vào giữa */
+        box-sizing: border-box;
+    }
+    
+}
 .widget-row-col-1 {
     width: 25%;
 }
@@ -2309,6 +2864,34 @@ input[type=number] {
 
 .header-middle-right-item.close{
     display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .header{
+        height: 165px;
+        font-size: 15px;
+        padding: 0px 55px;
+        transition: width 0.5s ease-in-out;
+    }
+
+    .navigation a {
+        padding: 0px 11px;
+    }
+
+    .search-container{
+        margin-left: 25px;
+    }
+
+    .input-wrapper input{
+        width: 215px;
+    }
+
+    .search-icon button {
+        width: 55px;
+    }
+    .pg-12{
+        padding: 0 46px;
+    }
 }
 /* ==========================
    FORM ĐĂNG NHẬP / ĐĂNG KÝ

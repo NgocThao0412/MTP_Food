@@ -81,10 +81,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   list.forEach(order => {
     const statusMap = {
-      pending: { text: "🕓 Chờ xác nhận", color: "#6c757d" },
-      shipping: { text: "🚚 Đang giao", color: "#17a2b8" },
-      completed: { text: "✅ Đã giao", color: "#28a745" },
-      cancelled: { text: "❌ Đã hủy", color: "#dc3545" }
+      pending: { text: "Chờ xác nhận", color: "#6c757d" },
+      shipping: { text: "Đang giao", color: "#17a2b8" },
+      completed: { text: "Đã giao", color: "#28a745" },
+      cancelled: { text: "Đã hủy", color: "#dc3545" }
     };
     const statusInfo = statusMap[order.status] || { text: order.status, color: "#333" };
 
@@ -119,10 +119,10 @@ function showViewHandler(e) {
 
   function statusLabelText(status) {
     switch (status) {
-      case "pending": return "🕓 Chờ xác nhận";
-      case "shipping": return "🚚 Đang giao";
-      case "completed": return "✅ Đã giao";
-      case "cancelled": return "❌ Đã hủy";
+      case "pending": return "Chờ xác nhận";
+      case "shipping": return "Đang giao";
+      case "completed": return "Đã giao";
+      case "cancelled": return "Đã hủy";
       default: return status;
     }
   }

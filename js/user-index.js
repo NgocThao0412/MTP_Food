@@ -5,6 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const trangChu = document.getElementById("trangchu");
   const accountSection = document.getElementById("accountSection");
   const ordersSection = document.getElementById("ordersSection");
+  const menuNav = document.getElementById("menuNav");
+  const onetwo = document.getElementById("onetwo");
+
+
 
   const loggedIn = localStorage.getItem("loggedIn") === "true";
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -43,6 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (trangChu) trangChu.style.display = "none";
     if (accountSection) accountSection.style.display = "none";
     if (ordersSection) ordersSection.style.display = "none";
+    if (menuNav) menuNav.style.display = "none"; 
+     if (onetwo) onetwo.style.display = "none";
   }
 
   // ====== Xử lý Tài khoản của tôi ======
@@ -182,4 +188,13 @@ function showUserOrders() {
       <ul>${o.items.map(i => `<li>${i.name} x${i.qty}</li>`).join("")}</ul>
     </div>
   `).join("");
+}
+
+if (homeBtn) {
+  homeBtn.addEventListener("click", () => {
+    hideAllSections();
+    if (trangChu) trangChu.style.display = "block";
+    if (menuNav) menuNav.style.display = "flex";
+     if (onetwo) onetwo.style.display = "flex"; // hoặc "block", tùy CSS menu
+  });
 }

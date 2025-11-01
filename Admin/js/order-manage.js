@@ -194,6 +194,24 @@ document.addEventListener("click", function (e) {
     document.querySelector(".admin-control-bottom").style.display = "none";
     detailSection.style.display = "block";
   }
+
+  const btnConfirm = document.getElementById("btnConfirm");
+if (btnConfirm) {
+  if (order.status === "pending") {
+    btnConfirm.style.display = "inline-block"; // hiện nút xác nhận
+    btnConfirm.onclick = function () {
+      if (confirm("Bạn có chắc muốn xác nhận đơn hàng này không?")) {
+        order.status = "shipping"; // đổi trạng thái
+        alert("✅ Đã xác nhận đơn hàng " + order.id);
+        renderOrders(ordersData); // cập nhật lại danh sách
+        showDetail(order.id); // load lại chi tiết (đã đổi trạng thái)
+      }
+    };
+  } else {
+    btnConfirm.style.display = "none"; // ẩn nếu không phải chờ xác nhận
+  }
+}
+
 });
 
 // Nút quay lại

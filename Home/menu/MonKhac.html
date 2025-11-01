@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTP Food</title>
+    <link href="../../Img/favicon.png" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="../../css/menu.css">
+    <link rel="stylesheet" href="../../font/font-awesome-pro-v6-6.2.0/css/all.min.css" />
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <link rel="icon" href="../../Img/favicon.png" type="image/x-icon" class="icon-page" />
+</head>
+
+<body>
+
+    <!--Header-->
+    <header>
+        <div class="header-middle">
+            <div class="container">
+                <div class="header-middle-left">
+                    <div class="header-logo">
+                        <a href="">
+                            <img src="../../Img/mtp-food.png" alt="" class="header-logo-img">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="header-middle-center">
+                    <form action="" class="form-search">
+                        <span class="search-btn">
+                            <i class="fa-light fa-magnifying-glass"></i>
+                        </span>
+                        <input type="text" class="form-search-input" placeholder="Tìm kiếm món ăn..."
+                            oninput="searchProducts()">
+                    </form>
+                </div>
+
+                <div class="header-middle-right">
+                    <ul class="header-middle-right-list">
+                        <li class="header-middle-right-item dnone open" onclick="openSearchMb()">
+                            <div class="cart-icon-menu">
+                                <i class="fa-light fa-magnifying-glass"></i>
+                            </div>
+                        </li>
+                        <li class="header-middle-right-item close" onclick="closeSearchMb()">
+                            <div class="cart-icon-menu">
+                                <i class="fa-light fa-circle-xmark"></i>
+                            </div>
+                        </li>
+                        <li class="header-middle-right-item dropdown open">
+                            <i class="fa-light fa-user"></i>
+                            <div class="auth-container">
+                                <span class="text-dndk">Đăng nhập / Đăng ký</span>
+                                <span class="text-tk">Tài khoản <i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                            </div>
+                            <ul class="header-middle-right-menu">
+                                <li><a id="login" href="javascript:;"><i class="fa-light fa-right-to-bracket"></i> Đăng
+                                        nhập</a></li>
+                                <li><a id="signup" href="javascript:;"><i class="fa-light fa-user-plus"></i> Đăng
+                                        ký</a></li>
+                            </ul>
+                        </li>
+                        <li class="header-middle-right-item open" onclick="openCart()">
+                            <div class="cart-icon-menu">
+                                <i class="fa-light fa-basket-shopping"></i>
+                                <span class="count-product-cart">0</span>
+                            </div>
+                            <span>Giỏ hàng</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="header-bottom">
+        <div class="container">
+           <ul class="menu-list">
+                <li class="menu-list-item"><a href="../../index.html" class="menu-link">Trang chủ</a></li>
+                <li class="menu-list-item" onclick="showCategory('Món chay')"><a href="../menu/MonChay.html" class="menu-link">Món
+                        chay</a></li>
+                <li class="menu-list-item" onclick="showCategory('Món mặn')"><a href="../menu/MonMan.html" class="menu-link">Món
+                        mặn</a></li>
+                <li class="menu-list-item" onclick="showCategory('Món lẩu')"><a href="../menu/MonLau.html" class="menu-link">Món
+                        lẩu</a></li>
+                <li class="menu-list-item" onclick="showCategory('Món ăn vặt')"><a href="../menu/MonAnVat.html" class="menu-link">Món
+                        ăn vặt</a></li>
+                <li class="menu-list-item" onclick="showCategory('Món tráng miệng')"><a href="../menu/MonTrangMien.html"
+                        class="menu-link">Món tráng miệng</a></li>
+                <li class="menu-list-item" onclick="showCategory('Nước uống')"><a href="../menu/NuocUong.html" class="menu-link">Nước
+                        uống</a></li>
+                <li class="menu-list-item" onclick="showCategory('Món khác')"><a href="../menu/MonKhac.html" class="menu-link">Món
+                        khác</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="advanced-search">
+        <div class="container">
+            <div class="advanced-search-category">
+                <span>Phân loại </span>
+                <select name="" id="advanced-search-category-select" onchange="searchProducts()">
+                    <option>Tất cả</option>
+                    <option>Món chay</option>
+                    <option>Món mặn</option>
+                    <option>Món lẩu</option>
+                    <option>Món ăn vặt</option>
+                    <option>Món tráng miệng</option>
+                    <option>Nước uống</option>
+                    <option>Món khác</option>
+                </select>
+            </div>
+        </div>
+    </div>
+     
+    <!--wrapper-->
+    <main class="main-wrapper">
+        <div class="container" id="trangchu">
+            <div class="home-slider">
+                <img src="../../Img/banner-1.png" alt="">
+                <!-- <img src="./Img/banner-2.png" alt=""> -->
+            </div>
+
+            <div class="home-service" id="home-service">
+                <div class="home-service-item">
+                    <div class="home-service-item-icon">
+                        <i class="fa-light fa-person-carry-box"></i>
+                    </div>
+                    <div class="home-service-item-content">
+                        <h4 class="home-service-item-content-h">GIAO HÀNG NHANH</h4>
+                        <p class="home-service-item-content-desc">Cho tất cả đơn hàng</p>
+                    </div>
+                </div>
+
+                <div class="home-service-item">
+                    <div class="home-service-item-icon">
+                        <i class="fa-light fa-shield-heart"></i>
+                    </div>
+                    <div class="home-service-item-content">
+                        <h4 class="home-service-item-content-h">SẢN PHẨM AN TOÀN</h4>
+                        <p class="home-service-item-content-desc">Cam kết chất lượng</p>
+                    </div>
+                </div>
+
+                <div class="home-service-item">
+                    <div class="home-service-item-icon">
+                        <i class="fa-light fa-headset"></i>
+                    </div>
+                    <div class="home-service-item-content">
+                        <h4 class="home-service-item-content-h">HỖ TRỢ 24/7</h4>
+                        <p class="home-service-item-content-desc">Tất cả ngày trong tuần</p>
+                    </div>
+                </div>
+
+                <div class="home-service-item">
+                    <div class="home-service-item-icon">
+                        <i class="fa-light fa-circle-dollar"></i>
+                    </div>
+                    <div class="home-service-item-content">
+                        <h4 class="home-service-item-content-h">HOÀN LẠI TIỀN</h4>
+                        <p class="home-service-item-content-desc">Nếu không hài lòng</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="home-title-block" id="home-title">
+                <h2 class="home-title">Khám phá thực đơn của chúng tôi</h2>
+            </div>
+
+            <div class="home-products" id="home-products"></div>
+
+            <div class="page-nav">
+                <ul class="page-nav-list"></ul>
+            </div>
+        </div>
+    </main>
+
+    
+            <!--login account-->
+            <div class="login-box">
+                <h2>Đăng nhập</h2>
+                <form id="loginForm">
+                    <div class="input-box">
+                         <span class="icon">
+                            <ion-icon name="mail-outline"></ion-icon>
+                        </span>
+                        <input type="text" name="username" required="">
+                        <label>Tên đăng nhập</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                        </span>
+                        <input type="password" name="password" required="">
+                        <label>Mật khẩu</label>
+                    </div>
+
+                    <div class="remember-forgot">
+                        <label><input type="checkbox">Ghi nhớ đăng nhập</label>
+                        <a href="#">Quên mật khẩu</a>
+                    </div>
+                    <button id="btnLogin" type="submit" class="btn">Đăng nhập</button>
+                    <div class="login-register">
+                        <p>Không tìm thấy tài khoản ? <a href="#" class="register-link">Đăng ký</a></p>
+                    </div>
+                </form>
+            </div>
+
+            <!--register account-->
+            <div class="register-box">
+                <h2>Đăng ký</h2>
+                   <form id="registerForm">
+                     <div class="input-infor">
+
+                    <div class="left-input">
+                     <div class="input-box">
+                        <span class="icon">
+                             <ion-icon name="person-outline"></ion-icon>
+                         </span>
+                        <input type="text" name="username" required="">
+                        <label>Tên đăng nhập<span style="color: red;">*</span></label>
+                      </div>
+
+                    <div class="input-box">
+                         <span class="icon">
+                            <ion-icon name="mail-outline"></ion-icon>
+                         </span>
+                        <input type="email" name="email" required="">
+                        <label>Email<span style="color: red;">*</span></label>
+                    </div>
+
+                      <div class="input-box">
+                        <span class="icon">
+                             <ion-icon name="lock-closed-outline"></ion-icon>
+                        </span>
+                        <input type="password" name="password" required="">
+                        <label>Mật khẩu<span style="color: red;">*</span></label>
+                      </div>
+                    </div>
+
+                        <div class="right-input">
+                            <div class="input-box">
+                                <span class="icon">
+                                    <ion-icon name="call-outline"></ion-icon>
+                                </span>
+                                <input id="registerPhone" type="number" required>
+                                <label>Số điện thoại<span style="color: red;">*</span></label>
+                            </div>
+                            
+        
+                            <div class="input-box">
+                                <span class="icon">
+                                    <ion-icon name="lock-closed-outline"></ion-icon>
+                                </span>
+                                <input id="registerAddress" type="text"  required>
+                                <label>Địa chỉ<span style="color: red;">*</span></label>
+                            </div>
+
+                            <div class="input-box">
+                                <span class="icon">
+                                    <ion-icon name="lock-closed-outline"></ion-icon>
+                                </span>
+                                <input id="registerConfirmPassword" type="password" required>
+                                <label>Xác nhận mật khẩu<span style="color: red;">*</span></label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="remember-forgot">
+                        <label><input type="checkbox">Tôi đồng ý với các điều khoản và điều kiện</label>
+                    </div>
+                    <button type="submit" class="btn">Đăng ký</button>
+                    <div class="login-register">
+                        <p>Tài khoản đã tồn tại ? <a href="#" class="login-link">Đăng nhập</a></p>
+                    </div>
+                </form>
+            </div>
+
+        </div>     
+
+</div>
+    <!-- main screen -->
+     <div class="Home_main">
+        <div class="pg-12">
+            <!--Text Intro-->
+            <div class="flex-full">
+            <div class="film-title">
+                <div class="vertical-line"></div>
+            </div>
+    </div>
+        <div class="tab_conten">
+
+         <div class="movie-item">
+           <a href=" "><img class="poster-img" height="300" width="300" src="../../Img/Món khác/set_ca_tam.jpg"></a>
+           <p class="title"> Set Tam Ca </p>
+           <p class="price" > 599.000 đ </p>
+           <a href="#Modal8"><button class="order-btn">ĐẶT MÓN</button></a>
+        </div>
+         <div class="movie-item">
+           <a href="#Modal15 "><img class="poster-img" height="300" width="300" src="../../Img/Món khác/mam-com-Viet.jpg"></a>
+           <p class="title"> Set Mâm Cơm Việt  </p>
+           <p class="price">799.000 đ </p>
+           <a href="#Modal15"><button class="order-btn">ĐẶT MÓN</button></a>
+        </div>
+        
+            </div>
+        </div>
+    </div>
+    <div class="container">              
+                    <div class="pagination">
+                        <!-- <a class="page-link" href="#"><ion-icon name="arrow-back-outline"></ion-icon></a> -->
+                        <a class="page-link active" href="./MonChay.html">1</a>
+                        <!-- <a class="page-link" href="./page-2.html"><ion-icon name="arrow-forward-outline"></ion-icon></a> -->
+                    </div>
+                </div>
+
+
+
+            <!--lop phu -->
+    <div class="lop-phu-mon-an" id="Modal8" datamon="set-tam-ca">
+     <a href="#home-tile"class="nut-dong-sieu-to" id="nutDongSieuTo">&times;</a>
+  <div class="hop-mon-an">
+    <!-- Nội dung cuộn -->
+    <div class="noi-dung-mon-an">
+      <div class="hinh-anh-mon-an">
+        <img src="../../Img/Món khác/set_ca_tam.jpg" alt="Set Tam Ca">
+      </div>
+
+      <div class="chi-tiet-mon-an">
+        <h2 class="tieu-de-mon-an">Set Tam Ca</h2>
+        <p class="mo-ta-mon-an">
+          Set Tam Ca là bản phối ba món đặc sắc: cá nướng nghệ thơm lừng, gỏi rau củ thanh mát, và rổ rau sống kèm bún trắng. Ăn kèm nước chấm cay nhẹ, thêm ly bia mát lạnh – đủ vị, đủ tình.
+        </p>
+
+        <div class="gia-va-so-luong">
+          <span class="gia-mon-an">599.000 đ</span>
+          <div class="chon-so-luong">
+            <button class="giam">-</button>
+            <input type="text" value="1" class="so-luong">
+            <button class="tang">+</button>
+          </div>
+        </div>
+
+        <div class="ghi-chu">
+          <label for="ghiChu">GHI CHÚ</label>
+          <textarea id="ghiChu" placeholder="Nhập thông tin cần lưu ý..."></textarea>
+        </div>
+      </div>
+
+    <!-- Thanh cố định dưới cùng -->
+    <div class="thanh-duoi">
+      <div class="tong-tien">
+        <strong>Thành tiền:</strong><h style="color: red; font-size: 20px;"> 599.000 đ</h>
+      </div>
+      <div class="hanh-dong">
+        <button class="nut-dat-hang">Đặt hàng ngay</button>
+        <button class="nut-them-gio"><i class="fa fa-shopping-basket"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="lop-phu-mon-an" id="Modal15" datamon="set-mam-com-viet">
+     <a href="#home-tile"class="nut-dong-sieu-to" id="nutDongSieuTo">&times;</a>
+  <div class="hop-mon-an">
+    <!-- Nội dung cuộn -->
+    <div class="noi-dung-mon-an">
+      <div class="hinh-anh-mon-an">
+        <img src="../../Img/Món khác/mam-com-Viet.jpg" alt="Set Mâm Cơm Việt">
+      </div>
+
+      <div class="chi-tiet-mon-an">
+        <h2 class="tieu-de-mon-an">Set Mâm Cơm Việt</h2>
+        <p class="mo-ta-mon-an">
+        Mâm cơm Việt là sự giao hòa giữa hương vị truyền thống và sự ấm cúng gia đình. Bắt đầu với tô canh rau củ thanh đạm, tiếp nối bằng đĩa đậu que xào giòn rụm, rắc thêm đậu phộng và hành lá. Nồi kho đất đậm đà, thơm lừng mùi tiêu và nước màu, ăn kèm cơm trắng dẻo thơm. Bên cạnh là mì xào tôm đầy màu sắc, giòn ngọt từ rau củ. Nem rán vàng ruộm, cuốn cùng rau sống và nước chấm chua cay. Tất cả hòa quyện trong một bàn ăn đầy đủ sắc - hương - vị, như lời mời gọi thân thương từ gian bếp Việt.
+        </p>
+        <div class="gia-va-so-luong">
+          <span class="gia-mon-an">799.000 đ</span>
+          <div class="chon-so-luong">
+            <button class="giam">-</button>
+            <input type="text" value="1" class="so-luong">
+            <button class="tang">+</button>
+          </div>
+        </div>
+
+        <div class="ghi-chu">
+          <label for="ghiChu">GHI CHÚ</label>
+          <textarea id="ghiChu" placeholder="Nhập thông tin cần lưu ý..."></textarea>
+        </div>
+      </div>
+
+    <!-- Thanh cố định dưới cùng -->
+    <div class="thanh-duoi">
+      <div class="tong-tien">
+        <strong>Thành tiền:</strong><h style="color: red; font-size: 20px;"> 799.000 đ</h>
+      </div>
+      <div class="hanh-dong">
+        <button class="nut-dat-hang">Đặt hàng ngay</button>
+        <button class="nut-them-gio"><i class="fa fa-shopping-basket"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+    <!--Footer-->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-top-content">
+                    <div class="footer-top-img">
+                        <img src="../../Img/mtp-food.png" alt="">
+                    </div>
+
+                    <div class="footer-top-subbox">
+                        <div class="footer-top-subs">
+                            <h2 class="footer-top-subs-title">Đăng ký nhận tin</h2>
+                            <p class="footer-top-subs-text">Nhận thông tin mới nhất từ chúng tôi</p>
+                        </div>
+
+                        <form class="form-ground">
+                            <input type="email" class="form-ground-input" placeholder="Nhập email của bạn">
+                            <button class="form-ground-btn">
+                                <span>ĐĂNG KÝ</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="widget-area">
+            <div class="container">
+                <div class="widget-row">
+                    <div class="widget-row-col-1">
+                        <h3 class="widget-title">Về chúng tôi</h3>
+                        <div class="widget-row-col-content">
+                            <p>MTP Food là thương hiệu được thành lập vào năm 2025 với tiêu chí đặt chất lượng sản phẩm
+                                lên hàng đầu.</p>
+                        </div>
+                        <div class="widget-social">
+                            <div class="widget-social-item">
+                                <a href=""><i class="fab fa-facebook-f"></i></a>
+                            </div>
+                            <div class="widget-social-item">
+                                <a href=""><i class="fab fa-twitter"></i></a>
+                            </div>
+                            <div class="widget-social-item">
+                                <a href=""><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                            <div class="widget-social-item">
+                                <a href=""><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget-row-col">
+                        <h3 class="widget-title">Liên kết</h3>
+                        <ul class="widget-contact">
+                            <li class="widget-contact-item"><a href=""><i
+                                        class="fa-regular fa-arrow-right"></i><span>Về chúng tôi</span></a></li>
+                            <li class="widget-contact-item"><a href=""><i
+                                        class="fa-regular fa-arrow-right"></i><span>Thực đơn</span></a></li>
+                            <li class="widget-contact-item"><a href=""><i
+                                        class="fa-regular fa-arrow-right"></i><span>Điều khoản</span></a></li>
+                            <li class="widget-contact-item"><a href=""><i
+                                        class="fa-regular fa-arrow-right"></i><span>Liên hệ</span></a></li>
+                            <li class="widget-contact-item"><a href=""><i
+                                        class="fa-regular fa-arrow-right"></i><span>Tin tức</span></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="widget-row-col">
+                        <h3 class="widget-title">Thực đơn</h3>
+                        <ul class="widget-contact">
+                            <li class="widget-contact-item"><a href=""><i
+                                        class="fa-regular fa-arrow-right"></i><span>Điểm tâm</span></a></li>
+                            <li class="widget-contact-item"><a href=""><i
+                                        class="fa-regular fa-arrow-right"></i><span>Món chay</span></a></li>
+                            <li class="widget-contact-item"><a href=""><i
+                                        class="fa-regular fa-arrow-right"></i><span>Món mặn</span></a></li>
+                            <li class="widget-contact-item"><a href=""><i
+                                        class="fa-regular fa-arrow-right"></i><span>Nước uống</span></a></li>
+                            <li class="widget-contact-item"><a href=""><i
+                                        class="fa-regular fa-arrow-right"></i><span>Tráng miệng</span></a></li>
+                            <li class="widget-contact-item"><a href=""><i
+                                        class="fa-regular fa-arrow-right"></i><span>Món khác</span></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="widget-row-col-1">
+                        <h3 class="widget-title">Liên hệ</h3>
+                        <div class="contact">
+                            <div class="contact-item">
+                                <div class="contact-item-icon">
+                                    <i class="fa-regular fa-location-dot"></i>
+                                </div>
+                                <div class="contact-content">
+                                    <span>273 An Dương Vương, Phường Chợ Quán, TP Hồ Chí Minh</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-item-icon">
+                                    <i class="fa-regular fa-phone"></i>
+                                </div>
+                                <div class="contact-content contact-item-phone">
+                                    <span>0123 456 789</span><br>
+                                    <span>0987 654 321</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-item-icon">
+                                    <i class="fa-regular fa-envelope"></i>
+                                </div>
+                                <div class="contact-content conatct-item-email">
+                                    <span>mtp@domain.com</span><br />
+                                    <span>infomtp@domain.com</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="copyright-wrap">
+        <div class="container">
+            <div class="copyright-content">
+                <p>Copyright 2025 MTP Food. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-to-top">
+        <a href="#"><i class="fa-regular fa-arrow-up"></i></a>
+    </div>
+
+</body>
+
+</html>

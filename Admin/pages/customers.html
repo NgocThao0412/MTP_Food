@@ -160,36 +160,183 @@
         </div>
       </aside>
 
-
       <!--Bắt đầu viết code từ đây nha-->
+<!-- Vùng giả để đóng modal -->
+<div id="close"></div>
 
-        <div class="header">
-          <div class="text-heading">
-            <h1>Quản lý người dùng</h1>
-          </div>
+<!-- Modal thêm tài khoản -->
+<div id="addCustomerModal" class="modal">
+  <div class="modal-content add-account-box">
+    <a href="#close" class="close-btn">&times;</a>
+    <h2 class="form-title">Thêm tài khoản khách hàng</h2>
 
-          <nav class="navigation">
-            <button id="login-btn" class="btnLogin-popup">Đăng nhập</button>
-            <div class="Function-cl">
-              <div class="logout">
-                <button id="logout-btn" class="btnLogout-popup">
-                  Đăng xuất
-                </button>
-              </div>
-            </div>
-          </nav>
-
-          <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-          </div>
+    <form id="addCustomerForm" action="#close" method="get">
+      <div class="form-row">
+        <div class="form-group half">
+          <label for="customerName">Tên đăng nhập*</label>
+          <input
+            type="text"
+            id="customerName"
+            name="customerName"
+            placeholder="admin"
+            required
+          />
         </div>
-      </main>
-    </div>
+        <div class="form-group half">
+          <label for="customerPhone">Số điện thoại*</label>
+          <input 
+            type="tel" 
+            id="phone" 
+            name="phone" 
+            required 
+            pattern="[0-9]{10,}" 
+            title="Số điện thoại phải có ít nhất 10 chữ số"
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group half">
+          <label for="customerEmail">Email*</label>
+          <input
+            type="email"
+            id="customerEmail"
+            name="customerEmail"
+            placeholder="email@example.com"
+            required
+          />
+        </div>
+        <div class="form-group half">
+          <label for="customerAddress">Địa chỉ*</label>
+          <input
+            type="text"
+            id="customerAddress"
+            name="customerAddress"
+            placeholder="Địa chỉ khách hàng"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group half">
+          <label for="initialPassword">Mật khẩu*</label>
+          <input
+            type="password"
+            id="initialPassword"
+            name="initialPassword"
+            required
+          />
+        </div>
+        <div class="form-group half">
+          <label for="confirmPassword">Xác nhận mật khẩu*</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            required
+            oninput="this.setCustomValidity(this.value !== document.getElementById('initialPassword').value ? 'Mật khẩu xác nhận không khớp' : '')"
+          />
+        </div>
+      </div>
+
+      <div class="form-row checkbox-row">
+        <label>
+          <input type="checkbox" required />
+          Tôi đồng ý với chính sách của trang web
+        </label>
+      </div>
+
+      <button type="submit" class="save-button red" style="width:100%;">
+        Tạo tài khoản
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal khởi tạo mật khẩu -->
+<div id="resetPasswordModal" class="modal">
+  <div class="modal-content">
+    <a href="#close" class="close-btn reset-close-btn">&times;</a>
+    <h2>Khởi tạo Mật khẩu Mới</h2>
+    <p>Khách hàng: <strong>Nguyễn Văn A</strong></p>
+    <form id="resetPasswordForm" action="#close" method="get">
+      <div class="form-group">
+        <label for="newPassword">Mật khẩu Mới:</label>
+        <input type="password" id="newPassword" name="newPassword" required />
+      </div>
+      <div class="form-group">
+        <label for="confirmNewPassword">Xác nhận Mật khẩu:</label>
+        <input
+          type="password"
+          id="confirmNewPassword"
+          name="confirmNewPassword"
+          required
+          oninput="this.setCustomValidity(this.value !== document.getElementById('newPassword').value ? 'Mật khẩu xác nhận không khớp' : '')"
+        />
+      </div>
+      <button type="submit" class="save-button reset-confirm-btn" style="width:100%;">
+        Cập Nhật Mật Khẩu
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Phần còn lại của trang -->
+<div class="customer-management-container">
+  <header class="main-page-title">
+    <h1>Khách hàng</h1>
+  </header>
+
+  <div class="action-bar-customer">
+    <a href="#addCustomerModal" class="add-button">+ Thêm Tài Khoản Mới</a>
+  </div>
+
+  <div class="customer-table-section">
+    <table>
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Tên Khách hàng</th>
+          <th>Email/Đăng nhập</th>
+          <th>SĐT</th>
+          <th>Trạng thái</th>
+          <th>Ngày tạo</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Nguyễn Văn A</td>
+          <td>vana@email.com</td>
+          <td>0901234567</td>
+          <td><span class="status active">Đang hoạt động</span></td>
+          <td>2024-10-25</td>
+          <td>
+            <a href="#resetPasswordModal" class="action-btn reset-btn">Khởi tạo Mật khẩu</a>
+            <button class="action-btn lock-btn">Khoá</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Trần Thị B</td>
+          <td>thib@email.com</td>
+          <td>0907654321</td>
+          <td><span class="status locked">Đã khoá</span></td>
+          <td>2024-09-15</td>
+          <td>
+            <a href="#resetPasswordModal" class="action-btn reset-btn">Khởi tạo Mật khẩu</a>
+            <button class="action-btn unlock-btn">Mở khoá</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
     <div id="toast"></div>
     <script src="../js/price-manage.js"></script>
-    <script src="./js/customers.js"></script>
+    <script src="../js/customers.js"></script>
   </body>
 </html>

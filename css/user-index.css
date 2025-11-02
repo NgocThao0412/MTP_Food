@@ -4993,3 +4993,178 @@ input,textarea{
     width: 100%;
     /* Các style khác của button (màu sắc, padding...) */
 }
+/* 1. Thiết lập trạng thái ẩn mặc định cho Cart Drawer */
+.cart-drawer {
+    /* Che phủ toàn màn hình */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000; /* Đảm bảo nó nằm trên tất cả */
+
+    /* Ẩn hoàn toàn khỏi tầm nhìn và tương tác */
+    visibility: hidden;
+    opacity: 0;
+    /* Dùng pointer-events: none để các click qua được overlay */
+    pointer-events: none;
+
+    transition: opacity 0.3s ease;
+}
+
+/* 2. Cart Overlay (Lớp phủ mờ) */
+.cart-overlay {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Màu đen mờ */
+}
+
+/* 3. Cart Content (Nội dung trượt) */
+.cart-content {
+    position: fixed;
+    top: 20px;
+    right: 15px;
+    width: 400px; /* Chiều rộng cố định cho cửa sổ giỏ hàng */
+    height: 95%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px 20px 20px 20px;
+
+    /* Ẩn nội dung sang bên phải ngoài màn hình */
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+
+    /* Đảm bảo nội dung giỏ hàng có thể tương tác được */
+    pointer-events: auto;
+    overflow-y: auto;
+}
+
+
+/* 4. Trạng thái HIỂN THỊ khi Cart Drawer được target */
+.cart-drawer:target {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto; /* Cho phép tương tác với cart-drawer */
+}
+
+.cart-drawer:target .cart-content {
+    /* Di chuyển vào vị trí 0 (trượt vào) */
+    transform: translateX(0);
+}
+
+
+/* --- Thiết kế chi tiết cho Cart Content (theo ảnh) --- */
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: 20px 20px 20px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.cart-close-btn {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #333;
+    line-height: 1;
+}
+
+.cart-empty {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.cart-empty i {
+    font-size: 4rem;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.cart-empty p {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.cart-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.cart-total .total-amount {
+    color: #ff4757; /* Màu đỏ */
+    font-weight: bold;
+}
+
+.cart-actions {
+    display: flex;
+    gap: 10px;
+}
+.cart-body {
+    flex-grow: 1;
+    padding: 10px 20px 0;  
+    overflow-y: auto;
+    max-height: none;
+    position: relative;
+}
+
+.btn-add-more,
+.btn-checkout {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none; /* Dành cho thẻ <a> Thêm món */
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.btn-add-more {
+    background-color: #fff;
+    color: #b81321;
+    border: 1px solid #9f1c27;
+}
+
+.btn-checkout {
+    background-color: #b6313c; /* Màu đỏ chính */
+    color: #fff;
+}
+
+/* Thêm khối này để đảm bảo bố cục NẰM NGANG và sửa lỗi màu liên kết */
+.header-middle-right-item a[href="#cart-drawer"] {
+    /* Đảm bảo bố cục NẰM NGANG */
+    display: flex;
+    align-items: center;    /* Căn giữa theo chiều dọc */
+    
+    /* Khắc phục lỗi màu và gạch chân */
+    text-decoration: none;
+    color: #333; /* Đặt màu chữ mặc định là đen */
+}
+
+/* Ngăn chặn màu liên kết bị đổi khi click hoặc đã truy cập */
+.header-middle-right-item a[href="#cart-drawer"]:visited,
+.header-middle-right-item a[href="#cart-drawer"]:active {
+    color: #333;
+}
+.cart-header { position: sticky; /* ✅ giữ tiêu đề cố định khi cuộn */ top: 0; background-color: #fff; z-index: 2; } .cart-body::-webkit-scrollbar { width: 6px; } .cart-body::-webkit-scrollbar-thumb { background-color: #ccc; border-radius: 3px; } /* 7️⃣ Cart item */ .cart-item { display: flex; justify-content: space-between; align-items: flex-start; gap: 15px; border-bottom: 1px solid #f1f1f1; padding: 15px 0; box-sizing: border-box; } /* Bên trái chứa thông tin sản phẩm */ .cart-item .item-info { flex: 1; min-width: 0; } /* Bên phải là khối điều khiển số lượng */ .cart-item .item-quantity-control-area { flex-shrink: 0; display: flex; align-items: center; border: 1px solid #ddd; border-radius: 6px; overflow: hidden; height: 35px; background-color: #fff; } /* Nút +/- */ .cart-item .item-quantity-control-area button { width: 32px; height: 35px; border: none; background-color: #f5f5f5; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: background-color 0.2s; } .cart-item .item-quantity-control-area button:hover { background-color: #B5292F; color: #fff; } /* Ô input số lượng */ .cart-item .item-quantity { width: 45px; text-align: center; border: none; outline: none; font-size: 1rem; } /* Thông tin món */ .item-header { display: flex; justify-content: space-between; align-items: center; font-weight: 600; } .item-name { font-size: 1rem; color: #333; } .item-price { font-size: 0.95rem; color: #B5292F; } /* Ghi chú & nút xóa */ .item-actions { margin-top: 5px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; } .item-note { font-size: 0.85rem; color: #666; cursor: pointer; } .item-note i { color: #999; } .btn-delete-item { background: none; border: none; color: #B5292F; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 4px; transition: color 0.2s; } .btn-delete-item:hover { color: #8f1f25; } /* 8️⃣ Footer */ .cart-footer { padding: 15px 20px; border-top: 1px solid #eee; background-color: #fff; flex-shrink: 0; /* ⬅ đảm bảo footer không che item cuối */ } .cart-total { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 1.05rem; } .cart-total strong { color: #333; } .cart-total .total-amount { color: #B5292F; font-weight: 700; }

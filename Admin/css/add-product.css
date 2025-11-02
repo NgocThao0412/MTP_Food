@@ -73,7 +73,7 @@ table {
 table thead th { background: #B5292F; color: #fff; font-weight: 600; padding: 10px; text-align: center; border-radius: 8px 8px 0 0; }
 table tbody tr { background: #fff; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); border-radius: 10px; transition: 0.2s; }
 .action-icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 35px; height: 35px; font-size: 16px; border-radius: 8px; cursor: pointer; border: none; transition: 0.2s; margin: 0 3px; }
-.action-icon-btn.edit-btn { background: #0d6efd; color: white; }
+.action-icon-btn.edit-btn { background: #3a4f6d; color: white; }
 .action-icon-btn.btn-delete { background: #dc3545; color: white; }
 .action-icon-btn.view-btn { background: #6c757d; color: white; }
 note-status {

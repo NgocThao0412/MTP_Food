@@ -162,33 +162,124 @@
 
 
       <!--Bắt đầu nhập code từ đây nha-->
+<main class="content">
+    <section class="import-manage-section">
+        <div class="import-manage-container">
+            <h2>QUẢN LÝ NHẬP HÀNG</h2>
 
+            <div class="receipt-form-area">
+                <h3>Lập phiếu nhập hàng mới</h3>
+                <form id="receiptForm">
+                    <div class="form-group">
+                        <label for="receiptId">ID Phiếu:</label>
+                        <input type="text" id="receiptId" readonly value="[Tự động tạo]" style="background-color: #eee;">
+                    </div>
+                    <div class="form-group">
+                        <label for="supplier">Nhà Cung Cấp:</label>
+                        <input type="text" id="supplier" required placeholder="Nhập tên nhà cung cấp">
+                    </div>
+                    <div class="form-group">
+                        <label for="importDate">Ngày Nhập:</label>
+                        <input type="date" id="importDate" required>
+                    </div>
 
-      
-        <div class="header">
-          <div class="text-heading">
-            <h1>Quản lý người dùng</h1>
-          </div>
+                    <div class="product-search-for-receipt">
+                        <h4>Tìm kiếm Sản phẩm để thêm vào phiếu:</h4>
+                        <div class="search-input-group">
+                            <input type="text" id="productSearchInput" placeholder="Nhập tên hoặc mã sản phẩm..." />
+                            <button type="button" id="searchProductBtn" class="search-button">
+                                <i class="fa-solid fa-magnifying-glass"></i> Tìm
+                            </button>
+                        </div>
+                        <div id="productSearchResults" class="search-results-list">
+                            </div>
+                    </div>
+                    
+                    <hr>
+                    
+                    <h4>Chi tiết Sản phẩm nhập (Lô hàng)</h4>
+                    <div id="productDetailsContainer">
+                        </div>
 
-          <nav class="navigation">
-            <button id="login-btn" class="btnLogin-popup">Đăng nhập</button>
-            <div class="Function-cl">
-              <div class="logout">
-                <button id="logout-btn" class="btnLogout-popup">
-                  Đăng xuất
-                </button>
-              </div>
+                    <div class="form-group">
+                        <label for="notes">Ghi Chú:</label>
+                        <textarea id="notes" placeholder="Ghi chú về thanh toán, vận chuyển..."></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <p style="color: red; font-weight: bold;">**LƯU Ý:** Chỉ có thể SỬA phiếu nhập trước khi *Hoàn Thành Phiếu Nhập*.</p>
+                        <button type="button" id="saveReceiptDraftBtn" class="btn-save draft-button">Lưu Phiếu (Chưa Hoàn Thành)</button>
+                        <button type="submit" id="completeReceiptBtn" class="btn-save complete-button">Hoàn Thành Phiếu Nhập</button>
+                    </div>
+                </form>
             </div>
-          </nav>
-
-          <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-          </div>
+            
+            <div class="receipt-table-list">
+                <h3>Danh sách Phiếu Nhập Kho</h3>
+                <input
+                    type="text"
+                    id="generalSearchInput"
+                    placeholder="Tìm kiếm theo ID Phiếu hoặc Tên Sản phẩm..."
+                    class="search-input"
+                />
+                
+                <table style="margin-top: 15px;">
+                  <div class="table-scroll-area">
+                    <thead>
+                        <tr>
+                            <th>ID Phiếu</th>
+                            <th>Ngày nhập</th>
+                            <th>Sản phẩm</th>
+                            <th>Tổng SL</th>
+                            <th>Nhà cung cấp</th>
+                            <th>Trạng thái</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                  </div>
+                    <tbody id="receipt-table-body">
+                        <tr>
+                            <td>PN2025001</td>
+                            <td>01/11/2025</td>
+                            <td>Gạo ST25, Dầu ăn</td>
+                            <td>100</td>
+                            <td>Cty Lương Thực A</td>
+                            <td>
+                                <span class="note-status paid">Đã Hoàn Thành</span>
+                            </td>
+                            <td>
+                                <button class="action-icon-btn btn-edit" title="Sửa phiếu nhập" data-receipt-id="PN2025002">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <button class="action-icon-btn btn-delete" title="Xóa phiếu nhập" data-receipt-id="PN2025001">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>PN2025002</td>
+                            <td>30/10/2025</td>
+                            <td>Đường, Nước giải khát</td>
+                            <td>250</td>
+                            <td>NCC Tỉnh</td>
+                            <td>
+                                <span class="note-status pending">Chưa Hoàn Thành</span>
+                            </td>
+                            <td>
+                                <button class="action-icon-btn btn-edit" title="Sửa phiếu nhập" data-receipt-id="PN2025002">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <button class="action-icon-btn btn-delete" title="Xóa phiếu nhập" data-receipt-id="PN2025002">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-      </main>
-    </div>
+    </section>
+      
 
     <div id="toast"></div>
     <script src="../js/price-manage.js"></script>

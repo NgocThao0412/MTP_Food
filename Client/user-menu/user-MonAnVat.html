@@ -5,26 +5,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MTP Food</title>
-    <link href="../../Img/favicon.png" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="../../css/user-index.css">
-    <link rel="stylesheet" href="../../font/font-awesome-pro-v6-6.2.0/css/all.min.css" />
+     <link rel="stylesheet" href="../../font/font-awesome-pro-v6-6.2.0/css/all.min.css" />
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> 
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     <link rel="icon" href="../../Img/favicon.png" type="image/x-icon" class="icon-page" />
+    <title>MTP Food</title>
 </head>
 
 <body>
-
-    <!--Header-->
+    <!-- Header -->
     <header>
         <div class="header-middle">
             <div class="container">
@@ -64,10 +60,10 @@
                                 <span class="text-dndk">Đăng nhập / Đăng ký</span>
                                 <span class="text-tk">Tài khoản <i class="fa-sharp fa-solid fa-caret-down"></i></span>
                             </div>
-                            <ul class="header-middle-right-menu">
-                                <li><a id="login" href="../login.html"><i class="fa-light fa-right-to-bracket"></i> Đăng
+                            <ul class="header-middle-right-menu" id="userMenu">
+                                <li><a id="login" href="javascript:;"><i class="fa-light fa-right-to-bracket"></i> Đăng
                                         nhập</a></li>
-                                <li><a id="signup" href="../login.html#register"><i class="fa-light fa-user-plus"></i> Đăng
+                                <li><a id="signup" href="javascript:;"><i class="fa-light fa-user-plus"></i> Đăng
                                         ký</a></li>
                             </ul>
                         </li>
@@ -86,21 +82,21 @@
 
     <nav class="header-bottom">
         <div class="container">
-         <ul class="menu-list">
+            <ul class="menu-list">
                 <li class="menu-list-item"><a href="../user-index.html" class="menu-link">Trang chủ</a></li>
-                <li class="menu-list-item" onclick="showCategory('Món chay')"><a href="./user-MonChay.html" class="menu-link">Món
+                <li class="menu-list-item" onclick="showCategory('Món chay')"><a href="../user-menu/user-MonChay.html" class="menu-link">Món
                         chay</a></li>
-                <li class="menu-list-item" onclick="showCategory('Món mặn')"><a href="./user-MonMan.html" class="menu-link">Món
+                <li class="menu-list-item" onclick="showCategory('Món mặn')"><a href="../user-menu/user-MonMan.html" class="menu-link">Món
                         mặn</a></li>
-                <li class="menu-list-item" onclick="showCategory('Món lẩu')"><a href="./user-MonLau.html" class="menu-link">Món
+                <li class="menu-list-item" onclick="showCategory('Món lẩu')"><a href="../user-menu/user-MonLau.html" class="menu-link">Món
                         lẩu</a></li>
-                <li class="menu-list-item" onclick="showCategory('Món ăn vặt')"><a href="./user-MonAnVat.html" class="menu-link">Món
+                <li class="menu-list-item" onclick="showCategory('Món ăn vặt')"><a href="../user-menu/user-MonAnVat.html" class="menu-link">Món
                         ăn vặt</a></li>
-                <li class="menu-list-item" onclick="showCategory('Món tráng miệng')"><a href="./user-MonTrangMien.html"
+                <li class="menu-list-item" onclick="showCategory('Món tráng miệng')"><a href="../user-menu/user-MonTrangMien.html"
                         class="menu-link">Món tráng miệng</a></li>
-                <li class="menu-list-item" onclick="showCategory('Nước uống')"><a href="./user-NuocUong.html" class="menu-link">Nước
+                <li class="menu-list-item" onclick="showCategory('Nước uống')"><a href="../user-menu/user-NuocUong.html" class="menu-link">Nước
                         uống</a></li>
-                <li class="menu-list-item" onclick="showCategory('Món khác')"><a href="./user-MonKhac.html" class="menu-link">Món
+                <li class="menu-list-item" onclick="showCategory('Món khác')"><a href="../user-menu/user-MonKhac.html" class="menu-link">Món
                         khác</a></li>
             </ul>
         </div>
@@ -123,8 +119,7 @@
             </div>
         </div>
     </div>
-     
-    <!--wrapper-->
+
     <main class="main-wrapper">
         <div class="container" id="trangchu">
             <div class="home-slider">
@@ -185,114 +180,294 @@
             </div>
         </div>
     </main>
+    <!---manh sua-->
+    <!-- ======================= -->
+<!-- 🧾 ĐƠN HÀNG ĐÃ MUA -->
+<!-- ======================= -->
+<section class="orders-section" id="ordersSection" style="display:none;">
+    <div class="order-management-container">
+        <h2 class="order-management-title">Quản lý đơn hàng của bạn</h2>
+        <p class="order-management-description">
+            Xem chi tiết, trạng thái những đơn hàng đã đặt.
+        </p>
 
+        <div class="order-list">
+
+            <div class="order-item">
+                <div class="order-item-detail">
+                    <img src="../../Img/Món mặn/bot-chien.jpg" alt="Bột Chiên" class="item-image">
+                    <div class="item-info">
+                        <h4 class="item-name">Bột Chiên</h4>
+                        <p class="item-note">Không có ghi chú</p>
+                        <p class="item-quantity">x2</p>
+                    </div>
+                </div>
+                <div class="order-item-summary">
+                    <span class="item-total-price">59.000 đ</span>
+                </div>
+                <div class="order-item-actions">
+                    <button class="status-button processing">
+                        <i class="fas fa-spinner fa-spin"></i> ĐANG XỬ LÝ
+                    </button>
+                    <a href="#order-details-1" class="detail-link">
+                        <button class="detail-button">
+                            <i class="fas fa-eye"></i> XEM CHI TIẾT
+                        </button>
+                    </a>
+                    <div class="total-order-price-line">
+                        <span class="total-label">Tổng tiền:</span>
+                        <span class="total-price">118.000 đ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="order-details-1" class="order-modal-target">
+                <a href="#" class="modal-overlay"></a>
+                <div class="modal-content">
+                    <h3 class="modal-title">THÔNG TIN ĐƠN HÀNG</h3>
+                    <a href="#" class="modal-close-btn"><i class="fas fa-times"></i></a>
+
+                    <div class="modal-info-line">
+                        <i class="far fa-calendar-alt"></i>
+                        <span class="info-label">Ngày đặt hàng</span>
+                        <span class="info-value">29/10/2025</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-shipping-fast"></i>
+                        <span class="info-label">Hình thức giao</span>
+                        <span class="info-value">Tự đến lấy</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-calendar-check"></i>
+                        <span class="info-label">Ngày nhận hàng</span>
+                        <span class="info-value">30/10/2025</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-map-marker-alt"></i>
+                        <span class="info-label">Địa điểm nhận</span>
+                        <span class="info-value">273 An Dương Vương, Phường 3, Quận 5</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-user"></i>
+                        <span class="info-label">Người nhận</span>
+                        <span class="info-value">nn</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-phone-alt"></i>
+                        <span class="info-label">Số điện thoại nhận</span>
+                        <span class="info-value">333</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-item">
+                <div class="order-item-detail">
+                    <img src="../../Img/Món mặn/ga-luoc.jpg" alt="Gà Luộc" class="item-image">
+                    <div class="item-info">
+                        <h4 class="item-name">Gà Luộc</h4>
+                        <p class="item-note">Không có ghi chú</p>
+                        <p class="item-quantity">x1</p>
+                    </div>
+                </div>
+                <div class="order-item-summary">
+                    <span class="item-total-price">219.000 đ</span>
+                </div>
+                <div class="order-item-actions">
+                    <button class="status-button processing">
+                        <i class="fas fa-spinner fa-spin"></i> ĐANG XỬ LÝ
+                    </button>
+                    <a href="#order-details-2" class="detail-link">
+                        <button class="detail-button">
+                            <i class="fas fa-eye"></i> XEM CHI TIẾT
+                        </button>
+                    </a>
+                    <div class="total-order-price-line">
+                        <span class="total-label">Tổng tiền:</span>
+                        <span class="total-price">219.000 đ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="order-details-2" class="order-modal-target">
+                <a href="#" class="modal-overlay"></a>
+                <div class="modal-content">
+                    <h3 class="modal-title">THÔNG TIN ĐƠN HÀNG</h3>
+                    <a href="#" class="modal-close-btn"><i class="fas fa-times"></i></a>
+
+                    <div class="modal-info-line">
+                        <i class="far fa-calendar-alt"></i>
+                        <span class="info-label">Ngày đặt hàng</span>
+                        <span class="info-value">28/10/2025</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-shipping-fast"></i>
+                        <span class="info-label">Hình thức giao</span>
+                        <span class="info-value">Giao tận nơi</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-calendar-check"></i>
+                        <span class="info-label">Ngày nhận hàng</span>
+                        <span class="info-value">29/10/2025</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-map-marker-alt"></i>
+                        <span class="info-label">Địa điểm nhận</span>
+                        <span class="info-value">123 Nguyễn Văn Cừ, Quận 1</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-user"></i>
+                        <span class="info-label">Người nhận</span>
+                        <span class="info-value">Anh Hào</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-phone-alt"></i>
+                        <span class="info-label">Số điện thoại nhận</span>
+                        <span class="info-value">999</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="order-item">
+                <div class="order-item-detail">
+                    <img src="../../Img/Món lẩu/lau-thai.jpg" alt="Lẩu Thái" class="item-image">
+                    <div class="item-info">
+                        <h4 class="item-name">Lẩu Thái</h4>
+                        <p class="item-note">Không có ghi chú</p>
+                        <p class="item-quantity">x1</p>
+                    </div>
+                </div>
+                <div class="order-item-summary">
+                    <span class="item-total-price">319.000 đ</span>
+                </div>
+                <div class="order-item-actions">
+                    <button class="status-button processing">
+                        <i class="fas fa-spinner fa-spin"></i> ĐANG XỬ LÝ
+                    </button>
+                    <a href="#order-details-3" class="detail-link">
+                        <button class="detail-button">
+                            <i class="fas fa-eye"></i> XEM CHI TIẾT
+                        </button>
+                    </a>
+                    <div class="total-order-price-line">
+                        <span class="total-label">Tổng tiền:</span>
+                        <span class="total-price">319.000 đ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="order-details-3" class="order-modal-target">
+                <a href="#" class="modal-overlay"></a>
+                <div class="modal-content">
+                    <h3 class="modal-title">THÔNG TIN ĐƠN HÀNG</h3>
+                    <a href="#" class="modal-close-btn"><i class="fas fa-times"></i></a>
+
+                    <div class="modal-info-line">
+                        <i class="far fa-calendar-alt"></i>
+                        <span class="info-label">Ngày đặt hàng</span>
+                        <span class="info-value">27/10/2025</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-shipping-fast"></i>
+                        <span class="info-label">Hình thức giao</span>
+                        <span class="info-value">Giao tận nơi</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-calendar-check"></i>
+                        <span class="info-label">Ngày nhận hàng</span>
+                        <span class="info-value">27/10/2025</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-map-marker-alt"></i>
+                        <span class="info-label">Địa điểm nhận</span>
+                        <span class="info-value">333 CMT8, Phường 10, Quận 3</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-user"></i>
+                        <span class="info-label">Người nhận</span>
+                        <span class="info-value">Bao Ny</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-phone-alt"></i>
+                        <span class="info-label">Số điện thoại nhận</span>
+                        <span class="info-value">222</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+      </div>
+</section>
+<!--dong -->
+
+    <!-- Thông tin tài khoản -->
+<section class="account-section" id="accountSection" style="display:none;">
     
-            <!--login account-->
-            <div class="login-box">
-                <h2>Đăng nhập</h2>
-                <form id="loginForm">
-                    <div class="input-box">
-                         <span class="icon">
-                            <ion-icon name="mail-outline"></ion-icon>
-                        </span>
-                        <input type="text" name="username" required="">
-                        <label>Tên đăng nhập</label>
-                    </div>
-                    <div class="input-box">
-                        <span class="icon">
-                            <ion-icon name="lock-closed-outline"></ion-icon>
-                        </span>
-                        <input type="password" name="password" required="">
-                        <label>Mật khẩu</label>
-                    </div>
+  <div class="container">
+   <div class="account-container">
+  <h3>Thông tin tài khoản của bạn</h3>
+  <p>Quản lý thông tin để bảo mật tài khoản</p>
 
-                    <div class="remember-forgot">
-                        <label><input type="checkbox">Ghi nhớ đăng nhập</label>
-                        <a href="#">Quên mật khẩu</a>
-                    </div>
-                    <button id="btnLogin" type="submit" class="btn">Đăng nhập</button>
-                    <div class="login-register">
-                        <p>Không tìm thấy tài khoản ? <a href="#" class="register-link">Đăng ký</a></p>
-                    </div>
-                </form>
-            </div>
+ <div class="account-form">
+  <!-- Cột trái -->
+  <div class="account-left">
+    <div class="form-group">
+      <label for="infoname">Họ và tên</label>
+      <input id="infoname" type="text" placeholder="Nhập họ và tên">
+    </div>
 
-            <!--register account-->
-            <div class="register-box">
-                <h2>Đăng ký</h2>
-                   <form id="registerForm">
-                     <div class="input-infor">
+    <div class="form-group">
+      <label for="infophone">Số điện thoại</label>
+      <input id="infophone" type="text" placeholder="Nhập số điện thoại">
+    </div>
 
-                    <div class="left-input">
-                     <div class="input-box">
-                        <span class="icon">
-                             <ion-icon name="person-outline"></ion-icon>
-                         </span>
-                        <input type="text" name="username" required="">
-                        <label>Tên đăng nhập<span style="color: red;">*</span></label>
-                      </div>
+    <div class="form-group">
+      <label for="infoemail">Email</label>
+      <input id="infoemail" type="email" placeholder="Thêm địa chỉ email của bạn">
+    </div>
 
-                    <div class="input-box">
-                         <span class="icon">
-                            <ion-icon name="mail-outline"></ion-icon>
-                         </span>
-                        <input type="email" name="email" required="">
-                        <label>Email<span style="color: red;">*</span></label>
-                    </div>
+    <div class="form-group">
+      <label for="infoaddress">Địa chỉ</label>
+      <input id="infoaddress" type="text" placeholder="Thêm địa chỉ giao hàng của bạn">
+    </div>
 
-                      <div class="input-box">
-                        <span class="icon">
-                             <ion-icon name="lock-closed-outline"></ion-icon>
-                        </span>
-                        <input type="password" name="password" required="">
-                        <label>Mật khẩu<span style="color: red;">*</span></label>
-                      </div>
-                    </div>
+    <!-- Nút lưu thay đổi -->
+    <div class="account-buttons left-btn">
+      <button class="btn-save" onclick="changeInformation()">
+        <i class="fa fa-save"></i> Lưu thay đổi
+      </button>
+    </div>
+  </div>
 
-                        <div class="right-input">
-                            <div class="input-box">
-                                <span class="icon">
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </span>
-                                <input id="registerPhone" type="number" required>
-                                <label>Số điện thoại<span style="color: red;">*</span></label>
-                            </div>
-                            
-        
-                            <div class="input-box">
-                                <span class="icon">
-                                    <ion-icon name="lock-closed-outline"></ion-icon>
-                                </span>
-                                <input id="registerAddress" type="text"  required>
-                                <label>Địa chỉ<span style="color: red;">*</span></label>
-                            </div>
+  <!-- Cột phải -->
+  <div class="account-right">
+    <div class="form-group">
+      <label for="password-cur-info">Mật khẩu hiện tại</label>
+      <input id="password-cur-info" type="password" placeholder="Nhập mật khẩu hiện tại">
+    </div>
 
-                            <div class="input-box">
-                                <span class="icon">
-                                    <ion-icon name="lock-closed-outline"></ion-icon>
-                                </span>
-                                <input id="registerConfirmPassword" type="password" required>
-                                <label>Xác nhận mật khẩu<span style="color: red;">*</span></label>
-                            </div>
-                        </div>
+    <div class="form-group">
+      <label for="password-after-info">Mật khẩu mới</label>
+      <input id="password-after-info" type="password" placeholder="Nhập mật khẩu mới">
+    </div>
 
-                    </div>
+    <div class="form-group">
+      <label for="password-comfirm-info">Xác nhận mật khẩu mới</label>
+      <input id="password-comfirm-info" type="password" placeholder="Nhập lại mật khẩu mới">
+      <div class="form-message password-after-comfirm-error"></div>
+    </div>
 
-                    <div class="remember-forgot">
-                        <label><input type="checkbox">Tôi đồng ý với các điều khoản và điều kiện</label>
-                    </div>
-                    <button type="submit" class="btn">Đăng ký</button>
-                    <div class="login-register">
-                        <p>Tài khoản đã tồn tại ? <a href="#" class="login-link">Đăng nhập</a></p>
-                    </div>
-                </form>
-            </div>
-
-        </div>     
-
+    <!-- Nút đổi mật khẩu -->
+    <div class="account-right">
+      <button class="btn-password" onclick="changePassword()">
+        <i class="fa fa-key"></i> Đổi mật khẩu
+      </button>
+    </div>
+  </div>
 </div>
-    <!-- main screen -->
-     <div class="Home_main">
+
+</section>
+<!-- main screen -->
+     <div class="Home_main" id="menuNav">
         <div class="pg-12">
             <!--Text Intro-->
             <div class="flex-full">
@@ -321,7 +496,7 @@
         </div>
     </div>
     <div class="container">              
-                    <div class="pagination">
+                    <div class="pagination" id="onetwo">
                         <!-- <a class="page-link" href="#"><ion-icon name="arrow-back-outline"></ion-icon></a> -->
                         <a class="page-link active" href="./MonChay.html">1</a>
                         <!-- <a class="page-link" href="./page-2.html"><ion-icon name="arrow-forward-outline"></ion-icon></a> -->
@@ -416,9 +591,7 @@
   </div>
 </div>
 </div>
-
-
-    <!--Footer-->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-top">
@@ -553,7 +726,11 @@
     <div class="back-to-top">
         <a href="#"><i class="fa-regular fa-arrow-up"></i></a>
     </div>
-    <script src="../../js/user-index.js"></script>
+
+    <script></script>
+
+<script src="../../js/user-index.js"></script>
+    
 </body>
 
 </html>

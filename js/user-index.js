@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const ordersSection = document.getElementById("ordersSection");
   const menuNav = document.getElementById("menuNav");
   const onetwo = document.getElementById("onetwo");
-
+  
 
 
   const loggedIn = localStorage.getItem("loggedIn") === "true";
@@ -161,40 +161,16 @@ function showUserOrders() {
   const trangChu = document.getElementById("trangchu");
   const accountSection = document.getElementById("accountSection");
   const orderList = document.getElementById("orderList");
+  const menuNav = document.getElementById("menuNav");
+  const onetwo = document.getElementById("onetwo");
 
   trangChu.style.display = "none";
   accountSection.style.display = "none";
   ordersSection.style.display = "block";
+  menuNav.style.display= "none";
+  onetwo.style.display="none"
 
   const currentUser = JSON.parse(localStorage.getItem("currentUser")) || {};
   const orders = JSON.parse(localStorage.getItem("orders")) || [];
-  const userOrders = orders.filter(o => o.username === currentUser.username);
-
-  if (userOrders.length === 0) {
-    orderList.innerHTML = `
-      <div class="empty-order">
-        <img src="../Img/empty-order.jpg" alt="empty order" class="empty-order-img">
-        <p>Chưa có đơn hàng nào</p>
-      </div>`;
-    return;
-  }
-
-  orderList.innerHTML = userOrders.map(o => `
-    <div class="order-item" style="border:1px solid #ddd; padding:15px; margin-bottom:15px; border-radius:8px;">
-      <h4> Đơn hàng #${o.id}</h4>
-      <p><b>Ngày đặt:</b> ${o.date}</p>
-      <p><b>Tổng tiền:</b> ${Number(o.total).toLocaleString()}đ</p>
-      <p><b>Trạng thái:</b> ${o.status}</p>
-      <ul>${o.items.map(i => `<li>${i.name} x${i.qty}</li>`).join("")}</ul>
-    </div>
-  `).join("");
 }
 
-if (homeBtn) {
-  homeBtn.addEventListener("click", () => {
-    hideAllSections();
-    if (trangChu) trangChu.style.display = "block";
-    if (menuNav) menuNav.style.display = "flex";
-     if (onetwo) onetwo.style.display = "flex"; // hoặc "block", tùy CSS menu
-  });
-}

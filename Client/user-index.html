@@ -180,28 +180,224 @@
             </div>
         </div>
     </main>
+    <!---manh sua-->
     <!-- ======================= -->
 <!-- 🧾 ĐƠN HÀNG ĐÃ MUA -->
 <!-- ======================= -->
 <section class="orders-section" id="ordersSection" style="display:none;">
-  <div class="container">
-    <div class="order-header">
-      <h3>Quản lý đơn hàng của bạn</h3>
-      <p>Xem chi tiết, trạng thái của những đơn hàng đã đặt.</p>
-    </div>
+    <div class="order-management-container">
+        <h2 class="order-management-title">Quản lý đơn hàng của bạn</h2>
+        <p class="order-management-description">
+            Xem chi tiết, trạng thái những đơn hàng đã đặt.
+        </p>
 
-    <div class="order-body">
-      <div id="orderList" class="order-list">
-        <div class="empty-order">
-          <img src="../Img/empty-order.jpg" alt="empty order" class="empty-order-img">
-          <p>Chưa có đơn hàng nào</p>
+        <div class="order-list">
+
+            <div class="order-item">
+                <div class="order-item-detail">
+                    <img src="../Img/Món mặn/bot-chien.jpg" alt="Bột Chiên" class="item-image">
+                    <div class="item-info">
+                        <h4 class="item-name">Bột Chiên</h4>
+                        <p class="item-note">Không có ghi chú</p>
+                        <p class="item-quantity">x2</p>
+                    </div>
+                </div>
+                <div class="order-item-summary">
+                    <span class="item-total-price">59.000 đ</span>
+                </div>
+                <div class="order-item-actions">
+                    <button class="status-button processing">
+                        <i class="fas fa-spinner fa-spin"></i> ĐANG XỬ LÝ
+                    </button>
+                    <a href="#order-details-1" class="detail-link">
+                        <button class="detail-button">
+                            <i class="fas fa-eye"></i> XEM CHI TIẾT
+                        </button>
+                    </a>
+                    <div class="total-order-price-line">
+                        <span class="total-label">Tổng tiền:</span>
+                        <span class="total-price">118.000 đ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="order-details-1" class="order-modal-target">
+                <a href="#" class="modal-overlay"></a>
+                <div class="modal-content">
+                    <h3 class="modal-title">THÔNG TIN ĐƠN HÀNG</h3>
+                    <a href="#" class="modal-close-btn"><i class="fas fa-times"></i></a>
+
+                    <div class="modal-info-line">
+                        <i class="far fa-calendar-alt"></i>
+                        <span class="info-label">Ngày đặt hàng</span>
+                        <span class="info-value">29/10/2025</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-shipping-fast"></i>
+                        <span class="info-label">Hình thức giao</span>
+                        <span class="info-value">Tự đến lấy</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-calendar-check"></i>
+                        <span class="info-label">Ngày nhận hàng</span>
+                        <span class="info-value">30/10/2025</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-map-marker-alt"></i>
+                        <span class="info-label">Địa điểm nhận</span>
+                        <span class="info-value">273 An Dương Vương, Phường 3, Quận 5</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-user"></i>
+                        <span class="info-label">Người nhận</span>
+                        <span class="info-value">nn</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-phone-alt"></i>
+                        <span class="info-label">Số điện thoại nhận</span>
+                        <span class="info-value">333</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-item">
+                <div class="order-item-detail">
+                    <img src="../Img/Món mặn/ga-luoc.jpg" alt="Gà Luộc" class="item-image">
+                    <div class="item-info">
+                        <h4 class="item-name">Gà Luộc</h4>
+                        <p class="item-note">Không có ghi chú</p>
+                        <p class="item-quantity">x1</p>
+                    </div>
+                </div>
+                <div class="order-item-summary">
+                    <span class="item-total-price">219.000 đ</span>
+                </div>
+                <div class="order-item-actions">
+                    <button class="status-button processing">
+                        <i class="fas fa-spinner fa-spin"></i> ĐANG XỬ LÝ
+                    </button>
+                    <a href="#order-details-2" class="detail-link">
+                        <button class="detail-button">
+                            <i class="fas fa-eye"></i> XEM CHI TIẾT
+                        </button>
+                    </a>
+                    <div class="total-order-price-line">
+                        <span class="total-label">Tổng tiền:</span>
+                        <span class="total-price">219.000 đ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="order-details-2" class="order-modal-target">
+                <a href="#" class="modal-overlay"></a>
+                <div class="modal-content">
+                    <h3 class="modal-title">THÔNG TIN ĐƠN HÀNG</h3>
+                    <a href="#" class="modal-close-btn"><i class="fas fa-times"></i></a>
+
+                    <div class="modal-info-line">
+                        <i class="far fa-calendar-alt"></i>
+                        <span class="info-label">Ngày đặt hàng</span>
+                        <span class="info-value">28/10/2025</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-shipping-fast"></i>
+                        <span class="info-label">Hình thức giao</span>
+                        <span class="info-value">Giao tận nơi</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-calendar-check"></i>
+                        <span class="info-label">Ngày nhận hàng</span>
+                        <span class="info-value">29/10/2025</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-map-marker-alt"></i>
+                        <span class="info-label">Địa điểm nhận</span>
+                        <span class="info-value">123 Nguyễn Văn Cừ, Quận 1</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-user"></i>
+                        <span class="info-label">Người nhận</span>
+                        <span class="info-value">Anh Hào</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-phone-alt"></i>
+                        <span class="info-label">Số điện thoại nhận</span>
+                        <span class="info-value">999</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-item">
+                <div class="order-item-detail">
+                    <img src="../Img/Món lẩu/lau-thai.jpg" alt="Lẩu Thái" class="item-image">
+                    <div class="item-info">
+                        <h4 class="item-name">Lẩu Thái</h4>
+                        <p class="item-note">Không có ghi chú</p>
+                        <p class="item-quantity">x1</p>
+                    </div>
+                </div>
+                <div class="order-item-summary">
+                    <span class="item-total-price">319.000 đ</span>
+                </div>
+                <div class="order-item-actions">
+                    <button class="status-button processing">
+                        <i class="fas fa-spinner fa-spin"></i> ĐANG XỬ LÝ
+                    </button>
+                    <a href="#order-details-3" class="detail-link">
+                        <button class="detail-button">
+                            <i class="fas fa-eye"></i> XEM CHI TIẾT
+                        </button>
+                    </a>
+                    <div class="total-order-price-line">
+                        <span class="total-label">Tổng tiền:</span>
+                        <span class="total-price">319.000 đ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="order-details-3" class="order-modal-target">
+                <a href="#" class="modal-overlay"></a>
+                <div class="modal-content">
+                    <h3 class="modal-title">THÔNG TIN ĐƠN HÀNG</h3>
+                    <a href="#" class="modal-close-btn"><i class="fas fa-times"></i></a>
+
+                    <div class="modal-info-line">
+                        <i class="far fa-calendar-alt"></i>
+                        <span class="info-label">Ngày đặt hàng</span>
+                        <span class="info-value">27/10/2025</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-shipping-fast"></i>
+                        <span class="info-label">Hình thức giao</span>
+                        <span class="info-value">Giao tận nơi</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-calendar-check"></i>
+                        <span class="info-label">Ngày nhận hàng</span>
+                        <span class="info-value">27/10/2025</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-map-marker-alt"></i>
+                        <span class="info-label">Địa điểm nhận</span>
+                        <span class="info-value">333 CMT8, Phường 10, Quận 3</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-user"></i>
+                        <span class="info-label">Người nhận</span>
+                        <span class="info-value">Bao Ny</span>
+                    </div>
+                    <div class="modal-info-line">
+                        <i class="far fa-phone-alt"></i>
+                        <span class="info-label">Số điện thoại nhận</span>
+                        <span class="info-value">222</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
       </div>
-    </div>
-  </div>
 </section>
-
-
+<!--dong -->
 
     <!-- Thông tin tài khoản -->
 <section class="account-section" id="accountSection" style="display:none;">
@@ -1052,10 +1248,7 @@
         <a href="#"><i class="fa-regular fa-arrow-up"></i></a>
     </div>
 
-    <script>
-
-
-</script>
+    <script></script>
 
 <script src="../js/user-index.js"></script>
     

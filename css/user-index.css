@@ -4620,3 +4620,376 @@ body:has(.lop-phu-mon-an:target) {
 input,textarea{
     caret-color: transparent;
 }
+
+/* --- Cấu trúc chung và Khung Ngoài Lớn --- */
+
+/* --- Cấu trúc chung và Khung Ngoài Lớn --- */
+.order-management-container {
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    
+    /* 🚀 SỬA LỖI CHE KHUẤT: Thay thế toàn bộ margin bằng dòng này */
+    /* Đẩy khung xuống để không bị menu (header) che. Chỉnh 120px theo chiều cao menu */
+    margin: 5px auto 20px auto; 
+    
+    /* KHUNG NGOÀI */
+    background-color: #fff; /* Giữ màu trắng như khai báo đầu tiên */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.order-management-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.order-management-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* ------------------------------------------- */
+/* --- Kiểu dáng cho từng đơn hàng (Khung nhỏ) --- */
+
+.order-item {
+    /* KHUNG NHỎ RIÊNG CỦA TỪNG ĐƠN HÀNG */
+    padding: 15px; 
+    margin-bottom: 20px; /* Khoảng cách giữa các đơn hàng */
+    background-color: #fff;
+    border: 1px solid #eee; /* Viền mỏng hơn cho khung con */
+    border-radius: 6px; 
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03); /* Bóng nhẹ */
+    
+    /* Bố cục chính sử dụng Grid để chia 3 phần: Chi tiết - Giá - Hành động */
+    display: grid;
+    grid-template-columns: 3fr 1fr 1.5fr; 
+    align-items: flex-start; 
+    gap: 10px;
+}
+
+/* Loại bỏ khoảng cách dưới cùng cho đơn hàng cuối cùng trong container */
+.order-list > .order-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Chi tiết món ăn (Hình ảnh và Tên món) */
+.order-item-detail {
+    display: flex;
+    align-items: flex-start;
+}
+
+.item-image {
+    width: 70px; 
+    height: 70px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 15px;
+    border: 1px solid #ddd; 
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 4px 0;
+}
+
+.item-note, .item-quantity {
+    font-size: 13px;
+    color: #999;
+    margin: 0;
+}
+
+/* ------------------------------------------- */
+/* --- Kiểu dáng cho từng đơn hàng (Khung nhỏ) --- */
+
+.order-list > .order-item:last-child {
+    margin-bottom: 0;
+}
+
+.order-item {
+    padding: 15px; 
+    margin-bottom: 20px;
+    background-color: #fff; /* Nền trắng cho card */
+    border: 1px solid #eee;
+    border-radius: 6px; 
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    
+    /* * THAY ĐỔI LỚN VỀ BỐ CỤC:
+     * Chuyển sang Flexbox và cho phép ngắt dòng (wrap)
+     * để tạo bố cục 2 hàng.
+    */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Đẩy item-detail và item-summary ra 2 bên */
+    align-items: flex-start;
+    gap: 10px; /* Khoảng cách giữa các mục (nếu chúng bị ngắt dòng) */
+}
+
+/* Chi tiết món ăn (Hình ảnh và Tên món) - TOP LEFT */
+.order-item-detail {
+    display: flex;
+    align-items: center; /* <--- SỬA THÀNH 'center' ĐỂ CĂN GIỮA DỌC */
+    flex-grow: 1; 
+    min-width: 250px; 
+}
+
+.item-image {
+    width: 85px; /* <--- KÍCH THƯỚC MỚI */
+    height: 85px; /* <--- KÍCH THƯỚC MỚI */
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 4px 0;
+}
+
+.item-note, .item-quantity {
+    font-size: 13px;
+    color: #757575; /* Màu xám đậm hơn một chút */
+    margin: 2px 0;
+    display: flex; /* Dùng flex để căn icon cho đẹp */
+    align-items: center;
+    gap: 4px;
+}
+/* Thêm icon cho ghi chú (pencil) từ ảnh */
+.item-note::before {
+    font-family: "Font Awesome 6 Pro"; /* Đảm bảo bạn đã tải font này */
+    content: "\f044"; /* Icon pencil */
+    font-weight: 300; /* Dùng font light */
+    font-size: 12px;
+}
+
+
+/* Tóm tắt giá (Giá riêng lẻ của món) - TOP RIGHT */
+.order-item-summary {
+    text-align: right;
+    font-size: 16px;
+    color: #dc3545;
+    margin-top: 5px; /* Căn chỉnh với tên món */
+    flex-shrink: 0; /* Không cho phép co lại */
+}
+
+/* Các nút hành động và tổng tiền - BOTTOM ROW */
+.order-item-actions {
+    /* * THAY ĐỔI LỚN: 
+     * Choán 100% chiều rộng để tạo thành HÀNG DƯỚI CÙNG 
+    */
+    flex-basis: 100%;
+    
+    /* Dùng flex để sắp xếp các con (nút, tổng tiền) */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Khoảng cách giữa 2 nút */
+    
+    /* Đường kẻ phân cách phía trên */
+    margin-top: 15px; 
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0; /* Đường kẻ mờ như trong ảnh */
+}
+
+/* Dòng tổng tiền của đơn hàng - BOTTOM RIGHT */
+.total-order-price-line {
+    /* * THAY ĐỔI LỚN: 
+     * Tự động đẩy về bên phải, nhóm 2 nút ở bên trái
+    */
+    margin-left: auto;
+    
+    text-align: right;
+    /* Bỏ các thuộc tính lặp lại đã có ở parent */
+}
+
+.total-label {
+    font-weight: normal;
+    color: #333;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.total-price {
+    color: #dc3545; 
+    font-size: 17px; /* Cho to hơn 1 chút */
+}
+
+/* Kiểu nút (Chung) */
+.status-button, .detail-button {
+    padding: 6px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 4px;
+    width: auto; /* Bỏ width cố định */
+    text-align: center;
+    
+    /* Dùng flex để căn icon và text */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px; /* Khoảng cách giữa icon và text */
+}
+
+/* Kiểu nút ĐANG XỬ LÝ (Màu cam/đỏ) */
+.status-button {
+    /* * THAY ĐỔI MÀU SẮC
+     * Nền cam/đỏ, chữ trắng
+    */
+    background-color: #f05123; /* Màu cam/đỏ giống trong ảnh */
+    color: #fff;
+    border: none;
+}
+/* Icon của nút status (dấu *) */
+.status-button::before {
+    font-family: "Font Awesome 6 Pro";
+    content: "\2a"; /* Dấu sao * */
+    font-weight: 900;
+}
+
+
+/* Kiểu nút XEM CHI TIẾT (Màu xám) */
+.detail-button {
+    /* * THAY ĐỔI MÀU SẮC
+     * Nền xám nhạt, viền xám, chữ đen/xám
+    */
+    background-color: #f0f0f0; 
+    color: #333; 
+    border: 1px solid #ddd;
+}
+/* Icon của nút detail (con mắt) */
+.detail-button i {
+    font-size: 14px; /* Chỉnh kích thước icon nếu cần */
+}
+
+/* 1. Định dạng chung cho Modal (mặc định ẩn) */
+.order-modal-target {
+    /* Quan trọng: Vị trí cố định (fixed) để phủ toàn màn hình */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Mặc định ẩn */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 1000; /* Đảm bảo modal nằm trên các thành phần khác */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    /* Dùng flexbox để căn giữa modal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. Hiển thị Modal khi URL có hash tương ứng */
+.order-modal-target:target {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto; /* Cho phép tương tác khi hiện */
+}
+
+/* 3. Lớp phủ (Overlay) */
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Màu nền đen mờ */
+}
+
+/* 4. Nội dung Modal */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%; /* Chiều rộng mobile */
+    max-width: 700px; /* Chiều rộng desktop */
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1001; /* Đảm bảo nội dung nằm trên overlay */
+}
+
+/* 5. Tiêu đề và nút đóng */
+.modal-title {
+    font-size: 1.2rem;
+    color: #c92c2c; /* Màu đỏ của MTP Food */
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    color: #666;
+    text-decoration: none; /* Bỏ gạch chân cho thẻ <a> */
+}
+
+/* 6. Định dạng các dòng thông tin */
+.modal-info-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    padding: 10px 0;
+    font-size: 0.95rem;
+        border-bottom: 1px solid #eee;
+}
+
+.modal-info-line i {
+    color: #c92c2c;
+    margin-right: 10px;
+    width: 20px; /* Cố định chiều rộng icon */
+    text-align: center;
+}
+
+.info-label {
+    font-weight: bold;
+    color: #333;
+    flex-basis: 150px; /* Cố định chiều rộng label */
+    flex-shrink: 0;
+}
+
+.info-value {
+    color: #555;
+    text-align: right;
+    flex-grow: 1;
+}
+
+/* Fix lỗi: Button XEM CHI TIẾT nằm trong <a> */
+.detail-link {
+    text-decoration: none; /* Bỏ gạch chân cho link */
+}
+
+.detail-button {
+    /* Đảm bảo button hiển thị đúng */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* Các style khác của button (màu sắc, padding...) */
+}

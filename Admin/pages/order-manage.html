@@ -195,7 +195,7 @@
             </div>
           </div>
 
-          <!-- Bảng dữ liệu -->
+          <!-- Bảng -->
           <div class="admin-control-bottom">
             <table class="admin-table">
               <thead>
@@ -220,22 +220,33 @@
           </div>
 
           <!-- KHUNG CHI TIẾT ĐƠN -->
-             <div id="orderDetail" style="display:none; margin-top:20px;">
-                <h3>Chi tiết đơn hàng</h3>
-                  <div id="orderDetailContent"></div>
-                 <div class="detail-actions">
-                     <button id="btnBack" class="btn-back-order">
-                        <i class="fa-light fa-arrow-left"></i> Quay lại danh sách
-                     </button>
-                     <button id="btnConfirm" class="btn-confirm-order">
-                        <i class="fa-light fa-check"></i> Xác nhận đơn hàng
-                     </button>
-                  </div>
-             </section>
-         </main>
+          <section id="orderDetail" style="display:none; margin-top:20px;">
+           <h3>Chi tiết đơn hàng</h3>
+             <div id="orderDetailContent">
+               <table class="admin-table">
+                 <tbody>
+                     <tr><th>Mã đơn</th><td id="detailId"></td></tr>
+                     <tr><th>Khách hàng</th><td id="detailCustomer"></td></tr>
+                     <tr><th>Ngày đặt</th><td id="detailDate"></td></tr>
+                     <tr><th>Sản phẩm</th><td id="detailProducts"></td></tr>
+                     <tr><th>Tổng tiền</th><td id="detailTotal"></td></tr>
+                     <tr><th>Trạng thái</th><td id="detailStatus"></td></tr>
+                     <tr><th>Địa chỉ</th><td id="detailAddress"></td></tr>
+                 </tbody>
+               </table>
+             </div>
 
+             <div class="detail-actions">
+               <button id="btnBack" class="btn-back-order">
+                  <i class="fa-light fa-arrow-left"></i> Quay lại danh sách
+               </button>
+               <button id="btnConfirm" class="btn-confirm-order">
+                  <i class="fa-light fa-check"></i> Xác nhận đơn hàng
+               </button>
+             </div>
+           </section>
+      </main>
     </div>
-
     <div id="toast"></div>
     <script src="../js/price-manage.js"></script>
     <script src="../js/order-manage.js"></script>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./Img/favicon.png" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/manager-user.css" />
+    <link rel="stylesheet" href="../css/admin-reponsive.css" />
+    <link rel="stylesheet" href="../css/list-product.css" />
+    <link
+      rel="stylesheet"
+      href="../font/font-awesome-pro-v6-6.2.0/css/all.min.css"
+    />
+    <title>Admin</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <button class="menu-icon-btn">
+        <div class="menu-icon">
+          <i class="fa-regular fa-bars"></i>
+        </div>
+      </button>
+    </header>
+
+    <div class="container">
+      <aside class="sidebar open">
+        <div class="top-sidebar">
+          <a href="#" class="channel-logo">
+            <img src="../Img/favicon.png" alt="Channel Logo" />
+          </a>
+          <div class="hidden-sidebar your-channel">
+            <img src="../Img/admin/mtp-food-title.png" style="height: 30px" alt="" />
+          </div>
+        </div>
+
+        <div class="middle-sidebar">
+  <ul class="sidebar-list">
+    <li class="sidebar-list-item tab-content">
+      <a href="./manager-user.html" class="sidebar-link active">
+        <div class="sidebar-icon"><i class="fa-light fa-house"></i></div>
+        <div class="hidden-sidebar">Trang tổng quan</div>
+      </a>
+    </li>
+
+    <li class="sidebar-list-item tab-content">
+      <a href="javascript:void(0)" class="sidebar-link" onclick="toggleSubmenu(this,'product-submenu')">
+        <div class="sidebar-icon">
+          <i class="fa-light fa-cart-shopping"></i>
+        </div>
+        <div class="hidden-sidebar">Sản phẩm</div>
+        <i class="fa-light fa-chevron-right menu-arrow"></i>
+      </a>
+      <ul class="submenu" id="product-submenu" style="display: none; margin-left: 20px">
+        <li class="sidebar-list-item">
+          <a href="./list-product.html" class="sidebar-link">
+            <div class="sidebar-icon">
+              <i class="fa-light fa-box-open"></i>
+            </div>
+            <div class="hidden-sidebar">Thông tin sản phẩm</div>
+          </a>
+        </li>
+        <li class="sidebar-list-item">
+          <a href="./price-manage.html" class="sidebar-link">
+            <div class="sidebar-icon">
+              <i class="fa-light fa-dollar-sign"></i>
+            </div>
+            <div class="hidden-sidebar">Quản lý giá</div>
+          </a>
+        </li>
+        <li class="sidebar-list-item">
+          <a href="./inventory.html" class="sidebar-link">
+            <div class="sidebar-icon">
+              <i class="fa-light fa-warehouse"></i>
+            </div>
+            <div class="hidden-sidebar">Quản lý tồn kho</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="sidebar-list-item tab-content">
+      <a href="./add-product.html" class="sidebar-link">
+        <div class="sidebar-icon">
+          <i class="fa-light fa-boxes-stacked"></i>
+        </div>
+        <div class="hidden-sidebar">Nhập hàng</div>
+      </a>
+    </li>
+
+    <li class="sidebar-list-item tab-content">
+      <a href="./order-manage.html" class="sidebar-link">
+        <div class="sidebar-icon">
+          <i class="fa-light fa-basket-shopping"></i>
+        </div>
+        <div class="hidden-sidebar">Đơn hàng</div>
+      </a>
+    </li>
+
+    <li class="sidebar-list-item tab-content">
+      <a href="./customers.html" class="sidebar-link">
+        <div class="sidebar-icon">
+          <i class="fa-light fa-users"></i>
+        </div>
+        <div class="hidden-sidebar">Khách hàng</div>
+      </a>
+    </li>
+
+    <li class="sidebar-list-item tab-content">
+      <a href="javascript:void(0)" class="sidebar-link" onclick="toggleSubmenu(this,'statistical-submenu')">
+        <div class="sidebar-icon">
+          <i class="fa-light fa-chart-simple"></i>
+        </div>
+        <div class="hidden-sidebar">Thống kê</div>
+        <i class="fa-light fa-chevron-right menu-arrow"></i>
+      </a>
+      <ul class="submenu" id="statistical-submenu" style="display: none; margin-left: 20px">
+        <li class="sidebar-list-item">
+          <a href="./statistical-product.html" class="sidebar-link">
+            <div class="sidebar-icon">
+              <i class="fa-light fa-chart-line"></i>
+            </div>
+            <div class="hidden-sidebar">Thống kê sản phẩm</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+
+        <div class="bottom-sidebar">
+          <ul class="sidebar-list">
+            <li class="sidebar-list-item user-logout">
+              <a href="../index.html" class="sidebar-link">
+                <div class="sidebar-icon">
+                  <i class="fa-thin fa-circle-chevron-left"></i>
+                </div>
+                <div class="hidden-sidebar">Trang chủ</div>
+              </a>
+            </li>
+            <li class="sidebar-list-item user-logout">
+              <a href="#" class="sidebar-link">
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-circle-user"></i>
+                </div>
+                <span class="hidden-sidebar">Admin</span>
+              </a>
+            </li>
+            <li class="sidebar-list-item user-logout">
+              <a href="#" class="sidebar-link" id="logout-acc">
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-arrow-right-from-bracket"></i>
+                </div>
+                <div class="hidden-sidebar">Đăng xuất</div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+
+      <section class="product-list-section">
+  <div class="admin-control">
+    <div class="admin-control-left">
+      <select>
+        <option>Tất cả</option>
+        <option>Món chay</option>
+        <option>Món mặn</option>
+        <option>Món ăn vặt</option>
+        <option>Món tráng miệng</option>
+        <option>Nước uống</option>
+        </select>
+    </div>
+
+    <div class="admin-control-center">
+      <form class="form-search">
+        <span class="search-btn"
+          ><i class="fa-light fa-magnifying-glass"></i
+        ></span>
+        <input
+          type="text"
+          class="form-search-input"
+          placeholder="Tìm kiếm tên món..."
+        />
+      </form>
+    </div>
+
+    <div class="admin-control-right">
+      <button class="btn-control-large" id="btn-cancel-product" onclick="cancelSearchProduct()">
+        <i class="fa-light fa-rotate-right"></i> Làm mới
+      </button>
+      <button class="btn-control-large" id="btn-add-product">
+        <i class="fa-light fa-plus"></i> Thêm món mới
+      </button>
+    </div>
+  </div>
+
+  <div class="product-list-container">
+    <div class="product-item">
+      <img
+        src="../Img/Món mặn/bot-chien.jpg"
+        alt="Bột Chiên"
+        class="product-img"
+      />
+      <div class="product-info">
+        <h3 class="product-name">Bột Chiên</h3>
+        <p class="product-desc">
+          Bột chiên giòn rụm, ăn cùng với trứng và đu đủ bào, chấm cùng nước
+          tương pha chua ngọt. Món ăn vặt thơm ngon đặc trưng của Sài Gòn.
+        </p>
+        <span class="product-category">Món mặn</span>
+      </div>
+      <div class="product-actions">
+        <span class="price">40.000 đ</span>
+        <div class="buttons-group">
+          <button class="btn-action btn-edit" title="Chỉnh sửa">
+            <i class="fa-light fa-pen"></i>
+          </button>
+          <button class="btn-action btn-delete" title="Xóa">
+            <i class="fa-light fa-trash"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-item">
+      <img
+        src="../Img/Món mặn/ga-luoc.jpg"
+        alt="Bột Chiên"
+        class="product-img"
+      />
+      <div class="product-info">
+        <h3 class="product-name">Gà luộc</h3>
+        <p class="product-desc">Gà đen tươi thơm</p>
+        <span class="product-category">Món mặn</span>
+      </div>
+      <div class="product-actions">
+        <span class="price">200.000 đ</span>
+        <div class="buttons-group">
+          <button class="btn-action btn-edit" title="Chỉnh sửa">
+            <i class="fa-light fa-pen"></i>
+          </button>
+          <button class="btn-action btn-delete" title="Xóa">
+            <i class="fa-light fa-trash"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="product-item">
+      <img
+        src="../Img/Món tráng miệng/che-thai.jpg"
+        alt="Bột Chiên"
+        class="product-img"
+      />
+      <div class="product-info">
+        <h3 class="product-name">Chè thái</h3>
+        <p class="product-desc">Thơm ngon bổ rẻ</p>
+        <span class="product-category">Món tráng miệng</span>
+      </div>
+      <div class="product-actions">
+        <span class="price">35.000 đ</span>
+        <div class="buttons-group">
+          <button class="btn-action btn-edit" title="Chỉnh sửa">
+            <i class="fa-light fa-pen"></i>
+          </button>
+          <button class="btn-action btn-delete" title="Xóa">
+            <i class="fa-light fa-trash"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    </div>
+  <ul class="page-nav-list"></ul>
+
+<!--Thêm sản phẩm mới-->
+  <div class="modal add-product">
+    <div class="modal-container">
+      <h3 class="modal-container-title add-product-e">THÊM MỚI SẢN PHẨM</h3>
+      <h3 class="modal-container-title edit-product-e">CHỈNH SỬA SẢN PHẨM</h3>
+      <button class="modal-close product-form">
+        <i class="fa-regular fa-xmark"></i>
+      </button>
+      <div class="modal-content">
+        <form action="" class="add-product-form">
+          <div class="modal-content-left">
+            <img
+              src="../Img/blank-image.png"
+              alt=""
+              class="upload-image-preview"
+            />
+            <div class="form-group file">
+              <label for="up-hinh-anh" class="form-label-file"
+                ><i class="fa-regular fa-cloud-arrow-up"></i>Chọn hình
+                ảnh</label
+              >
+              <input
+                accept="image/jpeg, image/png, image/jpg"
+                id="up-hinh-anh"
+                name="up-hinh-anh"
+                type="file"
+                class="form-control"
+                onchange="uploadImage(this)"
+              />
+            </div>
+          </div>
+          <div class="modal-content-right">
+            <div class="form-group">
+              <label for="ten-mon" class="form-label">Tên món</label>
+              <input
+                id="ten-mon"
+                name="ten-mon"
+                type="text"
+                placeholder="Nhập tên món"
+                class="form-control"
+              />
+              <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+              <label for="category" class="form-label">Thể loại</label>
+              <select name="category" id="chon-mon">
+                <option>Món chay</option>
+                <option>Món mặn</option>
+                <option>Món lẩu</option>
+                <option>Món ăn vặt</option>
+                <option>Món tráng miệng</option>
+                <option>Nước uống</option>
+              </select>
+              <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+              <label for="gia-moi" class="form-label">Giá bán</label>
+              <input
+                id="gia-moi"
+                name="gia-moi"
+                type="text"
+                placeholder="Nhập giá bán"
+                class="form-control"
+              />
+              <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+              <label for="mo-ta" class="form-label">Mô tả</label>
+              <textarea
+                class="product-desc"
+                id="mo-ta"
+                placeholder="Nhập mô tả món ăn..."
+              ></textarea>
+              <span class="form-message"></span>
+            </div>
+            <button
+              class="form-submit btn-add-product-form add-product-e"
+              id="add-product-button"
+            >
+              <i class="fa-regular fa-plus"></i>
+              <span>THÊM MÓN</span>
+            </button>
+            <button
+              class="form-submit btn-update-product-form edit-product-e"
+              id="update-product-button"
+            >
+              <i class="fa-light fa-pencil"></i>
+              <span>LƯU THAY ĐỔI</span>
+            </button>
+          </div>
+        </form>
+      </div>
+      </div>
+  </div>
+
+  </section>
+
+        <div class="header">
+          <div class="text-heading">
+            <h1>Quản lý người dùng</h1>
+          </div>
+
+          <nav class="navigation">
+            <button id="login-btn" class="btnLogin-popup">Đăng nhập</button>
+            <div class="Function-cl">
+              <div class="logout">
+                <button id="logout-btn" class="btnLogout-popup">
+                  Đăng xuất
+                </button>
+              </div>
+            </div>
+          </nav>
+
+          <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div id="toast"></div>
+    <script src="../js/price-manage.js"></script>
+    <script src="../js/list-product.js"></script>
+  </body>
+</html>

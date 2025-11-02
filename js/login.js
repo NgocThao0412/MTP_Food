@@ -1,441 +1,195 @@
-// Hàm bật/tắt menu cho giao diện mobile
-function toggleMenu(hamburger) {
-    const mobileMenu = document.getElementById('mobileMenu');
-    mobileMenu.classList.toggle('active'); // Bật/tắt hiển thị menu
+document.addEventListener("DOMContentLoaded", () => {
+  // ====== Biến chung ======
+  const authContainer = document.querySelector(".auth-container");
+  const userMenu = document.getElementById("userMenu");
+  const trangChu = document.getElementById("trangchu");
+  const accountSection = document.getElementById("accountSection");
+  const ordersSection = document.getElementById("ordersSection");
+  const menuNav = document.getElementById("menuNav");
+  const onetwo = document.getElementById("onetwo");
+  const homeBtn = document.getElementById("homeBtn");
 
-    // Đổi trạng thái "active" cho cả hai biểu tượng hamburger
-    document.querySelectorAll('.hamburger').forEach(icon => {
-        icon.classList.toggle('active');
+
+  const loggedIn = localStorage.getItem("loggedIn") === "true";
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  // ====== Nếu người dùng đã đăng nhập ======
+  if (loggedIn && currentUser) {
+    authContainer.innerHTML = `
+      <span class="text-tk">Xin chào,</span>
+      <span class="text-tk">${currentUser.fullname || currentUser.username}
+        <i class="fa-sharp fa-solid fa-caret-down"></i></span>
+    `;
+
+    userMenu.innerHTML = `
+      <li class="user-info" id="myAccount">
+        <i class="fa-solid fa-user"></i><span>Tài khoản của tôi</span>
+      </li>
+      <li class="user-info" id="myOrders">
+        <i class="fa fa-shopping-bag"></i><span>Đơn hàng đã mua</span>
+      </li>
+      <li class="logoutBtn">
+        <a href="javascript:;" id="logoutBtn">
+          <i class="fa fa-sign-out-alt"></i><span>Đăng xuất</span>
+        </a>
+      </li>
+    `;
+  } else {
+    // Nếu chưa đăng nhập → hiển thị nút đăng nhập / đăng ký
+    const loginBtn = document.getElementById("login");
+    const signupBtn = document.getElementById("signup");
+    if (loginBtn) loginBtn.addEventListener("click", () => window.location.href = "../Home/login.html");
+    if (signupBtn) signupBtn.addEventListener("click", () => window.location.href = "../Home/login.html");
+  }
+
+  // ====== Hàm ẩn tất cả phần ======
+  function hideAllSections() {
+    if (trangChu) trangChu.style.display = "none";
+    if (accountSection) accountSection.style.display = "none";
+    if (ordersSection) ordersSection.style.display = "none";
+    if (menuNav) menuNav.style.display = "none"; 
+     if (onetwo) onetwo.style.display = "none";
+  }
+
+  // ====== Xử lý Tài khoản của tôi ======
+  const myAccount = document.getElementById("myAccount");
+  if (myAccount) {
+    myAccount.addEventListener("click", () => {
+      hideAllSections();
+      if (accountSection) accountSection.style.display = "block";
+
+      const user = JSON.parse(localStorage.getItem("currentUser"));
+      if (!user) return;
+      document.getElementById("infoname").value = user.fullname || user.username || "";
+      document.getElementById("infophone").value = user.phone || "";
+      document.getElementById("infoemail").value = user.email || "";
+      document.getElementById("infoaddress").value = user.address || "";
     });
+  }
+
+  // ====== Xử lý Đơn hàng đã mua ======
+  const myOrders = document.getElementById("myOrders");
+  if (myOrders) {
+    myOrders.addEventListener("click", showUserOrders);
+  }
+
+  // ====== Xử lý đăng xuất ======
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", e => {
+      e.preventDefault();
+      localStorage.removeItem("loggedIn");
+      localStorage.removeItem("currentUser");
+      alert("Đã đăng xuất!");
+      window.location.href = "../Home/login.html";
+    });
+  }
+
+  // ====== Tự động điền thông tin người dùng ======
+  if (currentUser) {
+    document.getElementById("infoname").value = currentUser.fullname || currentUser.username || "";
+    document.getElementById("infophone").value = currentUser.phone || "";
+    document.getElementById("infoemail").value = currentUser.email || "";
+    document.getElementById("infoaddress").value = currentUser.address || "";
+  }
+
+
+
+function changeInformation() {
+  let accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+  let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  if (!currentUser) return alert("Không tìm thấy người dùng!");
+
+  const name = document.getElementById("infoname").value.trim();
+  const phone = document.getElementById("infophone").value.trim();
+  const email = document.getElementById("infoemail").value.trim();
+  const address = document.getElementById("infoaddress").value.trim();
+
+  if (!phone.match(/^\d{9,11}$/)) return alert("Số điện thoại không hợp lệ!");
+
+  const oldPhone = currentUser.phone;
+  currentUser.fullname = name;
+  currentUser.phone = phone;
+  currentUser.email = email;
+  currentUser.address = address;
+
+  const idx = accounts.findIndex(a => a.phone === oldPhone);
+  if (idx !== -1) accounts[idx] = currentUser;
+
+  localStorage.setItem("accounts", JSON.stringify(accounts));
+  localStorage.setItem("currentUser", JSON.stringify(currentUser));
+  alert("✅ Cập nhật thông tin thành công!");
 }
 
-// Hàm xử lý khi nhấn vào nút tìm kiếm (chưa thêm logic)
-function myFunction() {
-    const input = document.getElementById('search');
-    // Nơi bạn thêm chức năng tìm kiếm
-}
 
-// Khi click vào logo → trở về trang chủ
-const logo = document.querySelector('.logo');
-if (logo) {
-    logo.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.location.href = '../index.html';
-    });
-}
+function changePassword() {
+  const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  if (!currentUser) return alert("Không tìm thấy tài khoản!");
 
+  const cur = document.getElementById("password-cur-info").value.trim();
+  const newpw = document.getElementById("password-after-info").value.trim();
+  const confirm = document.getElementById("password-comfirm-info").value.trim();
 
+  if (!cur || !newpw || !confirm) return alert("Vui lòng nhập đầy đủ mật khẩu!");
+  if (cur !== currentUser.password) return alert("❌ Mật khẩu hiện tại không đúng!");
+  if (newpw.length < 6) return alert("Mật khẩu mới phải ít nhất 6 ký tự!");
+  if (newpw !== confirm) return alert("Mật khẩu xác nhận không khớp!");
 
-/* --- XỬ LÝ FORM ĐĂNG NHẬP / ĐĂNG KÝ --- */
-const wrapper = document.querySelector('.wrapper');
-const loginLink = document.querySelector('.login-link');
-const registerLink = document.querySelector('.register-link');
-const btnPopup = document.querySelectorAll('.btnLogin-popup');   // Nút mở form đăng nhập
-const btnOutPopup = document.querySelectorAll('.btnLogout-popup'); // Nút mở form đăng ký
-let isRegisterForm = false; // Biến theo dõi form đang hiển thị (login hay register)
+  currentUser.password = newpw;
+  const idx = accounts.findIndex(a => a.phone === currentUser.phone);
+  if (idx !== -1) accounts[idx] = currentUser;
 
+  localStorage.setItem("currentUser", JSON.stringify(currentUser));
+  localStorage.setItem("accounts", JSON.stringify(accounts));
+  alert("✅ Đổi mật khẩu thành công!");
 
-// Mở form đăng nhập
-btnPopup.forEach(btn => {
-    btn.addEventListener('click', () => {
-        wrapper.classList.add('active-popup');
-        wrapper.classList.remove('active');
-        isRegisterForm = false;
-    });
-});
-
-// Mở form đăng ký
-btnOutPopup.forEach(btn => {
-    btn.addEventListener('click', () => {
-        wrapper.classList.add('active-popup');
-        wrapper.classList.add('active');
-        isRegisterForm = true;
-    });
-});
-
-
-/* --- DỮ LIỆU TRANG CHÍNH (HOME) --- */
-document.addEventListener('DOMContentLoaded', function() {
-    const loginLink = document.querySelector('.login-link');
-    const registerLink = document.querySelector('.register-link');
-    const loginForm = document.querySelector(".form-box.login");
-    const registerForm = document.querySelector(".form-box.register");
-    let isRegisterForm = false;
-    
-    // Khi truy cập URL có "#register" → hiển thị form đăng ký
-    if (window.location.hash === "#register") {
-        wrapper.classList.add("active");
-    }
-
-    // Chuyển qua form đăng ký
-    registerLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        wrapper.classList.add("active");
-    });
-
-    // Chuyển lại form đăng nhập
-    loginLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        wrapper.classList.remove("active");
-    });
-
-
-    /* --- XỬ LÝ NGƯỜI DÙNG LOCAL STORAGE --- */
-
-    // Lấy danh sách người dùng đã lưu trong localStorage
-    function getStoredUsers() {
-        const users = localStorage.getItem('users');
-        return users ? JSON.parse(users) : [];
-    }
-
-    // Lưu danh sách người dùng vào localStorage
-    function saveUsers(users) {
-        localStorage.setItem('users', JSON.stringify(users));
-    }
-
-    // Lưu thông tin người dùng hiện tại sau khi đăng nhập
-    function setCurrentUser(user) {
-    localStorage.setItem('currentUser', JSON.stringify(user));
+  document.getElementById("password-cur-info").value = "";
+  document.getElementById("password-after-info").value = "";
+  document.getElementById("password-comfirm-info").value = "";
 }
 
 
-    // Tạo sẵn 1 user mẫu “Client”
-    function initializeUsers() {
-        let users = getStoredUsers();
+function showUserOrders() {
+  const ordersSection = document.getElementById("ordersSection");
+  const trangChu = document.getElementById("trangchu");
+  const accountSection = document.getElementById("accountSection");
+  const orderList = document.getElementById("orderList");
 
-        if (!users.find(user => user.email === 'client@gmail.com')) {
-            users.push({ 
-                username: 'Client', 
-                email: 'client@gmail.com', 
-                password: '123', 
-                phone: '0812345678', 
-                address: '273 Đ. An Dương Vương, Phường 3, Quận 5, Hồ Chí Minh' ,
-            });
-        }
+  trangChu.style.display = "none";
+  accountSection.style.display = "none";
+  ordersSection.style.display = "block";
 
-        saveUsers(users);
-    }
+  const currentUser = JSON.parse(localStorage.getItem("currentUser")) || {};
+  const orders = JSON.parse(localStorage.getItem("orders")) || [];
+  const userOrders = orders.filter(o => o.username === currentUser.username);
 
-    initializeUsers(); // Gọi hàm khởi tạo
+  if (userOrders.length === 0) {
+    orderList.innerHTML = `
+      <div class="empty-order">
+        <img src="../Img/empty-order.jpg" alt="empty order" class="empty-order-img">
+        <p>Chưa có đơn hàng nào</p>
+      </div>`;
+    return;
+  }
 
-       /* --- FORM ĐĂNG NHẬP --- */
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault();
+  orderList.innerHTML = userOrders.map(o => `
+    <div class="order-item" style="border:1px solid #ddd; padding:15px; margin-bottom:15px; border-radius:8px;">
+      <h4> Đơn hàng #${o.id}</h4>
+      <p><b>Ngày đặt:</b> ${o.date}</p>
+      <p><b>Tổng tiền:</b> ${Number(o.total).toLocaleString()}đ</p>
+      <p><b>Trạng thái:</b> ${o.status}</p>
+      <ul>${o.items.map(i => `<li>${i.name} x${i.qty}</li>`).join("")}</ul>
+    </div>
+  `).join("");
+}
 
-        const userName = document.getElementById('loginUserName').value;
-        const password = document.getElementById('loginPassword').value;
-
-        const users = getStoredUsers();
-        const user = users.find(user => user.username === userName && user.password === password );
-        
-        if (user) {
-            alert('Đăng nhập thành công!');
-            setCurrentUser(user);
-            localStorage.setItem("loggedIn", "true");
-            window.location.href = '../Client/user-index.html';
-        } else {
-            alert('Sai tên đăng nhập hoặc mật khẩu!');
-        }
-    });
-
-
-const registerFormEl = document.getElementById('registerForm');
-console.log('Register form:', registerFormEl); // <-- Thêm dòng này
-
-    // ✅ FORM ĐĂNG KÝ — CHỈ CẦN NÀY LÀ ĐỦ
-if (registerFormEl) {
-  registerFormEl.addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const username = document.getElementById('registerUsername').value.trim();
-    const email = document.getElementById('registerEmail').value.trim();
-    const password = document.getElementById('registerPassword').value;
-    const confirmPasswordInput = document.getElementById('registerConfirmPassword');
-    const confirmPassword = confirmPasswordInput.value;
-    const phone = document.getElementById('registerPhone').value.trim();
-    const address = document.getElementById('registerAddress').value.trim();
-    const termsCheckbox = document.getElementById('termsCheckbox');
-    const checkboxError = document.querySelector('.form-message-checkbox');
-    const passwordError = document.querySelector('.form-message-password');
-    const regex = /[\s\u00C0-\u1EF9]/;
-    const users = getStoredUsers();
-
-    if (!termsCheckbox.checked) {
-      checkboxError.innerHTML = 'Vui lòng đồng ý với điều khoản trước khi đăng ký!';
-      return;
-    } else {
-      checkboxError.innerHTML = '';
-    }
-
-    if (users.find(u => u.email === email || u.username === username)) {
-      alert('Email hoặc tên đăng nhập đã tồn tại!');
-      return;
-    }
-
-    if (phone.length !== 10) {
-      alert('Số điện thoại phải có 10 chữ số!');
-      return;
-    }
-
-    if (regex.test(username)) {
-      alert('Tên đăng nhập không được chứa ký tự có dấu hoặc khoảng trắng!');
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      passwordError.innerHTML = 'Mật khẩu xác nhận không khớp!';
-      confirmPasswordInput.classList.add('error');
-      return;
-    } else {
-      passwordError.innerHTML = '';
-      confirmPasswordInput.classList.remove('error');
-    }
-
-    // ✅ Lưu user mới
-    users.push({ username, email, password, phone, address, role: 'client' });
-    saveUsers(users);
-
-    localStorage.setItem("loggedIn", "true");
-    localStorage.setItem("currentUser", JSON.stringify({ username, email }));
-
-    alert('Đăng ký thành công!');
-    setTimeout(() => {
-      window.location.href = '../Client/user-index.html';
-    }, 200);
+if (homeBtn) {
+  homeBtn.addEventListener("click", () => {
+    hideAllSections();
+    if (trangChu) trangChu.style.display = "block";
+    if (menuNav) menuNav.style.display = "flex";
+     if (onetwo) onetwo.style.display = "flex"; // hoặc "block", tùy CSS menu
   });
 }
-
-
-    /* --- LẤY NGƯỜI DÙNG ĐANG ĐĂNG NHẬP --- */
-    function getCurrentUser() {
-    const currentUser = localStorage.getItem('currentUser');
-    return currentUser ? JSON.parse(currentUser) : null;
-}
-    // Kiểm tra trạng thái đăng nhập
-
-    function isLoggedIn() {
-        return !!getCurrentUser(); // Trả về true nếu đã đăng nhập
-    }
-
-    /* --- XỬ LÝ GIỎ HÀNG (nếu chưa login thì bật form đăng nhập) --- */
-    const cartBtn = document.querySelectorAll('.sp-cart');
-    if (cartBtn.length > 0) {
-        cartBtn.forEach(button => {
-            button.addEventListener('click', function(event) {
-                event.preventDefault();
-                
-                if (!isLoggedIn()) {
-                    // alert('Vui lòng đăng nhập để xem giỏ hàng!');
-                } else {
-                    console.log('Đang mở giỏ hàng...');
-                }
-            });
-        });
-    }
-
-
-    /* --- DỮ LIỆU MENU (Mousse / Croissant / Drink) --- */
-    const menuItems = {
-        Mousse: [
-            { links: './Home/product/index-1.html', id: '1', name: 'Avocado Mousse', price: '510,000 VND', image: './Img/Mousse/Avocado_Mousse.jpg' },
-            { links: './Home/product/index-2.html', id: '2', name: 'Blueberry Mousse', price: '510,000 VND', image: './Img/Mousse/Blueberry_Mousse.jpg' },
-            // ...
-        ],
-        Croissant: [
-            { links: './Home/product/index-7.html', id: '7', name: 'Avocado Croissant', price: '110,000 VND', image: './Img/Croissant/Avocado_Croissant.jpg' },
-            // ...
-        ],
-        Drink: [
-            { links: './Home/product/index-13.html', id: '13', name: 'Choco Mallow', price: '55,000 VND', image: './Img/Drink/Choco_Mallow.png' },
-            // ...
-        ],
-    };
-
-
-    /* --- HÀM LỌC SẢN PHẨM THEO DANH MỤC --- */
-    function filterItems(category) {
-        const navLinks = document.querySelectorAll('.nav-links label');
-        const tabContents = document.querySelectorAll('.tab_content');
-
-        navLinks.forEach(link => link.classList.remove('active'));
-        const activeLink = document.querySelector(`label[for="filter-${category.toLowerCase()}"]`);
-        if (activeLink) activeLink.classList.add('active');
-
-        tabContents.forEach(content => {
-            content.style.opacity = '0';
-            setTimeout(() => { content.style.display = 'none'; }, 300);
-        });
-
-        const selectedContent = document.getElementById(category);
-        if (selectedContent) {
-            setTimeout(() => {
-                selectedContent.style.display = 'grid';
-                requestAnimationFrame(() => {
-                    selectedContent.style.opacity = '1';
-                });
-            }, 300);
-        }
-    }
-
-
-    /* --- HÀM TẠO THẺ SẢN PHẨM --- */
-    function createItemCard(item) {
-        const card = document.createElement('div');
-        card.className = 'movie-item';
-        card.innerHTML = `
-            <a href="${item.links}" target="_blank">
-                <img class="poster-img" height="300" width="300" src="${item.image}" alt="${item.name}">
-            </a>
-            <p class="title">${item.name}</p>
-            <button class="sp-cart butn title" data-id="${item.id}">
-                <p class="text-color">Giá: ${item.price}</p>
-            </button>
-        `;
-
-        // Kiểm tra đăng nhập khi thêm giỏ hàng
-        const cartBtn = card.querySelector('.sp-cart')
-        cartBtn.addEventListener('click', function (event) {
-            event.preventDefault();
-
-            if (!isLoggedIn()) {
-                wrapper.classList.add('active-popup');
-                wrapper.classList.remove('active');
-                isRegisterForm = false;
-                blurOverlay.classList.add('active');
-                console.log('Hãy đăng nhập trước!');
-            } else {
-                console.log('Xem giỏ hàng...');
-            }
-        });
-
-        return card;
-    }
-
-    // Hàm thêm sản phẩm vào từng danh mục
-    function addItemsToCategory(categoryId, items) {
-        const container = document.getElementById(categoryId);
-        if (container) {
-            items.forEach(item => {
-                container.appendChild(createItemCard(item));
-            });
-        }
-    }
-
-    // Khởi tạo sản phẩm cho từng danh mục
-    Object.entries(menuItems).forEach(([category, items]) => {
-        addItemsToCategory(category, items);
-        addItemsToCategory('All', items);
-    });
-
-    /* --- HÀM TÌM KIẾM VÀ GỢI Ý (hint) --- */
-    function showHints() {
-        const searchInput = document.getElementById('search');
-        const hintContainer = document.getElementById('hintContainer');
-        const searchTerm = searchInput.value.toLowerCase();
-
-        hintContainer.innerHTML = '';
-
-        if (searchTerm) {
-            Object.values(menuItems).flat().forEach(item => {
-                if (item.name.toLowerCase().includes(searchTerm)) {
-                    const hintItem = document.createElement('div');
-                    hintItem.className = 'hint-item';
-
-                    const hintImage = document.createElement('img');
-                    hintImage.src = item.image;
-                    hintImage.alt = item.name;
-                    hintImage.style.width = '30px';
-                    hintImage.style.height = '30px';
-                    hintImage.style.marginRight = '10px';
-
-                    hintItem.appendChild(hintImage);
-                    hintItem.appendChild(document.createTextNode(item.name));
-
-                    hintItem.onclick = function() {
-                        searchInput.value = item.name;
-                        hintContainer.innerHTML = '';
-                        hintContainer.style.display = 'none';
-                        searchItems();
-                    };
-                    hintContainer.appendChild(hintItem);
-                }
-            });
-            hintContainer.style.display = hintContainer.innerHTML ? 'block' : 'none';
-        } else {
-            hintContainer.style.display = 'none';
-        }
-    }
-
-    /* --- XỬ LÝ KHI NGƯỜI DÙNG NHẤN NÚT TÌM KIẾM --- */
-    const searchBtn = document.querySelector('.searchBtn');
-if (searchBtn) {
-    searchBtn.addEventListener('click', function() {
-        searchItems();
-    });
-}
-
-
-    const searchInput = document.getElementById('search');
-const hintContainer = document.getElementById('hintContainer');
-
-if (searchInput) {
-    // Khi nhấn Enter
-    searchInput.addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') searchItems();
-    });
-
-    // Khi rời khỏi ô tìm kiếm
-    searchInput.addEventListener('blur', () => {
-        setTimeout(() => {
-            if (hintContainer) {
-                hintContainer.innerHTML = '';
-                hintContainer.style.display = 'none';
-            }
-        }, 200);
-    });
-
-    // Khi nhập vào ô tìm kiếm (dòng 378)
-    searchInput.addEventListener('input', function() {
-        if (this.value.trim() === '') {
-            filterItems('All');
-        } else {
-            showHints();
-        }
-    });
-}
-
-    // Hàm thực hiện tìm kiếm thực tế
-    function searchItems() {
-        const searchTerm = document.getElementById('search').value.toLowerCase();
-        const allContainer = document.getElementById('All');
-        const mousseContainer = document.getElementById('Mousse');
-        const croissantContainer = document.getElementById('Croissant');
-        const drinkContainer = document.getElementById('Drink');
-
-        allContainer.innerHTML = '';
-        mousseContainer.innerHTML = '';
-        croissantContainer.innerHTML = '';
-        drinkContainer.innerHTML = '';
-
-        for (const category in menuItems) {
-            menuItems[category].forEach(item => {
-                if (item.name.toLowerCase().includes(searchTerm)) {
-                    const itemCard = createItemCard(item);
-                    if (category === 'Mousse') mousseContainer.appendChild(itemCard);
-                    else if (category === 'Croissant') croissantContainer.appendChild(itemCard);
-                    else if (category === 'Drink') drinkContainer.appendChild(itemCard);
-                    allContainer.appendChild(itemCard.cloneNode(true));
-                }
-            });
-        }
-
-        hintContainer.innerHTML = '';
-        hintContainer.style.display = 'none';
-    }
 });
-
-window.getStoredUsers = function() {
-    const users = localStorage.getItem('users');
-    return users ? JSON.parse(users) : [];
-};
-

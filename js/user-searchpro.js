@@ -3,7 +3,7 @@ function searchProducts() {
     let filter = searchInput.value.toLowerCase().trim(); 
 
     const TARGET_KEYWORD = "bánh cuốn"; 
-    const TARGET_PAGE = "page-searchpro.html";
+    const TARGET_PAGE = "/Client/page-searchpro.html";
 
     if (filter === TARGET_KEYWORD) {
         window.location.href = TARGET_PAGE;

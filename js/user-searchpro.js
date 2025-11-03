@@ -27,3 +27,49 @@ function searchProducts() {
         }
     }
 }
+
+function openSearchMb() {
+    const searchCenter = document.querySelector('.header-middle-center');
+    if (searchCenter) {
+        searchCenter.classList.add('mobile-search-active');
+        searchCenter.style.display = 'block';
+        const searchInput = document.querySelector('.form-search-input');
+        if (searchInput) {
+            searchInput.focus();
+        }
+    }
+
+    const searchIconClose = document.querySelector('.header-middle-right-item.close');
+    const otherItems = document.querySelectorAll('.header-middle-right-list > .header-middle-right-item'); 
+    
+    otherItems.forEach(item => {
+        if (!item.classList.contains('close')) { 
+            item.style.display = 'none';
+        }
+    });
+
+    if (searchIconClose) {
+        searchIconClose.style.display = 'list-item';
+    }
+}
+
+function closeSearchMb() {
+    const searchCenter = document.querySelector('.header-middle-center');
+    if (searchCenter) {
+        searchCenter.classList.remove('mobile-search-active');
+        searchCenter.style.display = 'none';
+    }
+    
+    const searchIconClose = document.querySelector('.header-middle-right-item.close');
+    const otherItems = document.querySelectorAll('.header-middle-right-list > .header-middle-right-item');
+    
+    otherItems.forEach(item => {
+        if (!item.classList.contains('close')) {
+            item.style.display = 'list-item';
+        }
+    });
+
+    if (searchIconClose) {
+        searchIconClose.style.display = 'none';
+    }
+}

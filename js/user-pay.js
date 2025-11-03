@@ -1,10 +1,9 @@
 function showToast(status, title, message) {
-    // Lưu ý: Đảm bảo có một element với ID là 'successToast' trong HTML
     const toast = document.getElementById('successToast');
 
     if (!toast) {
         console.error("Lỗi: Không tìm thấy phần tử Toast Notification (ID: successToast).");
-        alert(`${title}: ${message}`); // Dùng alert dự phòng nếu không tìm thấy Toast HTML
+        alert(`${title}: ${message}`);
         return;
     }
 
@@ -12,11 +11,10 @@ function showToast(status, title, message) {
     const toastMessage = toast.querySelector('.toast-message');
     const toastIcon = toast.querySelector('.toast-icon');
 
-    // 1. Cập nhật nội dung và kiểu dáng
+    // Cập nhật nội dung và kiểu dáng
     if (toastTitle) toastTitle.textContent = title;
     if (toastMessage) toastMessage.textContent = message;
 
-    // Reset các class và style
     toast.classList.remove('success-toast', 'error-toast', 'show');
     if (toastIcon) toastIcon.classList.remove('fa-check-circle', 'fa-times-circle');
 
@@ -37,15 +35,15 @@ function showToast(status, title, message) {
         }
     }
 
-    // 2. Hiển thị Toast
+    // Hiển thị Toast
     toast.style.display = 'flex';
 
-    // 3. Kích hoạt animation trượt vào
+    // Kích hoạt animation trượt vào
     setTimeout(() => {
         toast.classList.add('show');
     }, 10);
 
-    // 4. Tự động ẩn sau 4 giây
+    // Tự động ẩn sau 4 giây
     setTimeout(() => {
         toast.classList.remove('show');
         setTimeout(() => {
@@ -54,13 +52,12 @@ function showToast(status, title, message) {
     }, 4000);
 }
 
-// Hàm định dạng tiền tệ (Sử dụng chung)
+// Hàm định dạng tiền tệ 
 function formatCurrency(amount) {
     return amount.toLocaleString('vi-VN') + ' đ';
 }
-// >> HÀM KIỂM TRA MỚI: Chỉ chấp nhận số và kiểm tra độ dài tối thiểu <<
 function isNumericAndLengthValid(value, minLength = 10) {
-    const numericRegex = /^\d+$/; // Chỉ chấp nhận ký tự số từ đầu đến cuối chuỗi
+    const numericRegex = /^\d+$/; 
     if (!numericRegex.test(value.trim())) {
         return { isValid: false, message: "chỉ được phép nhập số." };
     }
@@ -109,7 +106,7 @@ function isValidCvv(cvv) {
 
 document.addEventListener('DOMContentLoaded', function () {
     // KHAI BÁO GIÁ TRỊ VÀ PHẦN TỬ CẦN THAO TÁC
-    const SUB_TOTAL = 319000;   // Tiền hàng (Lẩu Thái)
+    const SUB_TOTAL = 319000;   // Tiền hàng 
     const SHIPPING_FEE = 30000; // Phí vận chuyển
     
     // Lấy các phần tử HTML cần dùng
@@ -121,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const totalPriceDisplay = document.querySelector('.total-price'); // Phần tử hiển thị Tổng tiền
     const btn = document.querySelector('.submit-btn');
     
-    // XỬ LÝ HÌNH THỨC GIAO HÀNG (QUAN TRỌNG: TÍNH LẠI TỔNG TIỀN)
+    // XỬ LÝ HÌNH THỨC GIAO HÀNG
     function handleDeliveryOptionChange() {
         const selectedOption = document.querySelector('input[name="delivery_option"]:checked').value;
         let newTotalPrice = SUB_TOTAL; // Giá trị ban đầu là tiền hàng
@@ -137,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
             newTotalPrice = SUB_TOTAL; 
         } else if (selectedOption === 'ship') {
             // GIAO TẬN NƠI
-            shippingFeeArea.style.display = 'flex'; // Hiển thị phí vận chuyển
+            shippingFeeArea.style.display = 'flex'; 
             deliveryDateArea.style.display = 'block';
             deliveryDateInput.setAttribute('required', 'required');
             pickupLocationArea.style.display = 'none';
@@ -183,8 +180,6 @@ document.addEventListener('DOMContentLoaded', function () {
             // Tính ngày tương ứng
             const today = new Date();
             today.setDate(today.getDate() + index); 
-
-            // Gán vào input date (ẩn)
             deliveryDate.value = formatDate(today);
             console.log("Đã chọn ngày giao hàng:", deliveryDate.value);
         });
@@ -196,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function () {
         deliveryDate.value = formatDate(today);
     }
 
-    // XỬ LÝ CẬP NHẬT TRẠNG THÁI NÚT (toggle-btn)
+    // XỬ LÝ CẬP NHẬT TRẠNG THÁI NÚT 
     function updateToggleButtons(selectedId) {
         const buttons = document.querySelectorAll('#delivery_option_buttons .toggle-btn');
         buttons.forEach(button => button.classList.remove('active'));
@@ -207,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelector('#delivery_option_buttons button:last-child').classList.add('active');
         }
     }
-    window.updateToggleButtons = updateToggleButtons; // Gắn ra global scope
+    window.updateToggleButtons = updateToggleButtons; 
 
     // XỬ LÝ PHƯƠNG THỨC THANH TOÁN
     const paymentRadios = document.querySelectorAll('input[name="payment_method"]');
@@ -250,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     autoFillForm(); // chạy ngay khi mở trang
     
-// XỬ LÝ NÚT "ĐẶT HÀNG" (VALIDATION) (ĐÃ SỬA HOÀN TOÀN)
+// XỬ LÝ NÚT "ĐẶT HÀNG" 
 btn.addEventListener('click', function (e) {
     e.preventDefault(); // ngăn reload
 
@@ -260,14 +255,14 @@ btn.addEventListener('click', function (e) {
     const selectedDeliveryOption = document.querySelector('input[name="delivery_option"]:checked').value;
     const selectedPaymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
 
-    // --- 1. VALIDATION THÔNG TIN CƠ BẢN ---
-    // 1.1. KIỂM TRA TÊN NGƯỜI NHẬN
+
+    //KIỂM TRA TÊN NGƯỜI NHẬN
     if (name.value.trim() === "") {
         showToast('error', 'Lỗi nhập liệu', "Vui lòng nhập tên người nhận.");
         return;
     }
 
-    // 1.2. KIỂM TRA SỐ ĐIỆN THOẠI
+    // KIỂM TRA SỐ ĐIỆN THOẠI
     if (phone.value.trim() === "") {
         showToast('error', 'Lỗi nhập liệu', "Vui lòng nhập số điện thoại.");
         return;
@@ -279,7 +274,7 @@ btn.addEventListener('click', function (e) {
         return;
     }
     
-    // 1.3 KIỂM TRA ĐỊA CHỈ
+    //KIỂM TRA ĐỊA CHỈ
     if (selectedDeliveryOption === 'ship') {
         const date = document.querySelector("#delivery_date");
         
@@ -361,7 +356,6 @@ btn.addEventListener('click', function (e) {
     }
     
     // --- THÔNG BÁO THÀNH CÔNG ---
-    // Chỉ chạy đến đây khi tất cả các kiểm tra trên đều hợp lệ
     showToast('success', 'Thành công', "Đặt hàng thành công!");
     });
 });

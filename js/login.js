@@ -30,9 +30,9 @@ if (logo) {
 const wrapper = document.querySelector('.wrapper');
 const loginLink = document.querySelector('.login-link');
 const registerLink = document.querySelector('.register-link');
-const btnPopup = document.querySelectorAll('.btnLogin-popup');   // Nút mở form đăng nhập
-const btnOutPopup = document.querySelectorAll('.btnLogout-popup'); // Nút mở form đăng ký
-let isRegisterForm = false; // Biến theo dõi form đang hiển thị (login hay register)
+const btnPopup = document.querySelectorAll('.btnLogin-popup');   
+const btnOutPopup = document.querySelectorAll('.btnLogout-popup'); 
+let isRegisterForm = false; 
 
 
 // Mở form đăng nhập
@@ -62,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const registerForm = document.querySelector(".form-box.register");
     let isRegisterForm = false;
     
-    // Khi truy cập URL có "#register" → hiển thị form đăng ký
     if (window.location.hash === "#register") {
         wrapper.classList.add("active");
     }
@@ -79,9 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
         wrapper.classList.remove("active");
     });
 
-
-    /* --- XỬ LÝ NGƯỜI DÙNG LOCAL STORAGE --- */
-
     // Lấy danh sách người dùng đã lưu trong localStorage
     function getStoredUsers() {
         const users = localStorage.getItem('users');
@@ -97,9 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function setCurrentUser(user) {
     localStorage.setItem('currentUser', JSON.stringify(user));
 }
-
-
-    // Tạo sẵn 1 user mẫu “Client”
     function initializeUsers() {
         let users = getStoredUsers();
 
@@ -140,9 +133,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 const registerFormEl = document.getElementById('registerForm');
-console.log('Register form:', registerFormEl); // <-- Thêm dòng này
+console.log('Register form:', registerFormEl);
 
-    // ✅ FORM ĐĂNG KÝ — CHỈ CẦN NÀY LÀ ĐỦ
+    // FORM ĐĂNG KÝ 
 if (registerFormEl) {
   registerFormEl.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -191,7 +184,7 @@ if (registerFormEl) {
       confirmPasswordInput.classList.remove('error');
     }
 
-    // ✅ Lưu user mới
+    // Lưu user mới
     users.push({ username, email, password, phone, address, role: 'client' });
     saveUsers(users);
 
@@ -214,7 +207,7 @@ if (registerFormEl) {
     // Kiểm tra trạng thái đăng nhập
 
     function isLoggedIn() {
-        return !!getCurrentUser(); // Trả về true nếu đã đăng nhập
+        return !!getCurrentUser(); 
     }
 
     /* --- XỬ LÝ GIỎ HÀNG (nếu chưa login thì bật form đăng nhập) --- */
@@ -225,7 +218,6 @@ if (registerFormEl) {
                 event.preventDefault();
                 
                 if (!isLoggedIn()) {
-                    // alert('Vui lòng đăng nhập để xem giỏ hàng!');
                 } else {
                     console.log('Đang mở giỏ hàng...');
                 }

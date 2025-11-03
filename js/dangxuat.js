@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ====== Biến chung ======
   const authContainer = document.querySelector(".auth-container");
   const userMenu = document.getElementById("userMenu");
   const trangChu = document.getElementById("trangchu");
@@ -94,9 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// ==========================
-// 👉 CẬP NHẬT THÔNG TIN TÀI KHOẢN
-// ==========================
+// CẬP NHẬT THÔNG TIN TÀI KHOẢN
 function changeInformation() {
   let accounts = JSON.parse(localStorage.getItem("accounts")) || [];
   let currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -123,9 +120,7 @@ function changeInformation() {
   alert("✅ Cập nhật thông tin thành công!");
 }
 
-// ==========================
-// 👉 ĐỔI MẬT KHẨU
-// ==========================
+// ĐỔI MẬT KHẨU
 function changePassword() {
   const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -153,9 +148,7 @@ function changePassword() {
   document.getElementById("password-comfirm-info").value = "";
 }
 
-// ==========================
-// 👉 HIỂN THỊ ĐƠN HÀNG NGƯỜI DÙNG
-// ==========================
+// HIỂN THỊ ĐƠN HÀNG NGƯỜI DÙNG
 function showUserOrders() {
   const ordersSection = document.getElementById("ordersSection");
   const trangChu = document.getElementById("trangchu");

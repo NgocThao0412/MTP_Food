@@ -3895,6 +3895,7 @@ input,textarea{
     text-decoration: none; 
     font-size: 1rem;
     font-weight: bold;
+    width:175px;
 }
 
 .btn-add-more {

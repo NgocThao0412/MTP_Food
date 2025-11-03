@@ -1,7 +1,4 @@
-/* ================================================= */
 /* 1. CSS GỐC VÀ THIẾT LẬP CHUNG (LAYOUT, INPUTS, BUTTONS) */
-/* ================================================= */
-
 .price-manage-section, .import-manage-section {
   margin-top: 30px; padding: 30px; background: #f7f7f7; border-radius: 12px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -79,14 +76,14 @@ note-status {
   text-transform: uppercase;
 }
 
-/* 🟢 TRẠNG THÁI: ĐÃ HOÀN THÀNH (Đồng bộ với màu Success) */
+/* TRẠNG THÁI: ĐÃ HOÀN THÀNH (Đồng bộ với màu Success) */
 .note-status.paid {
   background-color: #d4edda; /* Nền xanh nhạt */
   color: #155724; /* Chữ xanh đậm */
   border: 1px solid #c3e6cb;
 }
 
-/* 🟠 TRẠNG THÁI: CHƯA HOÀN THÀNH / ĐANG CHỜ (Đồng bộ với màu Warning) */
+/* TRẠNG THÁI: CHƯA HOÀN THÀNH / ĐANG CHỜ (Đồng bộ với màu Warning) */
 .note-status.pending {
   background-color: #fff3cd; /* Nền vàng/cam nhạt */
   color: #856404; /* Chữ vàng/cam đậm */

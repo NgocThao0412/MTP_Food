@@ -15,7 +15,7 @@
     padding-bottom: 10px;
 }
 
-/* Nút Thêm Tài Khoản Mới (là thẻ <a>) */
+/* Nút Thêm Tài Khoản Mới */
 .add-button {
     background-color: #e20027; 
     color: white;
@@ -119,7 +119,7 @@ table td:last-child {
     text-decoration: none;
 }
 
-/* Định kiểu cho nút Khởi tạo Mật khẩu (<a>) */
+/* Định kiểu cho nút Khởi tạo Mật khẩu */
 .action-btn.reset-btn { 
     background-color: #ffc107; 
     color: #333; 
@@ -137,9 +137,9 @@ table td:last-child {
 
 /* --- PHẦN MODAL (ĐÃ FIX KHÔNG TỰ TẮT) --- */
 .modal {
-    visibility: hidden;        /* Ẩn thay vì display:none */
-    opacity: 0;                /* Làm mờ */
-    pointer-events: none;      /* Không cho click khi ẩn */
+    visibility: hidden;     
+    opacity: 0;           
+    pointer-events: none;    
     position: fixed;
     z-index: 1000; 
     left: 0;
@@ -149,10 +149,9 @@ table td:last-child {
     background-color: rgba(0,0,0,0.4); 
     justify-content: center;
     align-items: center;
-    transition: all 0.3s ease; /* Hiệu ứng mượt */
+    transition: all 0.3s ease;
 }
 
-/* Khi modal được mở bằng #id:target */
 .modal:target {
     visibility: visible;
     opacity: 1;
@@ -172,7 +171,7 @@ table td:last-child {
     animation: fadeInModal 0.3s ease;
 }
 
-/* Nút đóng (là thẻ <a>) */
+/* Nút đóng */
 .close-btn {
     color: #aaa;
     font-size: 28px;

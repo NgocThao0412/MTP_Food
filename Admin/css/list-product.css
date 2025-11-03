@@ -221,13 +221,13 @@ body,input,button,textarea,pre {
     box-sizing: border-box;
 }
 
-/* ---------- Thanh điều khiển (filter / tìm kiếm / thêm món) ---------- */
+/* Thanh điều khiển (filter / tìm kiếm / thêm món) */
 .admin-control {
   display: flex;
-  flex-wrap: wrap; /* cho phép xuống hàng */
-  gap: 10px; /* khoảng cách giữa các thành phần */
-  align-items: flex-start; /* canh top khi xuống hàng */
-  justify-content: flex-start; /* không ép căng */
+  flex-wrap: wrap; 
+  gap: 10px; 
+  align-items: flex-start;
+  justify-content: flex-start;
   padding: 10px 20px;
   background-color: #fff;
   border-radius: 8px;
@@ -235,17 +235,17 @@ body,input,button,textarea,pre {
 }
 
 .admin-control-left {
-  flex-shrink: 0; /* không co nhỏ */
+  flex-shrink: 0; 
 }
 
 .admin-control-center {
-  flex: 1 1 300px; /* co giãn nhưng tối thiểu 300px */
-  max-width: 400px; /* không quá 400px */
+  flex: 1 1 300px; 
+  max-width: 400px; 
 }
 
 .form-search {
   display: flex;
-  width: 100%; /* chiếm toàn bộ parent */
+  width: 100%; 
 }
 
 .search-btn {
@@ -270,25 +270,25 @@ body,input,button,textarea,pre {
 
 /* Phần bên phải */
 .admin-control-right {
-  flex-shrink: 0; /* không bị thu nhỏ */
+  flex-shrink: 0; 
 }
 
 /* Responsive: màn hình nhỏ hơn 768px */
 @media (max-width: 768px) {
   .admin-control-center {
-    flex: 1 1 100%; /* chiếm cả hàng */
+    flex: 1 1 100%; 
     max-width: 100%;
     margin-top: 10px;
   }
 
   .admin-control-right {
-    flex: 1 1 100%; /* xuống hàng */
+    flex: 1 1 100%; 
     margin-top: 10px;
     justify-content: flex-start;
   }
 }
 
-/* ---------- Danh sách sản phẩm ---------- */
+/* Danh sách sản phẩm */
 .product-list-container {
   display: flex;
   flex-direction: column;
@@ -383,14 +383,14 @@ body,input,button,textarea,pre {
 .buttons-group {
     display: flex;
     align-items: center;
-    gap: 10px; /* Khoảng cách giữa 2 nút edit và delete */
+    gap: 10px; 
 }
 .price {
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--red); 
 }
-/* ---------- Responsive ---------- */
+/* Responsive */
 @media (max-width: 1024px) {
   .product-item {
     flex-direction: column;
@@ -609,12 +609,12 @@ body,input,button,textarea,pre {
 
 .add-product-form {
   display: flex;
-  gap: 30px; /* Khoảng cách giữa 2 cột */
+  gap: 30px; 
 }
 
 .modal-content-left {
   width: 300px;
-  flex-shrink: 0; /* Không cho cột này bị co lại */
+  flex-shrink: 0; 
 }
 
 .modal-content {
@@ -660,8 +660,8 @@ body,input,button,textarea,pre {
   justify-content: center;
   margin-bottom: 15px;
   object-fit: cover; /* Hiển thị ảnh vừa vặn */
-  color: #ccc; /* Màu cho icon placeholder (nếu có) */
-  font-size: 5rem; /* Kích thước icon placeholder */
+  color: #ccc; 
+  font-size: 5rem; 
 }
 
 /* 7. Nút "Chọn hình ảnh" */
@@ -679,7 +679,6 @@ body,input,button,textarea,pre {
 .form-label-file:hover {
   opacity: 0.9;
 }
-/* Ẩn input[type=file] gốc đi */
 .form-group.file input[type="file"] {
   display: none;
 }
@@ -719,7 +718,7 @@ body,input,button,textarea,pre {
   border-radius: 5px;
   font-size: 0.9rem;
   font-family: inherit; /* Dùng font chung của trang */
-  box-sizing: border-box; /* Quan trọng! */
+  box-sizing: border-box; 
 }
 
 
@@ -740,7 +739,7 @@ body,input,button,textarea,pre {
   font-size: 1rem;
   border: none;
 
-  /* !! Đẩy nút qua phải !! */
+  /* Đẩy nút qua phải */
   margin-left: auto;
   margin-top: 10px; /* Tạo khoảng cách với ô mô tả */
 }
@@ -760,11 +759,11 @@ body,input,button,textarea,pre {
     }
 }
 .btn-action.btn-restore {
-  background-color: #28a745; /* Màu xanh lá */
+  background-color: #28a745;
   color: white;
 }
 .btn-action.btn-restore:hover {
-  background-color: #218838; /* Xanh lá đậm hơn */
+  background-color: #218838;
 }
 
 /* Mặc định (Add mode): Ẩn các nút/tiêu đề của Edit */
@@ -773,7 +772,7 @@ body,input,button,textarea,pre {
 }
 /* Hiện các nút/tiêu đề của Add */
 .modal.add-product .add-product-e {
-  display: block; /* (hoặc flex nếu nút của bạn là flex) */
+  display: block; 
 }
 
 /* Khi ở Edit mode: Ẩn Add, Hiện Edit */
@@ -781,23 +780,23 @@ body,input,button,textarea,pre {
   display: none;
 }
 .modal.add-product.edit-mode .edit-product-e {
-  display: block; /* (hoặc flex) */
+  display: block; 
 }
 @media (max-width: 768px) {
   .product-list-section {
-    margin: 0 15px;                  /* Giảm khoảng cách lề */
-    width: 100%;                     /* Đảm bảo không bị lệch */
+    margin: 0 15px;              
+    width: 100%;                 
   }
 
   .product-item {
-    flex-direction: column;          /* Chuyển ảnh và thông tin thành dọc */
+    flex-direction: column;        
     align-items: flex-start;
     gap: 10px;
   }
 
   .product-img {
-    width: 100%;                     /* Ảnh full chiều ngang */
-    height: auto;                    /* Tự co theo tỷ lệ */
+    width: 100%;                
+    height: auto;                   
   }
 
   .product-info {
@@ -820,7 +819,7 @@ body,input,button,textarea,pre {
   }
 }
 
-/* ----- Nhỏ hơn nữa: sửa font và khoảng cách ----- */
+/* Nhỏ hơn nữa: sửa font và khoảng cách */
 @media (max-width: 480px) {
   .product-name {
     font-size: 15px;

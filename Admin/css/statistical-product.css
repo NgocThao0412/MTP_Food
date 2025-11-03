@@ -130,9 +130,8 @@
 
 
 
-/* ================================
-   MAIN CONTENT CHỈNH CHUẨN
-   ================================ */
+
+/* MAIN CONTENT CHỈNH CHUẨN */
 main.content {
   padding: 20px;
   background-color: #fff;
@@ -263,20 +262,19 @@ main.content {
 }
 
 /* BỘ THỐNG KÊ */
-/* order-statistical */
 .order-statistical {
   display: flex;
   gap: 20px;
-  overflow-x: auto;       /* Hiện thanh cuộn ngang khi cần */
-  -webkit-overflow-scrolling: touch; /* Mượt trên mobile */
+  overflow-x: auto;   
+  -webkit-overflow-scrolling: touch; 
   padding-bottom: 10px;
-  scroll-snap-type: x mandatory;    /* Tùy chọn: snap các box khi kéo */
-  flex-wrap: nowrap;      /* Không xuống hàng, scroll ngang */
+  scroll-snap-type: x mandatory;    
+  flex-wrap: nowrap;     
 }
 
 .order-statistical-item {
-  flex: 0 0 32%;          /* 3 cột: 3 x 32% + gap vừa đủ */
-  min-width: 250px;       /* Đảm bảo box không quá nhỏ */
+  flex: 0 0 32%;       
+  min-width: 250px;    
   max-width: 100%;
   background: #fff;
   border-radius: 12px;
@@ -287,7 +285,7 @@ main.content {
   box-shadow: 0px 1px 5px 2px #f1f1f1;
   overflow-wrap: break-word;
   word-break: break-word;
-  scroll-snap-align: start; /* Tùy chọn: snap khi kéo */
+  scroll-snap-align: start; 
 }
 
 .order-statistical-item-icon i{
@@ -411,9 +409,9 @@ table td:last-child {
 }
 /* Bọc table để scroll */
 .table-wrapper {
-  overflow-x: auto;      /* Hiện thanh cuộn ngang khi table rộng */
+  overflow-x: auto;    
   width: 100%;
-  -webkit-overflow-scrolling: touch; /* Mượt trên mobile */
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Table */
@@ -421,7 +419,7 @@ table td:last-child {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 8px;
-  min-width: 700px;      /* Chiều rộng tối thiểu để giữ 5 cột */
+  min-width: 700px;     
 }
 
 /* Header */
@@ -461,7 +459,7 @@ table td:last-child {
   border-radius: 0 8px 8px 0;
 }
 
-/* ========== RESPONSIVE ========== */
+/* RESPONSIVE */
 
 /* Khi màn hình < 1200px: 4 cột */
 @media (max-width: 1200px) {
@@ -490,5 +488,3 @@ table td:last-child {
     min-width: 200px;
   }
 }
-
-/* RESPONSIVE */

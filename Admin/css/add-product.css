@@ -182,3 +182,17 @@ note-status {
     margin-bottom: 8px; 
     display: block; 
 }
+.search-button {
+  margin-top: 10px;
+  height: 40px; /* tăng chiều cao */
+  font-size: 18px; /* giảm nhẹ nếu icon quá to */
+  background-color: rgb(181, 41, 47);
+  color: rgb(240, 237, 237);
+  width: auto; /* thay vì 12%, dùng auto hoặc min-width */
+  min-width: 100px; /* đảm bảo không quá nhỏ */
+  padding: 0 12px; /* thêm padding ngang để icon không bị dính mép */
+  border-radius: 4px;
+  display: flex; /* giúp căn giữa icon */
+  align-items: center;
+  justify-content: center;
+}

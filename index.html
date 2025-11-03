@@ -37,27 +37,32 @@
                 </div>
 
                 <div class="header-middle-center">
-                    <form action="" class="form-search">
+                    <form action="/Client/page-searchpro.html" method="get" class="form-search"> 
                         <span class="search-btn">
-                            <i class="fa-light fa-magnifying-glass"></i>
+                            <button type="submit" style="background: none; border: none; padding: 0;">
+                                <i class="fa-light fa-magnifying-glass"></i>
+                            </button>
                         </span>
-                        <input type="text" class="form-search-input" placeholder="Tìm kiếm món ăn..."
-                            onkeydown="searchProducts(event)">
+                        <input 
+                            type="text" 
+                            class="form-search-input" 
+                            placeholder="Tìm kiếm món ăn..."
+                            name="q" 
+                            >
                     </form>
                 </div>
-
                 <div class="header-middle-right">
-                    <ul class="header-middle-right-list">
-                        <li class="header-middle-right-item dnone open" onclick="openSearchMb()">
-                            <div class="cart-icon-menu">
-                                <i class="fa-light fa-magnifying-glass"></i>
-                            </div>
-                        </li>
-                        <li class="header-middle-right-item close" onclick="closeSearchMb()">
-                            <div class="cart-icon-menu">
-                                <i class="fa-light fa-circle-xmark"></i>
-                            </div>
-                        </li>
+                      <ul class="header-middle-right-list">
+                          <li class="header-middle-right-item dnone open" onclick="openSearchMb()">
+                              <div class="cart-icon-menu">
+                                  <i class="fa-light fa-magnifying-glass"></i>
+                              </div>
+                          </li>
+                          <li class="header-middle-right-item close" onclick="closeSearchMb()">
+                              <div class="cart-icon-menu">
+                                  <i class="fa-light fa-circle-xmark"></i>
+                              </div>
+                          </li>
                         <li class="header-middle-right-item dropdown open">
                             <i class="fa-light fa-user"></i>
                             <div class="auth-container">
@@ -1064,7 +1069,7 @@
     <div class="back-to-top">
         <a href="#"><i class="fa-regular fa-arrow-up"></i></a>
     </div>
-    <script src="/js/user-searchpro.js"></script>
+
 
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js "></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js "></script> -->

@@ -255,7 +255,8 @@ header {
     padding-left: 0;
     border-top-right-radius: 99px;
     border-bottom-right-radius: 99px;
-    width: 500px;;
+    width: 500px;
+    caret-color: #333;
     /* border: 1px solid #e6ecf0;
     background-color: #f5f8fa; */
 }
@@ -1916,6 +1917,7 @@ input[type=number] {
     border-radius: 99px;
     font-weight: 500;
     font-size: 16px;
+    caret-color: #333;
 }
 
 .form-ground-input {

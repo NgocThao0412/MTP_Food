@@ -1,0 +1,324 @@
+
+/* --- 1. KHUNG CHÍNH CỦA MAIN CONTENT --- */
+
+.main-content {
+    flex-grow: 1; /* Quan trọng: Giúp main-content lấp đầy phần còn lại */
+    padding: 30px;
+    background-color: #f8f9fa; /* Màu nền xám nhạt cho admin */
+    
+    /* Giả sử file CSS chung của bạn đã xử lý chiều cao (height) 
+      cho .container. Nếu chưa, bạn có thể cần thêm 2 dòng dưới:
+    */
+    /* height: calc(100vh - H); */ /* H là chiều cao header của bạn */
+    /* overflow-y: auto; */ /* Cho phép cuộn nếu nội dung dài */
+}
+
+.main-content h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #2c3e50; /* Màu chữ tiêu đề đậm */
+}
+
+.main-content h1 i {
+    margin-right: 12px;
+    color: #c0392b; /* Màu đỏ MTP (hoặc màu chính của bạn) */
+}
+
+
+/* --- 2. THANH CÔNG CỤ (TÌM KIẾM, LỌC) --- */
+
+.inventory-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.search-box input[type="text"] {
+    padding: 10px 15px 10px 40px; /* 40px trái để chừa chỗ cho icon */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 300px;
+    font-size: 0.95rem;
+    transition: border-color 0.3s ease;
+}
+
+.search-box input[type="text"]:focus {
+    outline: none;
+    border-color: #c0392b;
+}
+
+.filters {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Khoảng cách giữa các phần tử */
+}
+
+.filters select,
+.btn {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    background-color: #fff;
+    font-family: 'Roboto', sans-serif; /* Đảm bảo đồng bộ font */
+}
+
+.btn {
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #c0392b;
+    color: white;
+    font-weight: 500;
+}
+.btn-primary:hover {
+    background-color: #a93226; /* Màu đậm hơn khi hover */
+}
+
+
+/* --- 3. BẢNG DỮ LIỆU TỒN KHO --- */
+
+.inventory-table-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden; /* Quan trọng: Để bo góc cho bảng */
+}
+
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse; /* Gộp đường viền */
+}
+
+.inventory-table th,
+.inventory-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef; /* Đường kẻ mờ ngăn cách các hàng */
+}
+
+/* Tiêu đề bảng (hàng <thead>) */
+.inventory-table th {
+    background-color: #f8f9fa; /* Nền xám nhạt cho tiêu đề */
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Nội dung bảng (các hàng <tbody>) */
+.inventory-table td {
+    font-size: 0.95rem;
+    vertical-align: middle; /* Căn giữa nội dung theo chiều dọc */
+    color: #333;
+}
+
+/* Hình ảnh sản phẩm trong bảng */
+.inventory-table td img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #eee;
+}
+
+/* Các thẻ trạng thái (Còn hàng, Sắp hết, Hết hàng) */
+.status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: inline-block;
+    white-space: nowrap; /* Ngăn không cho xuống dòng */
+}
+
+.status-in-stock {
+    background-color: #d4edda; /* Nền xanh lá */
+    color: #155724;
+}
+
+.status-low-stock {
+    background-color: #fff3cd; /* Nền vàng */
+    color: #856404;
+}
+
+.status-out-of-stock {
+    background-color: #f8d7da; /* Nền đỏ */
+    color: #721c24;
+}
+
+/* Nút hành động (Sửa, Xoá) */
+.btn-action {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-right: 5px;
+    transition: background-color 0.2s ease;
+}
+.btn-action i {
+    margin-right: 5px;
+}
+
+.btn-edit {
+    background-color: #e0e7ff; /* Nền xanh dương nhạt */
+    color: #3730a3;
+}
+.btn-edit:hover {
+    background-color: #c7d2fe;
+}
+
+.btn-delete {
+    background-color: #fee2e2; /* Nền đỏ nhạt */
+    color: #b91c1c;
+}
+.btn-delete:hover {
+    background-color: #fecaca;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #c0392b; /* Màu tick checkbox */
+}
+
+/* --- 4. KHU VỰC BÁO CÁO (PHẦN MỚI THÊM) --- */
+
+.report-section {
+    margin-top: 40px; /* Tạo khoảng cách với bảng tồn kho ở trên */
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.report-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 10px;
+}
+
+.report-section h2 i {
+    margin-right: 10px;
+    color: #16a085; /* Màu xanh lá cho báo cáo */
+}
+
+/* Thanh điều khiển báo cáo (chọn ngày) */
+.report-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Khoảng cách giữa các mục */
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Cho phép xuống dòng nếu không đủ chỗ */
+}
+
+.date-picker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.date-picker label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #555;
+}
+
+.date-picker input[type="date"] {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Nút "Xem báo cáo" (dùng lại class .btn nhưng thêm class phụ) */
+.btn-secondary {
+    background-color: #3498db; /* Màu xanh dương */
+    color: white;
+    font-weight: 500;
+}
+.btn-secondary:hover {
+    background-color: #2980b9;
+}
+.btn-secondary i {
+    margin-right: 5px;
+}
+
+
+/* Bảng kết quả báo cáo */
+.report-table-container {
+    overflow: hidden;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+}
+
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.report-table th,
+.report-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* Tiêu đề bảng báo cáo */
+.report-table th {
+    background-color: #f8f9fa;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #555;
+    text-transform: uppercase;
+}
+
+/* Nội dung bảng báo cáo */
+.report-table td {
+    font-size: 0.95rem;
+}
+
+/* Căn phải cho các cột số liệu */
+.report-table th:nth-child(3),
+.report-table td:nth-child(3),
+.report-table th:nth-child(4),
+.report-table td:nth-child(4),
+.report-table th:nth-child(5),
+.report-table td:nth-child(5) {
+    text-align: right;
+}
+
+/* Xoá đường viền của hàng cuối cùng */
+.report-table tr:last-child td {
+    border-bottom: none;
+}

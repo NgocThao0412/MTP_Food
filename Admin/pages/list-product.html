@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../Img/favicon.png" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/manager-user.css" />
+    <link rel="stylesheet" href="../css/list-product.css" />
+    <link
+      rel="stylesheet"
+      href="../font/font-awesome-pro-v6-6.2.0/css/all.min.css"
+    />
+    <title>Admin</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <button class="menu-icon-btn">
+        <div class="menu-icon">
+          <i class="fa-regular fa-bars"></i>
+        </div>
+      </button>
+    </header>
+
+    <div class="container">
+      <aside class="sidebar open">
+        <div class="top-sidebar">
+          <a href="#" class="channel-logo">
+            <img src="../Img/favicon.png" alt="Channel Logo" />
+          </a>
+          <div class="hidden-sidebar your-channel">
+            <img
+              src="../Img/admin/mtp-food-title.png"
+              style="height: 30px"
+              alt=""
+            />
+          </div>
+        </div>
+
+        <div class="middle-sidebar">
+          <ul class="sidebar-list">
+            <li class="sidebar-list-item tab-content">
+              <a href="./manager-user.html" class="sidebar-link active">
+                <div class="sidebar-icon"><i class="fa-light fa-house"></i></div>
+                <div class="hidden-sidebar">Trang tổng quan</div>
+              </a>
+            </li>
+
+            <li class="sidebar-list-item tab-content">
+              <a
+                href="javascript:void(0)"
+                class="sidebar-link"
+                onclick="toggleSubmenu(this,'product-submenu')"
+              >
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-cart-shopping"></i>
+                </div>
+                <div class="hidden-sidebar">Sản phẩm</div>
+                <i class="fa-light fa-chevron-right menu-arrow"></i>
+              </a>
+              <ul
+                class="submenu"
+                id="product-submenu"
+                style="display: none; margin-left: 20px"
+              >
+                <li class="sidebar-list-item">
+                  <a href="./list-product.html" class="sidebar-link">
+                    <div class="sidebar-icon">
+                      <i class="fa-light fa-box-open"></i>
+                    </div>
+                    <div class="hidden-sidebar">Thông tin sản phẩm</div>
+                  </a>
+                </li>
+                <li class="sidebar-list-item">
+                  <a href="./price-manage.html" class="sidebar-link">
+                    <div class="sidebar-icon">
+                      <i class="fa-light fa-dollar-sign"></i>
+                    </div>
+                    <div class="hidden-sidebar">Quản lý giá</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="sidebar-list-item tab-content">
+              <a href="./add-product.html" class="sidebar-link">
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-boxes-stacked"></i>
+                </div>
+                <div class="hidden-sidebar">Nhập hàng</div>
+              </a>
+            </li>
+
+            <li class="sidebar-list-item tab-content">
+              <a href="./order-manage.html" class="sidebar-link">
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-basket-shopping"></i>
+                </div>
+                <div class="hidden-sidebar">Đơn hàng</div>
+              </a>
+            </li>
+
+            <li class="sidebar-list-item tab-content">
+              <a href="./customers.html" class="sidebar-link">
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-users"></i>
+                </div>
+                <div class="hidden-sidebar">Khách hàng</div>
+              </a>
+            </li>
+            <li class="sidebar-list-item">
+              <a href="./inventory.html" class="sidebar-link">
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-warehouse"></i>
+                </div>
+                <div class="hidden-sidebar">Quản lý tồn kho</div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="bottom-sidebar">
+          <ul class="sidebar-list">
+            <li class="sidebar-list-item user-logout">
+              <a href="../index.html" class="sidebar-link">
+                <div class="sidebar-icon">
+                  <i class="fa-thin fa-circle-chevron-left"></i>
+                </div>
+                <div class="hidden-sidebar">Trang chủ</div>
+              </a>
+            </li>
+            <li class="sidebar-list-item user-logout">
+              <a href="#" class="sidebar-link">
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-circle-user"></i>
+                </div>
+                <span class="hidden-sidebar">Admin</span>
+              </a>
+            </li>
+            <li class="sidebar-list-item user-logout">
+              <a href="#" class="sidebar-link" id="logout-acc">
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-arrow-right-from-bracket"></i>
+                </div>
+                <div class="hidden-sidebar">Đăng xuất</div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <main>
+        <section class="product-list-section">
+          <div class="admin-control">
+            <div class="admin-control-left">
+              <select>
+                <option>Tất cả</option>
+                <option>Món chay</option>
+                <option>Món mặn</option>
+                <option>Món ăn vặt</option>
+                <option>Món tráng miệng</option>
+                <option>Nước uống</option>
+              </select>
+            </div>
+
+            <div class="admin-control-center">
+              <form class="form-search">
+                <span class="search-btn"
+                  ><i class="fa-light fa-magnifying-glass"></i
+                ></span>
+                <input
+                  type="text"
+                  class="form-search-input"
+                  placeholder="Tìm kiếm tên món..."
+                />
+              </form>
+            </div>
+
+            <div class="admin-control-right">
+              <button class="btn-control-large" id="btn-add-category">
+                <i class="fa-light fa-plus"></i> Thêm thể loại
+              </button>
+              <button class="btn-control-large" id="btn-add-product">
+                <i class="fa-light fa-plus"></i> Thêm món mới
+              </button>
+            </div>
+          </div>
+
+          <div class="product-list-container">
+            <div class="product-item" data-status="dang-ban">
+              <img
+                src="../Img/Món mặn/bot-chien.jpg"
+                alt="Bột Chiên"
+                class="product-img"
+              />
+              <div class="product-info">
+                <h3 class="product-name">Bột Chiên</h3>
+                <p class="product-desc">
+                  Bột chiên giòn rụm, ăn cùng với trứng và đu đủ bào, chấm cùng
+                  nước tương pha chua ngọt. Món ăn vặt thơm ngon đặc trưng của
+                  Sài Gòn.
+                </p>
+                <span class="product-category">Món mặn</span>
+                <span class="product-status status-active"> Đang bán</span>
+              </div>
+              <div class="product-actions">
+                <span class="price">59.000 đ</span>
+                <div class="buttons-group">
+                  <button class="btn-action btn-edit" title="Chỉnh sửa">
+                    <i class="fa-light fa-pen"></i>
+                  </button>
+                  <button class="btn-action btn-delete" title="Xóa">
+                    <i class="fa-light fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-item" data-status="dang-ban">
+              <img
+                src="../Img/Món chay/nam-dui-ga-chay-toi.jpeg"
+                alt="Nấm Đùi Gà Chay Tỏi"
+                class="product-img"
+              />
+              <div class="product-info">
+                <h3 class="product-name">Nấm Đùi Gà Chay Tỏi</h3>
+                <p class="product-desc">
+                  Nấm đùi gà cháy tỏi là món ăn đơn giản nhưng đầy mê hoặc. Những
+                  cây nấm tươi được cắt lát vừa phải, áp chảo đến khi lớp ngoài
+                  xém nhẹ, tỏa mùi thơm đặc trưng. Tỏi được phi vàng, giòn rụm,
+                  rắc đều lên mặt nấm, tạo nên sự kết hợp hài hòa giữa vị ngọt
+                  thanh của nấm và vị nồng đậm của tỏi. Mỗi miếng nấm như thấm
+                  đẫm hương vị, mềm bên trong, giòn nhẹ bên ngoài, khiến người
+                  ăn cứ muốn gắp thêm lần nữa. Món ăn này không chỉ ngon miệng
+                  mà còn mang lại cảm giác ấm cúng, như một lời mời gọi thân
+                  quen từ gian bếp Sài Gòn.
+                </p>
+                <span class="product-category">Món chay</span>
+                <span class="product-status status-active"> Đang bán</span>
+              </div>
+              <div class="product-actions">
+                <span class="price">79.000 đ</span>
+                <div class="buttons-group">
+                  <button class="btn-action btn-edit" title="Chỉnh sửa">
+                    <i class="fa-light fa-pen"></i>
+                  </button>
+                  <button class="btn-action btn-delete" title="Xóa">
+                    <i class="fa-light fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-item" data-status="dang-ban">
+              <img
+                src="../Img/Món ăn vặt/banh-trang-tron.jpg"
+                alt="Bánh Tráng Trộn"
+                class="product-img"
+              />
+              <div class="product-info">
+                <h3 class="product-name">Bánh Tráng Trộn</h3>
+                <p class="product-desc">
+                  Bánh tráng trộn thêm ngon, gồm bánh tráng cắt sợi dai mềm, khô
+                  bò cay ngọt, trứng cút béo bùi, xoài xanh chua nhẹ, rau răm
+                  thơm nồng, đậu phộng giòn tan và hành phi vàng ruộm. Trộn đều
+                  với sa tế, nước tắc, muối tôm đậm vị Việt, khiến từng miếng
+                  bánh vừa cay vừa chua, thơm ngon khó cưỡng, ăn là ghiền.
+                </p>
+                <span class="product-category">Món ăn vặt</span>
+                <span class="product-status status-active"> Đang bán</span>
+              </div>
+              <div class="product-actions">
+                <span class="price">29.000 đ</span>
+                <div class="buttons-group">
+                  <button class="btn-action btn-edit" title="Chỉnh sửa">
+                    <i class="fa-light fa-pen"></i>
+                  </button>
+                  <button class="btn-action btn-delete" title="Xóa">
+                    <i class="fa-light fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-item" data-status="dang-ban">
+              <img
+                src="../Img/Nước uống/tra-dao-chanh-sa.jpg"
+                alt="Trà Đào Chanh Sả"
+                class="product-img"
+              />
+              <div class="product-info">
+                <h3 class="product-name">Trà Đào Chanh Sả</h3>
+                <p class="product-desc">
+                  Trà đào chanh sả là thức uống mát lạnh, thơm dịu, đánh thức mọi
+                  giác quan. Vị đào ngọt thanh hòa quyện cùng chanh tươi và sả
+                  đập dập, tạo nên hương thơm đặc trưng, vừa sảng khoái vừa dễ
+                  chịu. Uống một ngụm, cảm nhận vị chua nhẹ, thơm mát lan tỏa –
+                  như một làn gió giữa trưa hè oi ả.
+                </p>
+                <span class="product-category">Nước uống</span>
+                <span class="product-status status-active"> Đang bán</span>
+              </div>
+              <div class="product-actions">
+                <span class="price">39.000 đ</span>
+                <div class="buttons-group">
+                  <button class="btn-action btn-edit" title="Chỉnh sửa">
+                    <i class="fa-light fa-pen"></i>
+                  </button>
+                  <button class="btn-action btn-delete" title="Xóa">
+                    <i class="fa-light fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-item" data-status="dang-ban">
+              <img
+                src="../Img/Món chay/nem-chay.png"
+                alt="Nem chay"
+                class="product-img"
+              />
+              <div class="product-info">
+                <h3 class="product-name">Nem chay</h3>
+                <p class="product-desc">
+                  Nem chay là sự kết hợp tinh tế giữa lớp vỏ bánh mỏng mịn và
+                  phần nhân rau củ được chế biến khéo léo. Nhân bên trong gồm
+                  miến, nấm mèo, cà rốt, và đậu hũ được xào vừa chín tới, giữ
+                  trọn vị ngọt tự nhiên. Khi cuốn lại, từng chiếc nem được chiên
+                  vàng giòn rụm, tỏa hương thơm nhẹ nhàng của hành phi và tiêu.
+                  Ăn kèm với rau sống và nước chấm chua ngọt, món nem chay mang
+                  đến cảm giác thanh đạm nhưng vẫn đậm đà, khiến thực khách khó
+                  lòng quên được. Một lựa chọn lý tưởng cho những ai yêu thích sự
+                  nhẹ nhàng trong ẩm thực nhưng vẫn muốn trải nghiệm trọn vẹn
+                  hương vị.
+                </p>
+                <span class="product-category">Món chay</span>
+                <span class="product-status status-active"> Đang bán</span>
+              </div>
+              <div class="product-actions">
+                <span class="price">69.000 đ</span>
+                <div class="buttons-group">
+                  <button class="btn-action btn-edit" title="Chỉnh sửa">
+                    <i class="fa-light fa-pen"></i>
+                  </button>
+                  <button class="btn-action btn-delete" title="Xóa">
+                    <i class="fa-light fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-item" data-status="dang-ban">
+              <img
+                src="../Img/Món khác/mam-com-Viet.jpg"
+                alt="Mâm cơm Việt"
+                class="product-img"
+              />
+              <div class="product-info">
+                <h3 class="product-name">Mâm cơm Việt</h3>
+                <p class="product-desc">
+                  Mâm cơm Việt là sự giao hòa giữa hương vị truyền thống và sự ấm
+                  cúng gia đình. Bắt đầu với tô canh rau củ thanh đạm, tiếp nối
+                  bằng đĩa đậu que xào giòn rụm, rắc thêm đậu phộng và hành lá.
+                  Nồi kho đất đậm đà, thơm lừng mùi tiêu và nước màu, ăn kèm cơm
+                  trắng dẻo thơm. Bên cạnh là mì xào tôm đầy màu sắc, giòn ngọt
+                  từ rau củ. Nem rán vàng ruộm, cuốn cùng rau sống và nước chấm
+                  chua cay. Tất cả hòa quyện trong một bàn ăn đầy đủ sắc - hương
+                  - vị, như lời mời gọi thân thương từ gian bếp Việt.
+                </p>
+                <span class="product-category">Món khác</span>
+                <span class="product-status status-active"> Tạm hết</span>
+              </div>
+              <div class="product-actions">
+                <span class="price">799.000 đ</span>
+                <div class="buttons-group">
+                  <button class="btn-action btn-edit" title="Chỉnh sửa">
+                    <i class="fa-light fa-pen"></i>
+                  </button>
+                  <button class="btn-action btn-delete" title="Xóa">
+                    <i class="fa-light fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-item" data-status="tam-het">
+              <img
+                src="../Img/Món mặn/ga-luoc.jpg"
+                alt="Gà luộc"
+                class="product-img"
+              />
+              <div class="product-info">
+                <h3 class="product-name">Gà luộc</h3>
+                <p class="product-desc">
+                  Gà luộc thêm ngon, gồm từng miếng gà chặt vừa ăn, da vàng óng,
+                  thịt mềm ngọt, ăn kèm rau răm, muối tiêu chanh và dưa leo. Chấm
+                  muối tiêu pha chua cay đậm vị Việt, khiến từng miếng gà thêm
+                  đậm đà, khó quên.
+                </p>
+                <span class="product-category">Món mặn</span>
+                <span class="product-status status-warning"> Tạm hết</span>
+              </div>
+              <div class="product-actions">
+                <span class="price">219.000 đ</span>
+                <div class="buttons-group">
+                  <button class="btn-action btn-edit" title="Chỉnh sửa">
+                    <i class="fa-light fa-pen"></i>
+                  </button>
+                  <button class="btn-action btn-delete" title="Xóa">
+                    <i class="fa-light fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-item" data-status="ngung-ban">
+              <img
+                src="../Img/Món mặn/goi-cuon.jpg"
+                alt="Gỏi cuốn"
+                class="product-img"
+              />
+              <div class="product-info">
+                <h3 class="product-name">Gỏi cuốn</h3>
+                <p class="product-desc">
+                  Gỏi cuốn là món ăn nổi tiếng của ẩm thực Việt Nam, được làm từ
+                  bánh tráng cuốn bên ngoài và nhân bên trong gồm tôm, thịt heo,
+                  rau sống và bún. Món ăn này thường được ăn kèm với nước chấm
+                  đặc biệt, mang đến hương vị tươi ngon, thanh mát. Gỏi cuốn
+                  không chỉ là món ăn ngon mà còn rất bổ dưỡng, thích hợp cho
+                  những ai yêu thích sự nhẹ nhàng, thanh đạm trong ẩm thực.
+                </p>
+                <span class="product-category">Món mặn</span>
+                <span class="product-status status-active"> Ngừng bán</span>
+              </div>
+              <div class="product-actions">
+                <span class="price">59.000 đ</span>
+                <div class="buttons-group">
+                  <button class="btn-action btn-edit" title="Chỉnh sửa">
+                    <i class="fa-light fa-pen"></i>
+                  </button>
+                  <button class="btn-action btn-delete" title="Xóa">
+                    <i class="fa-light fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-item" data-status="ngung-ban">
+              <img
+                src="../Img/Món tráng miệng/che-thai.jpg"
+                alt="Chè thái"
+                class="product-img"
+              />
+              <div class="product-info">
+                <h3 class="product-name">Chè thái</h3>
+                <p class="product-desc">
+                  Chè Thái mát lạnh lạnh với nhiều loại trái cây tươi, thạch
+                  giòn, mít thơm, nhãn mọng và sầu riêng béo ngậy. Hòa quyện cùng
+                  nước cốt dừa ngọt dịu, giải nhiệt tuyệt vời.
+                </p>
+                <span class="product-category">Món tráng miệng</span>
+                <span class="product-status status-inactive"> Ngừng bán</span>
+              </div>
+              <div class="product-actions">
+                <span class="price">69.000 đ</span>
+                <div class="buttons-group">
+                  <button class="btn-action btn-edit" title="Chỉnh sửa">
+                    <i class="fa-light fa-pen"></i>
+                  </button>
+                  <button class="btn-action btn-delete" title="Xóa">
+                    <i class="fa-light fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="page-nav-list"></ul>
+
+          <div class="modal add-product">
+            <div class="modal-container">
+              <h3 class="modal-container-title add-product-e">
+                THÊM MỚI SẢN PHẨM
+              </h3>
+              <h3 class="modal-container-title edit-product-e">
+                CHỈNH SỬA SẢN PHẨM
+              </h3>
+              <button class="modal-close product-form">
+                <i class="fa-regular fa-xmark"></i>
+              </button>
+
+              <div class="modal-content">
+                <form action="" class="add-product-form">
+                  <div class="modal-content-left">
+                    <img
+                      src="../Img/blank-image.png"
+                      alt=""
+                      class="upload-image-preview"
+                    />
+                    <div class="form-group file">
+                      <label for="up-hinh-anh" class="form-label-file">
+                        <i class="fa-regular fa-cloud-arrow-up"></i>Chọn hình
+                        ảnh
+                      </label>
+                      <input
+                        accept="image/jpeg, image/png, image/jpg"
+                        id="up-hinh-anh"
+                        name="up-hinh-anh"
+                        type="file"
+                        class="form-control"
+                        onchange="uploadImage(this)"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="modal-content-right">
+                    <div class="form-group">
+                      <label for="ma-sp" class="form-label">Mã sản phẩm</label>
+                      <input
+                        id="ma-sp"
+                        name="ma-sp"
+                        type="text"
+                        placeholder="Tự động hoặc nhập mã"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="ten-mon" class="form-label"
+                        >Tên sản phẩm</label
+                      >
+                      <input
+                        id="ten-mon"
+                        name="ten-mon"
+                        type="text"
+                        placeholder="Nhập tên món"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="chon-loai" class="form-label"
+                        >Loại sản phẩm</label
+                      >
+                      <select
+                        name="category"
+                        id="chon-loai"
+                        class="form-control"
+                      >
+                        <option>-- Chọn loại --</option>
+                        <option>Món chay</option>
+                        <option>Món mặn</option>
+                        <option>Món lẩu</option>
+                        <option>Món ăn vặt</option>
+                        <option>Món tráng miệng</option>
+                        <option>Nước uống</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="mo-ta" class="form-label">Mô tả</label>
+                      <textarea
+                        id="mo-ta"
+                        placeholder="Nhập mô tả sản phẩm..."
+                        class="form-control"
+                      ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="don-vi" class="form-label"
+                        >Đơn vị tính</label
+                      >
+                      <input
+                        id="don-vi"
+                        name="don-vi"
+                        type="text"
+                        placeholder="VD: phần, ly, tô..."
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="so-luong" class="form-label"
+                        >Số lượng tồn</label
+                      >
+                      <input
+                        id="so-luong"
+                        name="so-luong"
+                        type="number"
+                        placeholder="Nhập số lượng"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="gia-ban" class="form-label"
+                        >Giá bán đề xuất</label
+                      >
+                      <input
+                        id="gia-ban"
+                        name="gia-ban"
+                        type="number"
+                        placeholder="Nhập giá bán"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="loi-nhuan" class="form-label"
+                        >Tỉ lệ lợi nhuận mong muốn (%)</label
+                      >
+                      <input
+                        id="loi-nhuan"
+                        name="loi-nhuan"
+                        type="number"
+                        placeholder="VD: 20"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="nha-cung-cap" class="form-label"
+                        >Nhà cung cấp</label
+                      >
+                      <input
+                        id="nha-cung-cap"
+                        name="nha-cung-cap"
+                        type="text"
+                        placeholder="Nhập tên hoặc mã NCC"
+                        class="form-control"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="hien-trang" class="form-label"
+                        >Hiện trạng</label
+                      >
+                      <select
+                        id="hien-trang"
+                        name="hien-trang"
+                        class="form-control"
+                      >
+                        <option value="dang-ban">Đang bán</option>
+                        <option value="tam-het">Tạm hết</option>
+                        <option value="ngung-ban">Ngừng bán</option>
+                      </select>
+                    </div>
+
+                    <button
+                      class="form-submit btn-add-product-form add-product-e"
+                      id="add-product-button"
+                    >
+                      <i class="fa-regular fa-plus"></i>
+                      <span>THÊM MỚI</span>
+                    </button>
+
+                    <button
+                      class="form-submit btn-update-product-form edit-product-e"
+                      id="update-product-button"
+                    >
+                      <i class="fa-light fa-pencil"></i>
+                      <span>LƯU THAY ĐỔI</span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal category-modal" id="modal-category">
+            <div class="modal-container small">
+              <h3 class="modal-container-title">Thêm thể loại</h3>
+              <button class="modal-close" id="close-category-modal">
+                <i class="fa-regular fa-xmark"></i>
+              </button>
+
+              <div class="modal-content category-modal-content">
+                <form
+                  id="form-category"
+                  action="javascript:void(0)"
+                  class="category-form"
+                >
+                  <div class="form-group">
+                    <label for="cat-code" class="form-label">Mã loại</label>
+                    <input
+                      id="cat-code"
+                      class="form-control"
+                      disabled
+                      placeholder="Tự động"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="cat-name" class="form-label">Tên loại</label>
+                    <input
+                      id="cat-name"
+                      class="form-control"
+                      placeholder="VD: Món chay"
+                      required
+                    />
+                  </div>
+
+                  <div class="category-modal-buttons">
+                    <button
+                      type="button"
+                      id="cancel-category"
+                      class="btn-secondary"
+                    >
+                      <i class="fa-regular fa-xmark"></i> Đóng
+                    </button>
+                    <button type="submit" id="save-category" class="btn-primary">
+                      <i class="fa-regular fa-floppy-disk"></i> Lưu
+                    </button>
+                  </div>
+                </form>
+
+                <div class="category-list-section">
+                  <h4 class="list-title">Danh sách thể loại</h4>
+                  <div class="category-list-wrapper">
+                    <ul id="category-list" class="category-list"></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div id="toast"></div>
+      <script src="../js/price-manage.js"></script>
+      <script src="../js/list-product.js"></script>
+    </div>
+  </body>
+</html>

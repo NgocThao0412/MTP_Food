@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../Img/favicon.png" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/manager-user.css" />
+    <link rel="stylesheet" href="../css/inventory.css" />
+    <link
+      rel="stylesheet"
+      href="../font/font-awesome-pro-v6-6.2.0/css/all.min.css"
+    />
+    <title>Admin</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <button class="menu-icon-btn">
+        <div class="menu-icon">
+          <i class="fa-regular fa-bars"></i>
+        </div>
+      </button>
+    </header>
+
+    <div class="container">
+      <aside class="sidebar open">
+        <div class="top-sidebar">
+          <a href="#" class="channel-logo">
+            <img src="../Img/favicon.png" alt="Channel Logo" />
+          </a>
+          <div class="hidden-sidebar your-channel">
+            <img
+              src="../Img/admin/mtp-food-title.png"
+              style="height: 30px"
+              alt=""
+            />
+          </div>
+        </div>
+
+        <div class="middle-sidebar">
+          <ul class="sidebar-list">
+            <li class="sidebar-list-item tab-content">
+              <a href="./manager-user.html" class="sidebar-link active">
+                <div class="sidebar-icon"><i class="fa-light fa-house"></i></div>
+                <div class="hidden-sidebar">Trang tổng quan</div>
+              </a>
+            </li>
+
+            <li class="sidebar-list-item tab-content">
+              <a
+                href="javascript:void(0)"
+                class="sidebar-link"
+                onclick="toggleSubmenu(this,'product-submenu')"
+              >
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-cart-shopping"></i>
+                </div>
+                <div class="hidden-sidebar">Sản phẩm</div>
+                <i class="fa-light fa-chevron-right menu-arrow"></i>
+              </a>
+              <ul
+                class="submenu"
+                id="product-submenu"
+                style="display: none; margin-left: 20px"
+              >
+                <li class="sidebar-list-item">
+                  <a href="./list-product.html" class="sidebar-link">
+                    <div class="sidebar-icon">
+                      <i class="fa-light fa-box-open"></i>
+                    </div>
+                    <div class="hidden-sidebar">Thông tin sản phẩm</div>
+                  </a>
+                </li>
+                <li class="sidebar-list-item">
+                  <a href="./price-manage.html" class="sidebar-link">
+                    <div class="sidebar-icon">
+                      <i class="fa-light fa-dollar-sign"></i>
+                    </div>
+                    <div class="hidden-sidebar">Quản lý giá</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="sidebar-list-item tab-content">
+              <a href="./add-product.html" class="sidebar-link">
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-boxes-stacked"></i>
+                </div>
+                <div class="hidden-sidebar">Nhập hàng</div>
+              </a>
+            </li>
+
+            <li class="sidebar-list-item tab-content">
+              <a href="./order-manage.html" class="sidebar-link">
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-basket-shopping"></i>
+                </div>
+                <div class="hidden-sidebar">Đơn hàng</div>
+              </a>
+            </li>
+
+            <li class="sidebar-list-item tab-content">
+              <a href="./customers.html" class="sidebar-link">
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-users"></i>
+                </div>
+                <div class="hidden-sidebar">Khách hàng</div>
+              </a>
+            </li>
+                 <li class="sidebar-list-item">
+                  <a href="./inventory.html" class="sidebar-link">
+                    <div class="sidebar-icon">
+                      <i class="fa-light fa-warehouse"></i>
+                    </div>
+                    <div class="hidden-sidebar">Quản lý tồn kho</div>
+                  </a>
+                </li>
+          </ul>
+        </div>
+      <div class="bottom-sidebar">
+          <ul class="sidebar-list">
+            <li class="sidebar-list-item user-logout">
+              <a href="../index.html" class="sidebar-link">
+                <div class="sidebar-icon">
+                  <i class="fa-thin fa-circle-chevron-left"></i>
+                </div>
+                <div class="hidden-sidebar">Trang chủ</div>
+              </a>
+            </li>
+            <li class="sidebar-list-item user-logout">
+              <a href="#" class="sidebar-link">
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-circle-user"></i>
+                </div>
+                <span class="hidden-sidebar">Admin</span>
+              </a>
+            </li>
+            <li class="sidebar-list-item user-logout">
+              <a href="#" class="sidebar-link" id="logout-acc">
+                <div class="sidebar-icon">
+                  <i class="fa-light fa-arrow-right-from-bracket"></i>
+                </div>
+                <div class="hidden-sidebar">Đăng xuất</div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+      
+      
+      <main class="main-content">
+    <h1><i class="fas fa-warehouse"></i> Quản lý tồn kho</h1>
+    <div class="inventory-controls">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Tìm kiếm sản phẩm (tên, SKU...)" />
+      </div>
+      <div class="filters">
+        <select name="category-filter">
+            <option value="">Lọc theo loại sản phẩm</option>
+            <option value="mon-chay">Món chay</option>
+            <option value="mon-mặn">Món mặn</option>
+            <option value="mon-lẩu">Món lẩu</option>
+            <option value="mon-an-vat">Món ăn vặt</option>
+            <option value="mon-trang-mieng">Món tráng miệng</option>
+            <option value="nuoc-uong">Nước uống</option>
+            <option value="mon-khac">Món khác</option>
+          </select>
+        <select name="status-filter">
+          <option value="">Lọc theo trạng thái</option>
+          <option value="in-stock">Còn hàng</option>
+          <option value="low-stock">Sắp hết</option>
+          <option value="out-of-stock">Hết hàng</option>
+        </select>
+        <button class="btn btn-primary">Thêm sản phẩm</button>
+      </div>
+    </div>
+
+    <div class="inventory-table-container">
+      <table class="inventory-table">
+        <thead>
+          <tr>
+            <th>Check</th>
+            <th>Mã SKU</th>
+            <th>Hình ảnh</th>
+            <th>Tên sản phẩm</th>
+            <th>Số lượng tồn</th>
+            <th>Tình trạng</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="checkbox" class="row-select" /></td>
+            <td>SP001</td>
+            <td>
+              <img
+                src="../Img/Món mặn/bot-chien.jpg"
+                alt="Sản phẩm 1"
+              />
+            </td>
+            <td>Bột chiên</td>
+            <td>120</td>
+            <td><span class="status status-in-stock">Còn hàng</span></td>
+            <td>
+              <button class="btn-action btn-edit">
+                <i class="fas fa-pencil-alt"></i> Sửa
+              </button>
+              <button class="btn-action btn-delete">
+                <i class="fas fa-trash"></i> Xoá
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" class="row-select" /></td>
+            <td>SP002</td>
+            <td>
+              <img
+                src="../Img/Món chay/nem-chay.png"
+                alt="Sản phẩm 2"
+              />
+            </td>
+            <td>Nem chay</td>
+            <td>15</td>
+            <td><span class="status status-low-stock">Sắp hết</span></td>
+            <td>
+              <button class="btn-action btn-edit">
+                <i class="fas fa-pencil-alt"></i> Sửa
+              </button>
+              <button class="btn-action btn-delete">
+                <i class="fas fa-trash"></i> Xoá
+              </button>
+            </td>
+          </tr>
+          </tbody>
+      </table>
+    </div>
+
+    <div class="report-section">
+        <h2><i class="fas fa-chart-pie"></i> Báo cáo Nhập - Xuất - Tồn</h2>
+        
+        <div class="report-controls">
+            <div class="date-picker">
+                <label for="date-from">Từ ngày:</label>
+                <input type="date" id="date-from" name="date-from">
+            </div>
+            <div class="date-picker">
+                <label for="date-to">Đến ngày:</label>
+                <input type="date" id="date-to" name="date-to">
+            </div>
+            <button class="btn btn-secondary"><i class="fas fa-eye"></i> Xem báo cáo</button>
+        </div>
+
+        <div class="report-table-container">
+            <table class="report-table">
+                <thead>
+                    <tr>
+                        <th>Mã SKU</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Tổng nhập</th>
+                        <th>Tổng xuất</th>
+                        <th>Tồn cuối kỳ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>SP001</td>
+                        <td>Bột chiên</td>
+                        <td>500</td>
+                        <td>380</td>
+                        <td>120</td>
+                    </tr>
+                    <tr>
+                        <td>SP002</td>
+                        <td>Nem chay</td>
+                        <td>100</td>
+                        <td>85</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>SP003</td>
+                        <td>Bánh tráng trộn</td>
+                        <td>200</td>
+                        <td>115</td>
+                        <td>85</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </main>
+      </div>
+    <div id="toast"></div>
+    <script src="../js/price-manage.js"></script>
+  </body>
+</html>

@@ -1,0 +1,256 @@
+.customer-management-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Nút Thêm Tài Khoản Mới */
+.add-button {
+    background-color: #e20027; 
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.add-button:hover {
+    background-color: #c90022;
+}
+
+.customer-table-section {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.action-bar-customer {
+    margin-bottom: 15px; 
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    min-width: 1000px;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+table thead th {
+    background: #B5292F;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+    border: none;
+    white-space: nowrap;
+}
+
+table tbody tr {
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+table tbody tr:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+table td {
+    padding: 12px 10px;
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+}
+
+table td:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+table td:last-child {
+    white-space: nowrap;
+    border-radius: 0 10px 10px 0;
+}
+
+.status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.status.active {
+    background-color: #e6ffed;
+    color: #00873c;
+}
+
+.status.locked {
+    background-color: #ffeaea;
+    color: #d8000c;
+}
+
+/* Nút Khởi tạo Mật khẩu (là thẻ <a>) và các action buttons khác (là <button>) */
+.action-btn {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85em;
+    transition: background-color 0.3s;
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* Định kiểu cho nút Khởi tạo Mật khẩu */
+.action-btn.reset-btn { 
+    background-color: #ffc107; 
+    color: #333; 
+    text-decoration: none;
+}
+.action-btn.reset-btn:hover { background-color: #e0a800; }
+
+/* Định kiểu cho nút Khóa/Mở khóa */
+.lock-btn { background-color: #dc3545; color: white; }
+.lock-btn:hover { background-color: #bd2130; }
+
+.unlock-btn { background-color: #28a745; color: white; }
+.unlock-btn:hover { background-color: #1e7e34; }
+
+
+/* --- PHẦN MODAL (ĐÃ FIX KHÔNG TỰ TẮT) --- */
+.modal {
+    visibility: hidden;     
+    opacity: 0;           
+    pointer-events: none;    
+    position: fixed;
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4); 
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.modal:target {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    display: flex;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    animation: fadeInModal 0.3s ease;
+}
+
+/* Nút đóng */
+.close-btn {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: none;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+/* Form bên trong modal */
+.form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.form-group input {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box; 
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #a40000;
+}
+
+.checkbox-row {
+    margin: 8px 0 12px;
+    font-size: 14px;
+}
+
+/* Nút lưu trong form */
+.save-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.save-button:hover {
+    opacity: 0.9;
+}
+
+.save-button.red, .reset-confirm-btn {
+    background-color: #a40000;
+    color: #fff;
+}
+
+.save-button.red:hover, .reset-confirm-btn:hover {
+    background-color: #c01a1a;
+}
+
+/* Hiệu ứng xuất hiện modal */
+@keyframes fadeInModal {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

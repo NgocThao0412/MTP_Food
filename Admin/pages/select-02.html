@@ -160,11 +160,11 @@
     <div class="admin-control-top">
       <select onchange="if(this.value) window.location=this.value;">
         <option value="">-- Lọc theo trạng thái --</option>
-        <option value="">Tất cả</option>
+        <option value="order-manage.html">Tất cả</option>
         <option value="select-01.html">Chờ xác nhận</option>
-        <option value="select-02.html">Đang giao</option>
-        <option value="select-03.html">Hoàn thành</option>
-        <option value="select-04.html">Đã hủy</option>
+        <option value="">Đang giao</option>
+        <option value="select-02.html">Hoàn thành</option>
+        <option value="select-03.html">Đã hủy</option>
       </select>
 
       <select onchange="if(this.value) window.location=this.value;">
@@ -187,7 +187,7 @@
             type="date" 
               onchange="window.location='select-03.html';"/>
 
-      <a href="#list" class="btn-reset-order">Reset</a>
+      <a href="./order-manage.html" class="btn-reset-order">Reset</a>
     </div>
 
     <!-- 📋 Danh sách đơn -->
@@ -215,44 +215,13 @@
             <td>Chờ xác nhận</td>
             <td><a href="#DH001" class="btn-view">Xem</a></td>
           </tr>
-          <tr>
-            <td>DH002</td>
-            <td>Trần Thị B</td>
-            <td>2025-10-05</td>
-            <td>Phường 7, TP HCM</td>
-            <td>39,000₫</td>
-            <td>Đang giao</td>
-            <td><a href="#DH002" class="btn-view">Xem</a></td>
-          </tr>
-          <tr>
-            <td>DH003</td>
-            <td>Lê Minh C</td>
-            <td>2025-10-06</td>
-            <td>Phường 1, TP HCM</td>
-            <td>799,000₫</td>
-            <td>Hoàn thành</td>
-            <td><a href="#DH003" class="btn-view">Xem</a></td>
-          </tr>
         </tbody>
       </table>
     </section>
 
 
       <!-- 🧾 CHI TIẾT ĐƠN HÀNG -->
-      <section id="DH001" class="detail">
-        <h3>Chi tiết đơn hàng DH001</h3>
-        <table class="detail-table">
-          <tr><th>Mã đơn</th><td>DH001</td></tr>
-          <tr><th>Khách hàng</th><td>Nguyễn Văn A</td></tr>
-          <tr><th>Ngày đặt</th><td>2025-10-01</td></tr>
-          <tr><th>Phường</th><td>Phường 3, TP HCM</td></tr>
-          <tr><th>Sản phẩm</th><td>Bột Chiên, Chè Thái</td></tr>
-          <tr><th>Tổng tiền</th><td>158,000₫</td></tr>
-          <tr><th>Trạng thái</th><td>Chờ xác nhận</td></tr>
-        </table>
-        <a href="#list" class="btn-back">⬅ Quay lại danh sách</a>
-      </section>
-
+       
       <section id="DH002" class="detail">
         <h3>Chi tiết đơn hàng DH002</h3>
         <table class="detail-table">
@@ -263,20 +232,6 @@
           <tr><th>Sản phẩm</th><td>Nước Ép Dâu</td></tr>
           <tr><th>Tổng tiền</th><td>39,000₫</td></tr>
           <tr><th>Trạng thái</th><td>Đang giao</td></tr>
-        </table>
-        <a href="#list" class="btn-back">⬅ Quay lại danh sách</a>
-      </section>
-
-      <section id="DH003" class="detail">
-        <h3>Chi tiết đơn hàng DH003</h3>
-        <table class="detail-table">
-          <tr><th>Mã đơn</th><td>DH003</td></tr>
-          <tr><th>Khách hàng</th><td>Lê Minh C</td></tr>
-          <tr><th>Ngày đặt</th><td>2025-10-06</td></tr>
-          <tr><th>Phường</th><td>Phường 1, TP HCM</td></tr>
-          <tr><th>Sản phẩm</th><td>Set Mâm Cơm Việt</td></tr>
-          <tr><th>Tổng tiền</th><td>799,000₫</td></tr>
-          <tr><th>Trạng thái</th><td>Hoàn thành</td></tr>
         </table>
         <a href="#list" class="btn-back">⬅ Quay lại danh sách</a>
       </section>

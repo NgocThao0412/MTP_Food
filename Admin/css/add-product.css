@@ -26,9 +26,6 @@
 .draft-button { background: #f0ad4e !important; }
 .complete-button { background: #5cb85c !important; }
 
-/* ================================================= */
-/* 2. KHU VỰC LẬP PHIẾU (RECEIPT FORM)              */
-/* ================================================= */
 
 .receipt-form-area form { max-width: 900px; margin: 0 auto; }
 .receipt-form-area h4 { font-size: 16px; font-weight: 600; margin: 15px 0 10px 0; color: #B5292F; }
@@ -49,9 +46,6 @@
          border-radius: 4px;
          width: 20%;
     }
-/* ================================================= */
-/* 3. BẢNG (LISTS) & RESPONSIVE TỐI ƯU CUỘN NGANG   */
-/* ================================================= */
 
 .price-table, .receipt-table-list {
   /* Giữ padding để nội dung không dính vào mép */

@@ -264,20 +264,30 @@ main.content {
 
 /* BỘ THỐNG KÊ */
 /* order-statistical */
-
-.order-statistical{
-    display: flex;
-    margin: 30px 0;
-    column-gap: 20px;
+.order-statistical {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;       /* Hiện thanh cuộn ngang khi cần */
+  -webkit-overflow-scrolling: touch; /* Mượt trên mobile */
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;    /* Tùy chọn: snap các box khi kéo */
+  flex-wrap: nowrap;      /* Không xuống hàng, scroll ngang */
 }
 
-.order-statistical-item{
-    box-shadow: 0px 1px 5px 2px #f1f1f1;
-    width: 32.1%;   
-    display: flex;
-    padding: 20px 40px;
-    align-items: center;
-    justify-content: space-between;
+.order-statistical-item {
+  flex: 0 0 32%;          /* 3 cột: 3 x 32% + gap vừa đủ */
+  min-width: 250px;       /* Đảm bảo box không quá nhỏ */
+  max-width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 1px 5px 2px #f1f1f1;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  scroll-snap-align: start; /* Tùy chọn: snap khi kéo */
 }
 
 .order-statistical-item-icon i{
@@ -399,38 +409,86 @@ table td:first-child {
 table td:last-child {
   border-radius: 0 8px 8px 0;
 }
+/* Bọc table để scroll */
+.table-wrapper {
+  overflow-x: auto;      /* Hiện thanh cuộn ngang khi table rộng */
+  width: 100%;
+  -webkit-overflow-scrolling: touch; /* Mượt trên mobile */
+}
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .admin-control {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+/* Table */
+.table-wrapper table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  min-width: 700px;      /* Chiều rộng tối thiểu để giữ 5 cột */
+}
 
-  table thead {
-    display: none;
-  }
+/* Header */
+.table-wrapper table thead td {
+  background: #B5292F;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px 8px 0 0;
+}
 
-  table, table tbody, table tr, table td {
-    display: block;
-    width: 100%;
-  }
+/* Body rows */
+.table-wrapper table tbody tr {
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  transition: 0.2s;
+}
 
-  table tbody tr {
-    margin-bottom: 10px;
-  }
+.table-wrapper table tbody tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
 
-  table td {
-    text-align: left;
-    padding-left: 45%;
-    position: relative;
-  }
+.table-wrapper table td {
+  padding: 12px 10px;
+  text-align: center;
+  white-space: nowrap;   /* Không xuống dòng, dùng scroll */
+}
 
-  table td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 15px;
-    font-weight: 600;
-    color: #555;
+.table-wrapper table td:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.table-wrapper table td:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+/* ========== RESPONSIVE ========== */
+
+/* Khi màn hình < 1200px: 4 cột */
+@media (max-width: 1200px) {
+  .table-wrapper table {
+    min-width: 600px;
   }
 }
+
+/* Khi màn hình < 992px: 3 cột */
+@media (max-width: 992px) {
+  .table-wrapper table {
+    min-width: 450px;
+  }
+}
+
+/* Khi màn hình < 768px: 2 cột */
+@media (max-width: 768px) {
+  .table-wrapper table {
+    min-width: 300px;
+  }
+}
+
+/* Khi màn hình < 480px: 1 cột */
+@media (max-width: 480px) {
+  .table-wrapper table {
+    min-width: 200px;
+  }
+}
+
+/* RESPONSIVE */

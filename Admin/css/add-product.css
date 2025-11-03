@@ -21,7 +21,7 @@
 /* Buttons */
 .btn-save { background: #B5292F; color: white; border: none; padding: 20px 40px; border-radius: 8px; cursor: pointer; transition: 0.3s; font-weight: 500; }
 .draft-button { background: #f0ad4e !important; }
-.complete-button { background: #5cb85c !important; }
+.complete-button { font-size: 16px; width: 150px; background: #B5292F !important; }
 
 
 .receipt-form-area form { max-width: 900px; margin: 0 auto; }
@@ -37,11 +37,13 @@
 .form-actions { text-align: right; margin-top: 25px; padding-top: 15px; border-top: 1px solid #eee; }
 .form-actions .btn-save { margin-left: 10px; }
     .search-button{
+        margin-top: 10px;
+        height: 35px;
          font-size: 20px;
          background-color: #B5292F;
          color:rgb(240, 237, 237);
          border-radius: 4px;
-         width: 20%;
+         width: 12%;
     }
 
 .price-table, .receipt-table-list {
@@ -103,4 +105,80 @@ note-status {
     /* Nút hành động cuối form */
     .form-actions { display: flex; flex-direction: column; align-items: stretch; }
     .form-actions .btn-save { margin-left: 0; margin-top: 10px; padding: 10px; }
+}
+
+.modal-target-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.modal-target-container:target {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-target-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.modal-target-content {
+    position: relative;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 10vh auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    transform: translateY(-50px);
+    transition: transform 0.3s ease-out;
+}
+
+.modal-target-container:target .modal-target-content {
+    transform: translateY(0);
+}
+
+.modal-target-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 300;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.modal-target-close-btn:hover {
+    color: #B5292F;
+}
+
+.modal-target-content .btn-save {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+}
+
+.modal-target-content .form-group {
+    margin-bottom: 25px;
+}
+
+.modal-target-content .form-group label {
+    margin-bottom: 8px; 
+    display: block; 
 }

@@ -207,9 +207,7 @@
                     </div>
 
                     <div class="form-actions">
-                        <p style="color: red; font-weight: bold;">**LƯU Ý:** Chỉ có thể SỬA phiếu nhập trước khi *Hoàn Thành Phiếu Nhập*.</p>
-                        <button type="button" id="saveReceiptDraftBtn" class="btn-save draft-button">Lưu Phiếu (Chưa Hoàn Thành)</button>
-                        <button type="submit" id="completeReceiptBtn" class="btn-save complete-button">Hoàn Thành Phiếu Nhập</button>
+                        <button type="submit" id="completeReceiptBtn" class="btn-save complete-button">Lưu Phiếu</button>
                     </div>
                 </form>
             </div>
@@ -248,12 +246,10 @@
                                 <span class="note-status paid">Đã Hoàn Thành</span>
                             </td>
                             <td>
-                                <button class="action-icon-btn btn-edit" title="Sửa phiếu nhập" data-receipt-id="PN2025002">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </button>
-                                <button class="action-icon-btn btn-delete" title="Xóa phiếu nhập" data-receipt-id="PN2025001">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
+                                <button class="action-icon-btn btn-edit" title="Xem phiếu nhập" data-receipt-id="PN2025002">
+                                     <i class="fa-solid fa-eye"></i>
+                                    </button>
+
                             </td>
                         </tr>
                         <tr>
@@ -266,6 +262,10 @@
                                 <span class="note-status pending">Chưa Hoàn Thành</span>
                             </td>
                             <td>
+                                <button class="action-icon-btn btn-edit" title="Xem phiếu nhập" data-receipt-id="PN2025002">
+                                   <i class="fa-solid fa-eye"></i>
+                                    </button>
+                               
                                 <button class="action-icon-btn btn-edit" title="Sửa phiếu nhập" data-receipt-id="NH002">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
@@ -283,6 +283,5 @@
 
     <div id="toast"></div>
     <script src="../js/price-manage.js"></script>
-    <script src="./js/add-product.js"></script>
   </body>
 </html>

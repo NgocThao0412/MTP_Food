@@ -19,7 +19,7 @@
 .search-input { max-width: 350px; margin-bottom: 15px; }
 
 /* Buttons */
-.btn-save { background: #B5292F; color: white; border: none; padding: 7px 15px; border-radius: 8px; cursor: pointer; transition: 0.3s; font-weight: 500; }
+.btn-save { background: #B5292F; color: white; border: none; padding: 20px 40px; border-radius: 8px; cursor: pointer; transition: 0.3s; font-weight: 500; }
 .draft-button { background: #f0ad4e !important; }
 .complete-button { background: #5cb85c !important; }
 

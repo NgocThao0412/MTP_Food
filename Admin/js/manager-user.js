@@ -90,9 +90,8 @@ document.addEventListener("DOMContentLoaded", function () {
   if (logoutAcc) {
     logoutAcc.addEventListener("click", (e) => {
       e.preventDefault();
-      // Đã xóa logic localStorage.removeItem("AdminUser") vì không còn dùng
       alert("Đăng xuất thành công!");
-      window.location.href = "../index.html"; // Chuyển đến trang index/đăng nhập
+      window.location.href = "../index.html"; 
     });
   }
 
@@ -143,19 +142,13 @@ document.addEventListener("DOMContentLoaded", function () {
   if (save) {
     save.addEventListener("click", function (event) {
       event.preventDefault();
-      // Chỗ này bạn có hàm showConfirmation() nhưng chưa định nghĩa,
-      // Có lẽ bạn muốn gọi hàm saveUser() ở đây?
-      // showConfirmation(); 
-      
-      // Nếu muốn bấm save là lưu luôn, hãy gọi:
-      // saveUser();
     });
   }
 });
 
 // --- TOÀN BỘ CÁC HÀM QUẢN LÝ NGƯỜI DÙNG (GIỮ NGUYÊN) ---
 
-let userIdCounter = 4321; // Bạn có thể đặt số này dựa trên user cuối cùng
+let userIdCounter = 4321; 
 
 function showAddUserForm() {
   document.getElementById("modalTitle").innerText = "Add User";
@@ -209,7 +202,7 @@ function saveUser() {
     const userIndex = users.findIndex((user) => user.id === userId);
     if (userIndex > -1) {
       users[userIndex] = {
-        ...users[userIndex], // Giữ lại ID và Password cũ (nếu có)
+        ...users[userIndex], 
         id: userId,
         username,
         email,
@@ -226,7 +219,7 @@ function saveUser() {
       email,
       firstName,
       lastName,
-      password: "123456", // Gán password mặc định khi thêm mới
+      password: "123456", 
     };
 
     users.push(newUser);

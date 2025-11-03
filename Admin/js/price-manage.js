@@ -10,9 +10,7 @@ function calcPrice(cost, profit) {
   return cost + (cost * profit) / 100;
 }
 
-// ===================================
 // Logic cho Sidebar (Global)
-// ===================================
 
 /**
  * HÀM 1: Bấm sổ menu (cần 'window' vì gọi = onclick)
@@ -50,16 +48,15 @@ function setupSidebarActiveState() {
 
   allLinks.forEach((link) => {
     const linkHref = link.getAttribute("href");
-    if (!linkHref) return; // Bỏ qua link không có href (như 'javascript:void(0)')
+    if (!linkHref) return; 
 
     const linkPage = linkHref.split("/").pop();
 
     // Nếu tìm thấy link của trang hiện tại
     if (linkPage === currentPage) {
-      const submenu = link.closest(".submenu"); // Tìm xem link này có nằm trong submenu ko
+      const submenu = link.closest(".submenu"); 
 
       if (submenu) {
-        // --- NẾU LÀ LINK CON (như 'Quản lý giá') ---
         submenu.style.display = "block"; // 1. Mở submenu cha
         const parentLi = submenu.closest(".sidebar-list-item.tab-content");
         if (parentLi) {
@@ -80,10 +77,7 @@ function setupSidebarActiveState() {
   });
 }
 
-// ===================================
 // Logic chính của Trang (Chạy sau khi DOM tải)
-// ===================================
-
 /**
  * Tất cả code tương tác với HTML của trang
  * phải nằm trong 'DOMContentLoaded'
@@ -101,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 3. Định nghĩa hàm render (chỉ dùng trong file này)
   // (Mình đã xóa hàm renderTable bị trùng ở code cũ)
   function renderTable(data) {
-    if (!tableBody) return; // Bảo vệ nếu không tìm thấy tableBody
+    if (!tableBody) return; 
     
     tableBody.innerHTML = "";
     data.forEach((p) => {
@@ -138,8 +132,6 @@ document.addEventListener("DOMContentLoaded", function () {
   window.deleteProduct = function (id) {
     const p = products.find((x) => x.id === id);
     if (!p) return;
-    
-    // Hỏi xác nhận trước khi xóa
     if (confirm(`Bạn có chắc muốn xóa sản phẩm ${p.name} (${p.id})?`)) {
       const index = products.findIndex((x) => x.id === id);
       if (index > -1) {
@@ -176,8 +168,8 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         alert("Không tìm thấy sản phẩm!");
       }
-      renderTable(products); // Vẽ lại bảng
-      profitForm.reset(); // Xóa chữ trong form
+      renderTable(products); 
+      profitForm.reset();
     });
   }
 

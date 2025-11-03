@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     const tableBody = document.querySelector('.customer-table-section tbody');
-
-    // addEventListener gắn hành động cho phần tử tableBody
     tableBody.addEventListener('click', function(event) {
         const target = event.target;
 

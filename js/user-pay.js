@@ -357,5 +357,12 @@ btn.addEventListener('click', function (e) {
     
     // --- THÔNG BÁO THÀNH CÔNG ---
     showToast('success', 'Thành công', "Đặt hàng thành công!");
+    showToast('success', 'Thành công', "Đặt hàng thành công!");
+
+// Chuyển về trang chủ sau khi hiển thị thông báo
+setTimeout(function () {
+    window.location.href = "./user-index.html";
+}, 500);
     });
+
 });

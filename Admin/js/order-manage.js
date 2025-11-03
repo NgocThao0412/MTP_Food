@@ -3,11 +3,11 @@ const ordersData = [
     id: "DH001",
     customer: "Nguyễn Văn A",
     date: "2025-10-01",
-    total: 247000,
+    total: 158000,
     status: "pending",
     address: { phuong: "Phường 3", quan: "Quận 5", tp: "TP.HCM" },
     items: [
-      { name: "Bột Chiên", quantity: 2, price: 89000 },
+      { name: "Bột Chiên", quantity: 1, price: 89000 },
       { name: "Chè Thái", quantity: 1, price: 69000 }
     ]
   },

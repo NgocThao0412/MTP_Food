@@ -374,7 +374,7 @@
 .btn-back {
   background: none;
   border: none;
-  font-size: 22px;
+  font-size: 14px;
   cursor: pointer;
   color: #b5292f;
   transition: 0.2s;
@@ -1887,7 +1887,7 @@ section:target {
   position: relative;
   z-index: 10;
 
-  /* 🔥 Căn lại cho khớp với bảng */
+  /*  Căn lại cho khớp với bảng */
   margin-left: auto;
   margin-right: auto;
   max-width: calc(100% - 24px); /* tương đương khoảng padding của nội dung */
@@ -1897,29 +1897,29 @@ section:target {
 .table-wrapper,
 .content-main,
 .page-content {
-  padding: 0 12px; /* 🔥 đồng bộ padding hai bên */
+  padding: 0 12px; 
   box-sizing: border-box;
 }
 
 /* === BỐ CỤC BẢNG VÀ KHUNG NGOÀI === */
 .admin-control-bottom {
   width: 100%;
-  overflow-x: auto;                /* ✅ Cho phép kéo ngang */
+  overflow-x: auto;                
   overflow-y: hidden;
-  white-space: nowrap;             /* Ngăn chữ xuống dòng */
+  white-space: nowrap;             
   margin-top: 10px;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   padding: 10px 0;
-  scrollbar-color: #ccc #f9f9f9;   /* Thanh cuộn đẹp hơn */
+  scrollbar-color: #ccc #f9f9f9; 
   scrollbar-width: thin;
 }
 
 /* === BẢNG CHÍNH === */
 .admin-table {
   width: 100%;
-  min-width: 1000px;               /* ✅ Giữ bảng không bị bóp khi màn hình nhỏ */
+  min-width: 1000px;               
   border-collapse: collapse;
   table-layout: auto;
   font-family: "Segoe UI", sans-serif;
@@ -2002,3 +2002,76 @@ section:target {
   border-radius: 8px;
 }
 
+/* === Khung chứa chi tiết đơn hàng === */
+.detail {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 25px auto;
+  width: 80%;
+  max-width: 900px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+
+  /* ✅ Tạo thanh cuộn dọc riêng cho phần chi tiết */
+  max-height: 250px;        /* Giới hạn chiều cao vừa phải */
+  overflow-y: auto;         /* Cuộn dọc */
+  overflow-x: hidden;       /* Ẩn cuộn ngang */
+  scrollbar-width: thin;
+  scrollbar-color: #bbb #f1f1f1;
+}
+
+/* 🎨 Thanh cuộn thẩm mỹ (Chrome, Edge, Safari) */
+.detail::-webkit-scrollbar {
+  width: 8px;
+}
+.detail::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  border-radius: 10px;
+}
+.detail::-webkit-scrollbar-thumb:hover {
+  background-color: #888;
+}
+
+/* === Tiêu đề phần chi tiết === */
+.detail h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* === Bảng chi tiết đơn hàng === */
+.detail table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.detail th,
+.detail td {
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  font-size: 15px;
+  color: #333;
+}
+
+.detail th {
+  background-color: #f9f9f9;
+  font-weight: 600;
+  width: 180px;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .detail {
+    width: 95%;
+    max-height: 200px;
+  }
+
+  .detail th,
+  .detail td {
+    font-size: 14px;
+    padding: 8px;
+  }
+}

@@ -1,0 +1,621 @@
+@media (max-width: 991.98px) {
+    .col-product {
+        width: 33.33%;
+    }
+
+    .card-image {
+        height: 170px;
+    }
+
+    .header-middle-center {
+        padding: 0;
+    }
+
+    .footer-top-content{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-top-img{
+        margin-bottom: 20px;
+        border: none;
+    }
+
+    .footer-top-subs-text{
+        display: none;
+    }
+
+    .widget-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0 15px;
+    }
+
+    .widget-row-col-1 {
+        width: 100%;
+        padding-bottom: 20px;
+    }
+
+    .widget-row-col {
+        width: 50%;
+        padding-bottom: 20px;
+    }
+
+    .home-service-item{
+        width: 50%;
+    }
+}
+
+@media (max-width: 827px) {
+    .advanced-search-price input{
+        width: 70px;
+    }
+}
+
+@media (max-width: 785px) {
+   .auth-container{
+        display: none;
+    }
+
+    .advanced-search .container{
+        flex-wrap: wrap;
+        padding-top: 10px;
+    }
+
+    .advanced-search-price input {
+        width: 120px;
+    }
+
+    .advanced-search-price{
+        order: 3;
+    }
+
+    .advanced-search {
+        transform: translateY(-100%);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .header-middle-center{
+        display: none;
+    }
+    
+    .header-middle-right-item.dnone{
+        display: block!important;
+    }
+
+    .home-slider {
+        padding: 0 10px;
+    }
+
+
+    .home-service-item{
+        width: 90%;
+    }
+
+    .home-title {
+        font-size: 19px;
+    }
+
+    .col-product {
+        width: 100%;
+        padding: 5px 10px;
+    }
+
+    .card-product {
+        display: flex;
+        border: none;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .card-header {
+        width: 45%;
+        object-fit: cover;
+        height: 110px;
+    }
+
+    .card-image {
+        height: 100%;
+        border-radius: 5px;
+    }
+
+    .card-button{
+        width: 100%;
+        padding: 7px 20px
+    }
+
+    .product-image {
+        max-height: 255px;
+    }
+
+    .food-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .product-buy {
+        justify-content: flex-start;
+    }
+
+    .modal-container {
+        height: 100vh !important;
+        max-height: 100vh !important;
+    }
+
+    .modal-footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .modal-close {
+        z-index: 100;
+        height: 30px;
+        width: 30px;
+        top: 10px;
+        right: 10px;
+    }
+
+    .modal-cart {
+        align-items: flex-end;
+    }
+
+    .cart-container {
+        width: 100vw;
+        right: 0;
+        bottom: 0;
+        height: 80vh;
+        border-radius: 0;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        transform: translateY(100%);
+    }
+
+    .footer-top {
+        padding: 30px 0;
+    }
+
+    .footer-top-img {
+        display: none;
+    }
+
+    .footer-top-subbox {
+        display: block;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .form-ground {
+        display: flex;
+        margin-left: 0;
+    }
+
+    .footer-top-subs {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .main-account-body-col{
+        width: 100%;
+    }
+
+    .checkout-section{
+        flex-wrap: wrap;
+        padding: 5px 8px 0
+    }
+
+    .checkout-section>div{
+        width: 100%;
+    }
+
+    .main-account{
+        width: 97%;
+    }
+
+    .main-account{
+        padding: 10px;
+    }
+
+    .order-history-control,.order-history {
+        row-gap: 20px;
+        flex-direction: column;
+    }
+
+    .order-history-right{
+        position: absolute;
+        left: 110px;
+        bottom: 0;
+    }
+
+    .order-history-price{
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .order-history-old-price{
+        margin-right: 10px;
+    }
+
+    .order-history-total{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .order-history-toltal-price{
+        font-size: 20px;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .advanced-search-price input{
+        width: 70px;
+    }
+}
+
+.filter-btn,.search-btn {
+    border: none;
+    outline: none;
+    font-size: 20px;
+    height: 40px;
+    padding: 0 15px;
+    color: var(--text-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.search-btn {
+    background-color: #f0f0f0;
+    border-top-left-radius: 99px;
+    border-bottom-left-radius: 99px;
+}
+
+.filter-btn{
+    background-color: var(--red);
+    height: 30px;
+    color: var(--white);
+    width: 75px;
+    border-radius: 99px;
+    position: relative;
+    right: 80px;
+    top: 5px
+}
+
+.filter-btn span{
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.header-middle-right>ul {
+    display: flex;
+    column-gap: 20px;
+}
+
+.header-middle-right-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+@media screen and (max-width: 992px) {
+    /* Chỉ hiển thị icon, ẩn chữ */
+    .header-middle-right-item span {
+        display: none;
+    }
+}
+.auth-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-dndk {
+    font-size: 12px;
+}
+
+.text-tk {
+    font-size: 15px;
+}
+
+.header-middle-right-item {
+    position: relative;
+}
+
+.header-middle-right-item i {
+    font-size: 30px;
+    margin-right: 10px;
+    color: var(--red);
+}
+
+.text-tk i {
+    font-size: 14px !important;
+    color: var(--text-color) !important;
+}
+
+.cart-icon-menu {
+    position: relative;
+}
+
+.cart-icon-menu span {
+    color: var(--white);
+    background: var(--red);
+    height: 20px;
+    left: 20px;
+    top: -15px;
+    border-radius: 40px;
+    display: inline-block;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    position: absolute;
+    padding: 0px 7px;
+    z-index: 999999;
+}
+
+@keyframes slidein {
+    from {
+        left: -300px;
+        top: 800px;
+    }
+    to {
+        left: 20px;
+        top: -15px;
+    }
+}
+
+@media (max-width: 992px) {
+
+  /* Ẩn thanh tìm kiếm đầy đủ ở trung tâm */
+  .header-middle-center {
+    display: none; 
+  }
+
+  /* Hiện icon tìm kiếm di động */
+  .header-middle-right-item.dnone {
+    display: flex !important;
+    align-items: center;
+    padding: 0;
+    margin: 0 15px 0 0;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .header-middle-right-item.dnone .cart-icon-menu i {
+    font-size: 30px;
+    color: #c0392b;
+    background: none;
+    border: none;
+  }
+
+  /* Ẩn icon đóng */
+  .header-middle-right-item.close {
+    display: none;
+  }
+
+  /* Căn icon hàng ngang */
+  .header-middle-right-list {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* -------------------- RESPONSIVE MOBILE -------------------- */
+@media (max-width: 576px) {
+
+  /* Bố cục gọn logo bên trái, icon bên phải */
+  .header-middle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+  }
+
+  .header-middle .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+  }
+  /* Logo */
+  .header-logo img {
+    max-width: 200px;
+    height: auto;
+  }
+
+  /* Ẩn form tìm kiếm */
+  .header-middle-center {
+    display: none;
+  }
+
+  /* Icon nhóm phải */
+  .header-middle-right-list {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header-middle-right-item.dnone {
+    display: flex !important;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .header-middle-right-item.dnone .cart-icon-menu i {
+    font-size: 26px;
+    color: #c0392b;
+  }
+
+  .header-middle-right-item.login-icon i {
+    font-size: 25px;
+    color: #333;
+  }
+
+  .header-middle-right-item.close {
+    display: none;
+  }
+}
+
+
+@media (max-width: 992px) {
+    .home-service {
+        justify-content: space-around; /* Căn đều khi có ít cột hơn */
+    }
+    .home-service-item {
+        /* 3 CỘT: 32% cho mỗi mục (100% / 3 ≈ 33.33%) */
+        flex: 0 0 32%; 
+        max-width: 32%;
+        margin-bottom: 25px; /* Thêm khoảng cách khi các mục xuống hàng */
+    }
+}
+
+/* ------------------------------------------------ */
+/* 3. MEDIA QUERY CHO 2 CỘT (MÀN HÌNH TABLET VÀ NHỎ HƠN) */
+/* ------------------------------------------------ */
+@media (max-width: 768px) {
+    .home-service-item {
+        /* 2 CỘT: 48% cho mỗi mục (100% / 2 = 50%) */
+        flex: 0 0 48%; 
+        max-width: 48%;
+        margin-bottom: 20px;
+    }
+}
+
+/* ------------------------------------------------ */
+/* 4. MEDIA QUERY CHO 1 CỘT (MÀN HÌNH ĐIỆN THOẠI) */
+@media (max-width: 576px) {
+    .home-service-item {
+        /* 3 CỘT: 32% cho mỗi mục (100% / 3 ≈ 33.33%) */
+        flex: 0 0 90%; 
+        max-width:90%;
+        margin-bottom: 10px; /* Thêm khoảng cách khi các mục xuống hàng */
+    }
+}
+
+/* ------------------------------------------------ */
+
+@media (max-width: 768px) {
+    /* CONTAINER CHÍNH - HOME-SERVICE */
+    .home-service {
+        /* *KÍCH HOẠT CUỘN NGANG*: Cho phép cuộn khi nội dung tràn */
+        overflow-x: auto;
+        /* *QUAN TRỌNG*: Ngăn không cho các mục xuống hàng */
+        flex-wrap: nowrap;
+    }
+    }
+
+/* Desktop nhỏ / Tablet lớn: 3 món mỗi hàng */
+@media screen and (max-width: 1200px) {
+    .tab_conten {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+}
+
+/* Tablet: 2 món mỗi hàng */
+@media screen and (max-width: 992px) {
+    .tab_conten {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
+/* Mobile: 1 món mỗi hàng */
+@media screen and (max-width: 576px) {
+    .tab_conten {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+
+/* ========================= RESPONSIVE ========================= */
+/* --- Mobile (<=576px) --- */
+@media (max-width: 576px) {
+  .hop-mon-an {
+    width: 100%;
+    margin: 10px;
+  }
+
+  .noi-dung-mon-an {
+    padding: 15px;
+  }
+
+  .hinh-anh-mon-an img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .tieu-de-mon-an {
+    font-size: 20px;
+  }
+
+  .mo-ta-mon-an {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .gia-va-so-luong {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nut-dat-hang {
+    font-size: 15px;
+    padding: 8px 15px;
+  }
+
+  .nut-them-gio {
+    width: 48px;
+    height: 50px;
+  }
+
+  .thanh-duoi {
+    padding: 10px;
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .tong-tien h {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+    .header{
+        height: 165px;
+        font-size: 15px;
+        padding: 0px 55px;
+        transition: width 0.5s ease-in-out;
+    }
+
+    .navigation a {
+        padding: 0px 11px;
+    }
+
+    .search-container{
+        margin-left: 25px;
+    }
+
+    .input-wrapper input{
+        width: 215px;
+    }
+
+    .search-icon button {
+        width: 55px;
+    }
+    .pg-12{
+        padding: 0 46px;
+    }
+}

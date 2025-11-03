@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kết quả tìm kiếm - MTP Food</title> 
+    <title>Bánh Cuốn - MTP Food</title> 
     <link href="../Img/favicon.png" rel="icon" type="image/x-icon" /> 
     
     <link rel="stylesheet" href="../css/user-searchpro.css">
@@ -26,18 +26,19 @@
             <div class="container">
                 <div class="header-middle-left">
                     <div class="header-logo">
-                        <a href="../Client/user-index.html"> <img src="../Img/mtp-food.png" alt="" class="header-logo-img">
+                        <a href="">
+                            <img src="../Img/mtp-food.png" alt="" class="header-logo-img">
                         </a>
                     </div>
                 </div>
 
                 <div class="header-middle-center">
                     <form action="" class="form-search">
-                        <span class="search-btn" onclick="searchProducts()">
+                        <span class="search-btn">
                             <i class="fa-light fa-magnifying-glass"></i>
                         </span>
                         <input type="text" class="form-search-input" placeholder="Tìm kiếm món ăn..."
-                            oninput="searchProducts()">
+                            onkeydown="searchProducts(event)">
                     </form>
                 </div>
 
@@ -53,15 +54,18 @@
                                 <i class="fa-light fa-circle-xmark"></i>
                             </div>
                         </li>
-                        
-                        <li class="header-middle-right-item dropdown open logged-in">
+
+                        <li class="header-middle-right-item dropdown open">
                             <i class="fa-light fa-user"></i>
                             <div class="auth-container">
-                                <span class="text-tk">Xin chào, <b id="user-display-name">Tên người dùng</b> <i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                                <span class="text-dndk">Đăng nhập / Đăng ký</span>
+                                <span class="text-tk">Tài khoản <i class="fa-sharp fa-solid fa-caret-down"></i></span>
                             </div>
                             <ul class="header-middle-right-menu">
-                                <li><a id="admin-page" href="../Admin/pages/index.html"><i class="fa-light fa-gear"></i> Trang Admin</a></li>
-                                <li><a id="logout" href="../Home/login.html" onclick="localStorage.removeItem('loggedInUser')"><i class="fa-light fa-right-from-bracket"></i> Đăng xuất</a></li>
+                                <li><a id="login" href="../Home/login.html"><i class="fa-light fa-right-to-bracket"></i> Đăng
+                                        nhập</a></li>
+                                <li><a id="signup" href="../Home/login.html#register"><i class="fa-light fa-user-plus"></i> Đăng
+                                        ký</a></li>
                             </ul>
                         </li>
                         <li class="header-middle-right-item open" onclick="openCart()">
@@ -86,7 +90,7 @@
                         chay</a></li>
                 <li class="menu-list-item" onclick="showCategory('Món mặn')"><a href="../Client/user-menu/user-MonMan.html" class="menu-link">Món
                         mặn</a></li>
-                <li class="menu-list-item" onclick="showCategory('Món lẩu')"><a href="../Client/user-menu/user-MonLau.html"class="menu-link">Món
+                <li class="menu-list-item" onclick="showCategory('Món lẩu')"><a href="../Client/user-menu/user-MonLau.html" class="menu-link">Món
                         lẩu</a></li>
                 <li class="menu-list-item" onclick="showCategory('Món ăn vặt')"><a href="../Client/user-menu/user-MonAnVat.html" class="menu-link">Món
                         ăn vặt</a></li>
@@ -94,7 +98,7 @@
                         class="menu-link">Món tráng miệng</a></li>
                 <li class="menu-list-item" onclick="showCategory('Nước uống')"><a href="../Client/user-menu/user-NuocUong.html" class="menu-link">Nước
                         uống</a></li>
-                <li class="menu-list-item" onclick="showCategory('Món khác')"><a href="../Client/user-menu/user-MonKhac.html" class="menu-link">Món
+                <li class="menu-list-item" onclick="showCategory('Món khác')"><a href="../Client/user-menu/user-MonKhac.html"class="menu-link">Món
                         khác</a></li>
             </ul>
         </div>
@@ -121,7 +125,7 @@
     <main class="main-wrapper">
         <div class="container" id="trangchu">
             <div class="home-title-block" id="home-title">
-                <h2 class="home-title">Kết quả tìm kiếm: Bánh Cuốn</h2>
+                <h2 class="home-title">Kết quả tìm kiếm</h2>
             </div>
 
             <div class="page-nav">
@@ -131,62 +135,328 @@
     </main>
 
     <div class="Home_main">
-        <div class="pg-12" id="product-list-container"> <div class="flex-full">
-                <div class="film-title">
-                    <div class="vertical-line"></div>
-                </div>
+        <div class="pg-12">
+            <div class="flex-full">
+            <div class="film-title">
+                <div class="vertical-line"></div>
             </div>
-            
-            <div class="tab_conten">
-                <div class="product-item movie-item"> <a href="#Modal2"><img class="poster-img" height="300" width="300" src="../Img/Món mặn/banh-cuon.jpg"></a>
-                    <p class="title product-name">Bánh Cuốn</p> <p class="price"> 89.000 đ </p>
-                    <a href="#Modal2"><button class="order-btn">ĐẶT MÓN</button></a>
-                </div>
-            </div>
+    </div>
+        <div class="tab_conten">
+        
 
-            <div class="lop-phu-mon-an" id="Modal2" datamon="banh-cuon">
-                <a href="#home-title" class="nut-dong-sieu-to" id="nutDongSieuTo">&times;</a>
-                <div class="hop-mon-an">
-                    <div class="noi-dung-mon-an">
-                        <div class="hinh-anh-mon-an">
-                            <img src="../Img/Món mặn/banh-cuon.jpg" alt="Bánh Cuốn">
-                        </div>
 
-                        <div class="chi-tiet-mon-an">
-                            <h2 class="tieu-de-mon-an">Bánh Cuốn</h2>
-                            <p class="mo-ta-mon-an">
-                                lớp bánh mỏng mềm mịn, cuốn lấy tôm chiên giòn rụm vàng ươm, điểm xuyết chút hành phi thơm lừng và rau sống tươi mát. Khi ăn, chấm cùng nước mắm pha chua ngọt, thêm vài lát đu đủ bào giòn giòn, tạo nên sự hòa quyện tuyệt vời giữa vị béo, giòn, thanh và đậm đà. Món ăn vặt đầy sáng tạo, mang hơi thở đường phố Sài Gòn.
-                            </p>
+         <div class="movie-item">
+           <a href="#Modal2 "><img class="poster-img" height="300" width="300" src="../../Img/Món mặn/banh-cuon.jpg"></a>
+           <p class="title">Bánh Cuốn </p>
+           <p class="price"> 89.000 đ </p>
+           <a href="#Modal2"><button class="order-btn">ĐẶT MÓN</button></a>
+        </div>
 
-                            <div class="gia-va-so-luong">
-                                <span class="gia-mon-an">89.000 đ</span>
-                                <div class="chon-so-luong">
-                                    <button class="giam">-</button>
-                                    <input type="text" value="1" class="so-luong">
-                                    <button class="tang">+</button>
-                                </div>
-                            </div>
+        <div class="movie-item">
+           <a href="#Modal13"><img class="poster-img" height="300" width="300" src="../../Img/Món mặn/ga-luoc.jpg"></a>
+           <p class="title"> Gà Luộc</p>
+           <p class="price">219.000 đ </p>
+            <a href="#Modal13"><button class="order-btn">ĐẶT MÓN</button></a>
+        </div>
 
-                            <div class="ghi-chu">
-                                <label for="ghiChu">GHI CHÚ</label>
-                                <textarea id="ghiChu" placeholder="Nhập thông tin cần lưu ý..."></textarea>
-                            </div>
-                        </div>
-                        <div class="thanh-duoi">
-                            <div class="tong-tien">
-                                <strong>Thành tiền:</strong>
-                                <span style="color: red; font-size: 20px;"> 89.000 đ</span>
-                            </div>
-                            <div class="hanh-dong">
-                                <button class="nut-dat-hang">Đặt hàng ngay</button>
-                                <button class="nut-them-gio"><i class="fa fa-shopping-basket"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+         <div class="movie-item">
+           <a href="#Modal14 "><img class="poster-img" height="300" width="300" src="../../Img/Món mặn/ha-cao.jpg"></a>
+           <p class="title"> Há cảo </p>
+           <p class="price">79.000 đ </p>
+           <a href="#Modal14"><button class="order-btn">ĐẶT MÓN</button></a>
+        </div>
+        
+         <div class="movie-item">
+           <a href="#Modal3 "><img class="poster-img" height="300" width="300" src="../../Img/Món ăn vặt/banh-trang-tron.jpg"></a>
+           <p class="title">Bánh Tráng Trộn </p>
+            <p class="price" > 29.000 đ </p>
+           <a href="#Modal3"><button class="order-btn">ĐẶT MÓN</button></a>
+        </div>    
+        
+         <div class="movie-item">
+           <a href="#Modal7 "><img class="poster-img" height="300" width="300" src="../../Img/Món lẩu/vit-om-sau.jpg"></a>
+           <p class="title"> Vịt Ôm Sấu </p>
+            <p class="price" > 309.000 đ </p>
+           <a href="#Modal7"><button class="order-btn">ĐẶT MÓN</button></a>
+        </div>
+
+         <div class="movie-item">
+           <a href="#Modal16 "><img class="poster-img" height="300" width="300" src="../../Img/Món lẩu/lau-thai.jpg"></a>
+           <p class="title">Lẩu Thái </p>
+           <p class="price">319.000 đ</p>
+            <a href="#Modal16"><button class="order-btn">ĐẶT MÓN</button></a>
+        </div>
             </div>
         </div>
     </div>
+
+<div class="lop-phu-mon-an" id="Modal2" datamon="banh-cuon">
+     <a href="#home-tile"class="nut-dong-sieu-to" id="nutDongSieuTo">&times;</a>
+  <div class="hop-mon-an">
+    <!-- Nội dung cuộn -->
+    <div class="noi-dung-mon-an">
+      <div class="hinh-anh-mon-an">
+        <img src="../../Img/Món mặn/banh-cuon.jpg" alt="Bánh Cuốn">
+      </div>
+
+      <div class="chi-tiet-mon-an">
+        <h2 class="tieu-de-mon-an">Bánh Cuốn</h2>
+        <p class="mo-ta-mon-an">
+           lớp bánh mỏng mềm mịn, cuốn lấy tôm chiên giòn rụm vàng ươm, điểm xuyết chút hành phi thơm lừng và rau sống tươi mát. Khi ăn, chấm cùng nước mắm pha chua ngọt, thêm vài lát đu đủ bào giòn giòn, tạo nên sự hòa quyện tuyệt vời giữa vị béo, giòn, thanh và đậm đà. Món ăn vặt đầy sáng tạo, mang hơi thở đường phố Sài Gòn.
+        </p>
+
+        <div class="gia-va-so-luong">
+          <span class="gia-mon-an">89.000 đ</span>
+          <div class="chon-so-luong">
+            <button class="giam">-</button>
+            <input type="text" value="1" class="so-luong">
+            <button class="tang">+</button>
+          </div>
+        </div>
+
+        <div class="ghi-chu">
+          <label for="ghiChu">GHI CHÚ</label>
+          <textarea id="ghiChu" placeholder="Nhập thông tin cần lưu ý..."></textarea>
+        </div>
+      </div>
+
+    <!-- Thanh cố định dưới cùng -->
+    <div class="thanh-duoi">
+      <div class="tong-tien">
+        <strong>Thành tiền:</strong><h style="color: red; font-size: 20px;"> 89.000 đ</h>
+      </div>
+      <div class="hanh-dong">
+        <button class="nut-dat-hang">Đặt hàng ngay</button>
+        <button class="nut-them-gio"><i class="fa fa-shopping-basket"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="lop-phu-mon-an" id="Modal14" datamon="ha-cao">
+     <a href="#home-tile"class="nut-dong-sieu-to" id="nutDongSieuTo">&times;</a>
+  <div class="hop-mon-an">
+    <!-- Nội dung cuộn -->
+    <div class="noi-dung-mon-an">
+      <div class="hinh-anh-mon-an">
+        <img src="../../Img/Món mặn/ha-cao.jpg" alt="Há Cảo">
+      </div>
+
+      <div class="chi-tiet-mon-an">
+        <h2 class="tieu-de-mon-an">Há Cảo</h2>
+        <p class="mo-ta-mon-an">
+         Há cảo gồm lớp vỏ mỏng dai, nhân tôm thịt ngọt thơm, hấp nóng vừa tới. Ăn kèm nước tương pha chua ngọt, cay nhẹ, rắc thêm hành phi và rau thơm, đậm vị Việt, khiến từng miếng há cảo mềm mại, đậm đà, tan ngay trong miệng.
+        </p>
+
+        <div class="gia-va-so-luong">
+          <span class="gia-mon-an">79.000 đ</span>
+          <div class="chon-so-luong">
+            <button class="giam">-</button>
+            <input type="text" value="1" class="so-luong">
+            <button class="tang">+</button>
+          </div>
+        </div>
+
+        <div class="ghi-chu">
+          <label for="ghiChu">GHI CHÚ</label>
+          <textarea id="ghiChu" placeholder="Nhập thông tin cần lưu ý..."></textarea>
+        </div>
+      </div>
+
+    <!-- Thanh cố định dưới cùng -->
+    <div class="thanh-duoi">
+      <div class="tong-tien">
+        <strong>Thành tiền:</strong><h style="color: red; font-size: 20px;"> 79.000 đ</h>
+      </div>
+      <div class="hanh-dong">
+        <button class="nut-dat-hang">Đặt hàng ngay</button>
+        <button class="nut-them-gio"><i class="fa fa-shopping-basket"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="lop-phu-mon-an" id="Modal13" datamon="ga-luoc">
+     <a href="#home-tile"class="nut-dong-sieu-to" id="nutDongSieuTo">&times;</a>
+  <div class="hop-mon-an">
+    <!-- Nội dung cuộn -->
+    <div class="noi-dung-mon-an">
+      <div class="hinh-anh-mon-an">
+        <img src="../../Img/Món mặn/ga-luoc.jpg" alt="Gà Luộc">
+      </div>
+
+      <div class="chi-tiet-mon-an">
+        <h2 class="tieu-de-mon-an">Gà Luộc</h2>
+        <p class="mo-ta-mon-an">
+        Gà luộc thêm ngon, gồm từng miếng gà chặt vừa ăn, da vàng óng, thịt mềm ngọt, ăn kèm rau răm, muối tiêu chanh và dưa leo. Chấm muối tiêu pha chua cay đậm vị Việt, khiến từng miếng gà thêm đậm đà, khó quên. 
+        </p>
+
+        <div class="gia-va-so-luong">
+          <span class="gia-mon-an">219.000 đ</span>
+          <div class="chon-so-luong">
+            <button class="giam">-</button>
+            <input type="text" value="1" class="so-luong">
+            <button class="tang">+</button>
+          </div>
+        </div>
+
+        <div class="ghi-chu">
+          <label for="ghiChu">GHI CHÚ</label>
+          <textarea id="ghiChu" placeholder="Nhập thông tin cần lưu ý..."></textarea>
+        </div>
+      </div>
+
+    <!-- Thanh cố định dưới cùng -->
+    <div class="thanh-duoi">
+      <div class="tong-tien">
+        <strong>Thành tiền:</strong><h style="color: red; font-size: 20px;"> 219.000 đ</h>
+      </div>
+      <div class="hanh-dong">
+        <button class="nut-dat-hang">Đặt hàng ngay</button>
+        <button class="nut-them-gio"><i class="fa fa-shopping-basket"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="lop-phu-mon-an" id="Modal3" datamon="banh-trang-tron">
+     <a href="#home-tile"class="nut-dong-sieu-to" id="nutDongSieuTo">&times;</a>
+  <div class="hop-mon-an">
+    <!-- Nội dung cuộn -->
+    <div class="noi-dung-mon-an">
+      <div class="hinh-anh-mon-an">
+        <img src="../../Img/Món ăn vặt/banh-trang-tron.jpg" alt="Bánh Trán Trộn">
+      </div>
+
+      <div class="chi-tiet-mon-an">
+        <h2 class="tieu-de-mon-an">Bánh Tráng Trộn</h2>
+        <p class="mo-ta-mon-an">
+           Bánh tráng trộn thêm ngon, gồm bánh tráng cắt sợi dai mềm, khô bò cay ngọt, trứng cút béo bùi, xoài xanh chua nhẹ, rau răm thơm nồng, đậu phộng giòn tan và hành phi vàng ruộm. Trộn đều với sa tế, nước tắc, muối tôm đậm vị Việt, khiến từng miếng bánh vừa cay vừa chua, thơm ngon khó cưỡng, ăn là ghiền.
+        </p>
+
+        <div class="gia-va-so-luong">
+          <span class="gia-mon-an">29.000 đ</span>
+          <div class="chon-so-luong">
+            <button class="giam">-</button>
+            <input type="text" value="1" class="so-luong">
+            <button class="tang">+</button>
+          </div>
+        </div>
+
+        <div class="ghi-chu">
+          <label for="ghiChu">GHI CHÚ</label>
+          <textarea id="ghiChu" placeholder="Nhập thông tin cần lưu ý..."></textarea>
+        </div>
+      </div>
+
+    <!-- Thanh cố định dưới cùng -->
+    <div class="thanh-duoi">
+      <div class="tong-tien">
+        <strong>Thành tiền:</strong><h style="color: red; font-size: 20px;"> 29.000 đ</h>
+      </div>
+      <div class="hanh-dong">
+        <button class="nut-dat-hang">Đặt hàng ngay</button>
+        <button class="nut-them-gio"><i class="fa fa-shopping-basket"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div class="lop-phu-mon-an" id="Modal7" datamon="vit-om-sau">
+     <a href="#home-tile"class="nut-dong-sieu-to" id="nutDongSieuTo">&times;</a>
+  <div class="hop-mon-an">
+    <!-- Nội dung cuộn -->
+    <div class="noi-dung-mon-an">
+      <div class="hinh-anh-mon-an">
+        <img src="../../Img/Món lẩu/vit-om-sau.jpg" alt="Vịt Ôm Sấu">
+      </div>
+
+      <div class="chi-tiet-mon-an">
+        <h2 class="tieu-de-mon-an">Vịt Ôm Sấu</h2>
+        <p class="mo-ta-mon-an">
+          vịt om sấu thơm lừng, thịt vịt mềm béo quyện vị chua thanh từ quả sấu, khoai bùi ngậy, nước dùng đậm đà – hoàn hảo cho bữa ăn ấm cúng!
+        </p>
+
+        <div class="gia-va-so-luong">
+          <span class="gia-mon-an">309.000 đ</span>
+          <div class="chon-so-luong">
+            <button class="giam">-</button>
+            <input type="text" value="1" class="so-luong">
+            <button class="tang">+</button>
+          </div>
+        </div>
+
+        <div class="ghi-chu">
+          <label for="ghiChu">GHI CHÚ</label>
+          <textarea id="ghiChu" placeholder="Nhập thông tin cần lưu ý..."></textarea>
+        </div>
+      </div>
+
+    <!-- Thanh cố định dưới cùng -->
+    <div class="thanh-duoi">
+      <div class="tong-tien">
+        <strong>Thành tiền:</strong><h style="color: red; font-size: 20px;"> 309.000 đ</h>
+      </div>
+      <div class="hanh-dong">
+        <button class="nut-dat-hang">Đặt hàng ngay</button>
+        <button class="nut-them-gio"><i class="fa fa-shopping-basket"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="lop-phu-mon-an" id="Modal16" datamon="lau-thai">
+     <a href="#home-tile"class="nut-dong-sieu-to" id="nutDongSieuTo">&times;</a>
+  <div class="hop-mon-an">
+    <!-- Nội dung cuộn -->
+    <div class="noi-dung-mon-an">
+      <div class="hinh-anh-mon-an">
+        <img src="../../Img/Món lẩu/lau-thai.jpg" alt="Lẩu Thái">
+      </div>
+
+      <div class="chi-tiet-mon-an">
+        <h2 class="tieu-de-mon-an">Lẩu Thái</h2>
+        <p class="mo-ta-mon-an">
+         Lẩu Thái là sự bùng nổ hương vị trong một nồi nước dùng đỏ rực, chua cay đậm đà. Tôm, mực, nghêu, và cá viên hòa quyện cùng nấm, rau và mì, tạo nên một bữa ăn vừa nóng hổi vừa kích thích vị giác. Mùi sả, lá chanh và ớt tươi lan tỏa, khiến mỗi lần nhúng là một lần thỏa mãn. Món lẩu lý tưởng cho những buổi tụ họp đầy tiếng cười và hơi ấm.
+        </p>
+
+        <div class="gia-va-so-luong">
+          <span class="gia-mon-an">319.000 đ</span>
+          <div class="chon-so-luong">
+            <button class="giam">-</button>
+            <input type="text" value="1" class="so-luong">
+            <button class="tang">+</button>
+          </div>
+        </div>
+
+        <div class="ghi-chu">
+          <label for="ghiChu">GHI CHÚ</label>
+          <textarea id="ghiChu" placeholder="Nhập thông tin cần lưu ý..."></textarea>
+        </div>
+      </div>
+
+    <!-- Thanh cố định dưới cùng -->
+    <div class="thanh-duoi">
+      <div class="tong-tien">
+        <strong>Thành tiền:</strong><h style="color: red; font-size: 20px;"> 319.000 đ</h>
+      </div>
+      <div class="hanh-dong">
+        <button class="nut-dat-hang">Đặt hàng ngay</button>
+        <button class="nut-them-gio"><i class="fa fa-shopping-basket"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+</div>
     <footer class="footer">
         <div class="container">
             <div class="footer-top">
@@ -242,15 +512,15 @@
                         <h3 class="widget-title">Liên kết</h3>
                         <ul class="widget-contact">
                             <li class="widget-contact-item"><a href=""><i
-                                            class="fa-regular fa-arrow-right"></i><span>Về chúng tôi</span></a></li>
+                                        class="fa-regular fa-arrow-right"></i><span>Về chúng tôi</span></a></li>
                             <li class="widget-contact-item"><a href=""><i
-                                            class="fa-regular fa-arrow-right"></i><span>Thực đơn</span></a></li>
+                                        class="fa-regular fa-arrow-right"></i><span>Thực đơn</span></a></li>
                             <li class="widget-contact-item"><a href=""><i
-                                            class="fa-regular fa-arrow-right"></i><span>Điều khoản</span></a></li>
+                                        class="fa-regular fa-arrow-right"></i><span>Điều khoản</span></a></li>
                             <li class="widget-contact-item"><a href=""><i
-                                            class="fa-regular fa-arrow-right"></i><span>Liên hệ</span></a></li>
+                                        class="fa-regular fa-arrow-right"></i><span>Liên hệ</span></a></li>
                             <li class="widget-contact-item"><a href=""><i
-                                            class="fa-regular fa-arrow-right"></i><span>Tin tức</span></a></li>
+                                        class="fa-regular fa-arrow-right"></i><span>Tin tức</span></a></li>
                         </ul>
                     </div>
 
@@ -258,17 +528,17 @@
                         <h3 class="widget-title">Thực đơn</h3>
                         <ul class="widget-contact">
                             <li class="widget-contact-item"><a href=""><i
-                                            class="fa-regular fa-arrow-right"></i><span>Điểm tâm</span></a></li>
+                                        class="fa-regular fa-arrow-right"></i><span>Điểm tâm</span></a></li>
                             <li class="widget-contact-item"><a href=""><i
-                                            class="fa-regular fa-arrow-right"></i><span>Món chay</span></a></li>
+                                        class="fa-regular fa-arrow-right"></i><span>Món chay</span></a></li>
                             <li class="widget-contact-item"><a href=""><i
-                                            class="fa-regular fa-arrow-right"></i><span>Món mặn</span></a></li>
+                                        class="fa-regular fa-arrow-right"></i><span>Món mặn</span></a></li>
                             <li class="widget-contact-item"><a href=""><i
-                                            class="fa-regular fa-arrow-right"></i><span>Nước uống</span></a></li>
+                                        class="fa-regular fa-arrow-right"></i><span>Nước uống</span></a></li>
                             <li class="widget-contact-item"><a href=""><i
-                                            class="fa-regular fa-arrow-right"></i><span>Tráng miệng</span></a></li>
+                                        class="fa-regular fa-arrow-right"></i><span>Tráng miệng</span></a></li>
                             <li class="widget-contact-item"><a href=""><i
-                                            class="fa-regular fa-arrow-right"></i><span>Món khác</span></a></li>
+                                        class="fa-regular fa-arrow-right"></i><span>Món khác</span></a></li>
                         </ul>
                     </div>
 
@@ -322,7 +592,6 @@
         <a href="#"><i class="fa-regular fa-arrow-up"></i></a>
     </div>
     <script src="../js/user-index.js"></script>
-    
     </body>
 
 </html>

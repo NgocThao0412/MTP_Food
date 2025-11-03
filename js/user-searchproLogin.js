@@ -11,42 +11,12 @@ function updateUserNameDisplay() {
     }
 }
 
-function searchProducts() {
-    const searchInput = document.querySelector('.form-search-input');
-    let filter = searchInput.value.toLowerCase().trim(); 
-
-    const TARGET_KEYWORD = "bánh cuốn"; 
-    const TARGET_PAGE = "/Client/page2-searchpro.html"; 
-    
-    const searchParams = `?q=${encodeURIComponent(filter)}`;
-
-    const productList = document.getElementById('product-list-container');
-    
-    if (filter === TARGET_KEYWORD) {
-        window.location.href = `${TARGET_PAGE}${searchParams}`;
-        return; 
-    }
-
-    if (!productList) {
+function searchProducts(event) {
+    if (event.key !== 'Enter') {
         return;
     }
-    
-    const productItems = productList.getElementsByClassName('product-item');
-
-    for (let i = 0; i < productItems.length; i++) {
-        const item = productItems[i];
-        const titleElement = item.querySelector('.title'); 
-        
-        if (titleElement) {
-            const productName = titleElement.textContent.toLowerCase().trim();
-
-            if (filter === "" || productName.includes(filter)) {
-                item.style.display = ""; 
-            } else {
-                item.style.display = "none";
-            }
-        }
-    }
+    event.preventDefault();
+    window.location.href = "/Client/page2-searchpro.html";
 }
 
 function initializeSearchPage() {

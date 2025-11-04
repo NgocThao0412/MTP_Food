@@ -11,6 +11,19 @@
     padding: 0.5rem;
     text-transform: uppercase;
 }
+:root {
+    --red: #B5292F;
+    --lightest-gray: rgb(249, 249, 249);
+}
+
+.page-title {
+    color: var(--lightest-gray);
+    background-color: var(--red);
+    text-align: center;
+    border-radius: 2rem;
+    padding: 0.5rem;
+    text-transform: uppercase;
+}
 
 @media only screen and (max-width: 1200px) {
     .admin-control-center {
@@ -85,32 +98,6 @@
 }
 
 @media only screen and (max-width: 615px) {
-    .sidebar {
-        overflow: hidden;
-        width: 70%;
-        flex-direction: column;
-        position:fixed;
-        background-color: #fff;
-        z-index: 99;
-        box-shadow: 0 1px 5px 0 rgb(0 0 0 / 20%);
-    }
-    
-    .sidebar .hidden-sidebar {
-        opacity: 1;
-        text-align: center;
-        line-height: 0rem;
-    }
-    
-    .sidebar .channel-logo {
-        margin-top: -2rem;
-        width: 100%;
-    }
-    
-    
-    .sidebar .channel-logo >img {
-        width: 100px;
-        height: 100px;
-    }
     
     .your-channel {
         margin-top: 4.5rem;
@@ -121,16 +108,12 @@
     }
     
     .sidebar.open {
-        transition: width var(--animation-duration) var(--animation-timing-curve);
+        transition:  var(--animation-timing-curve);
         display: none;
     }
 
     .profile{
         margin-right: -1rem;
-    }
-
-    .add-product.open .upload-image-preview {
-        width: 100%;
     }
 }
 

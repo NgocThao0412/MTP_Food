@@ -1,0 +1,163 @@
+/* ========== HIDE ON DESKTOP ========== */
+.mobile-sidebar-wrapper,
+.open-mobile-sidebar {
+  display: none;
+}
+
+/* ========== MOBILE SIDEBAR ========== */
+@media (max-width: 700px) {
+
+  /* ===== Nút mở menu (fa-bars) ===== */
+  .open-mobile-sidebar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #333;
+    cursor: pointer;
+    padding: 12px;
+    margin: 10px;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+
+  /* Wrapper (ẩn mặc định) */
+  .mobile-sidebar-wrapper {
+    display: none;
+  }
+
+  /* Khi mở (#mobile-sidebar:target) */
+  .mobile-sidebar-wrapper:target {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+  }
+
+  /* ===== Overlay tối ===== */
+  .mobile-sidebar-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(2px);
+  }
+
+  /* ===== SIDEBAR CONTAINER ===== */
+  .mobile-sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    max-width: 340px;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 0 16px 16px 0;
+    box-shadow: 4px 0 18px rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideIn 0.35s cubic-bezier(.25,.46,.45,1);
+  }
+
+  @keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to   { transform: translateX(0); }
+  }
+
+  /* ===== HEADER ===== */
+  .mobile-sidebar-header {
+    background: #fff;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #f1f1f1;
+  }
+
+  .mobile-sidebar-header h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #B5292F;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .mobile-close-btn {
+    font-size: 26px;
+    color: #555;
+    text-decoration: none;
+    transition: 0.2s;
+  }
+
+  .mobile-close-btn:hover {
+    color: #B5292F;
+  }
+
+  /* ===== MENU LIST ===== */
+  .mobile-sidebar-list {
+    flex: 1;
+    list-style: none;
+    margin: 0;
+    padding: 12px 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .mobile-sidebar-item a {
+    display: flex;
+    align-items: center;
+    padding: 16px 26px;
+    gap: 18px;
+    font-size: 17px;
+    color: #333;
+    text-decoration: none;
+    border-left: 5px solid transparent;
+    transition: all 0.25s;
+  }
+
+  .mobile-sidebar-item a:hover {
+    background: #FFF4F4;
+    border-left: 5px solid #B5292F;
+  }
+
+  .mobile-sidebar-icon {
+    font-size: 21px;
+    width: 24px;
+    text-align: center;
+    color: #B5292F;
+  }
+
+  /* ===== FOOTER (Trang chủ + Đăng xuất) ===== */
+  .mobile-sidebar-footer {
+    padding: 14px 24px 20px;
+    border-top: 1px solid #eee;
+    background: #fafafa;
+    margin-top: auto; /* đẩy footer xuống cuối */
+  }
+
+  .mobile-sidebar-footer a {
+    display: block;
+    padding: 14px 0;
+    color: #444;
+    font-size: 16px;
+    text-decoration: none;
+    transition: 0.2s;
+  }
+
+  .mobile-sidebar-footer a:hover {
+    color: #B5292F;
+  }
+}
+
+/* ========== Desktop luôn ẩn ========== */
+@media (min-width: 701px) {
+  .mobile-sidebar-wrapper,
+  .open-mobile-sidebar {
+    display: none !important;
+  }
+}

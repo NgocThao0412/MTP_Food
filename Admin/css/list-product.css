@@ -284,8 +284,16 @@ body,input,button,textarea,pre {
   margin-bottom: 6px;
 }
 .product-desc {
+  width: 100%;
+  height: auto;
   font-size: 15px;
   margin-bottom: 5px;
+  color: #333;
+
+  /* ✨ Giúp văn bản không bị tràn */
+  word-wrap: break-word;       /* Ngắt từ khi quá dài */
+  overflow: auto;            /* Ẩn phần vượt quá giới hạn */
+  text-overflow: ellipsis;     /* Hiển thị "..." nếu bị cắt */
 }
 .product-category {
   display: inline-block;
@@ -964,4 +972,40 @@ input[type="file"] {
   background-color: var(--red); /* Dùng màu đỏ chủ đạo của em */
   color: #fff; /* Chữ trắng */
   border-color: var(--red); /* Viền cũng màu đỏ */
+}
+@media (max-width: 768px) {
+  .product-list-section {
+    margin: 0 15px;              
+    width: 100%;                 
+  }
+
+  .product-item {
+    flex-direction: column;        
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .product-img {
+    width: 100%;                
+    height: auto;                   
+  }
+
+  .product-info {
+    width: 100%;
+  }
+
+  .product-actions {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .product-price {
+    text-align: left;
+    width: auto;
+  }
+
+  .buttons-group {
+    gap: 10px;
+  }
 }

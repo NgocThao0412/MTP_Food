@@ -1220,3 +1220,72 @@ html, body {
 .btn-confirm-order:hover {
   background: #218838;
 }
+/* --- Giữ nguyên bảng, không ẩn cột --- */
+.admin-control-bottom {
+  width: 100%;
+  overflow-x: auto;          /* ✅ Cho phép kéo ngang */
+  overflow-y: hidden;
+  white-space: nowrap;       /* Ngăn chữ xuống dòng trong bảng */
+  scrollbar-color: #ccc #f9f9f9; /* Tùy chỉnh màu thanh kéo (nếu muốn) */
+  scrollbar-width: thin;
+}
+
+.admin-table {
+  width: 100%;
+  min-width: 900px;          /* ✅ Đảm bảo bảng không bị bóp méo */
+  border-collapse: collapse;
+  table-layout: auto;        /* Cho phép co giãn tự nhiên */
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap;       /* Không cho chữ xuống dòng */
+}
+
+/* --- Responsive: chỉ chỉnh kích cỡ chữ, không ẩn cột --- */
+@media (max-width: 1200px) {
+  .admin-table th,
+  .admin-table td {
+    font-size: 15px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 992px) {
+  .admin-table th,
+  .admin-table td {
+    font-size: 14px;
+    padding: 7px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-table th,
+  .admin-table td {
+    font-size: 13px;
+    padding: 6px;
+  }
+}
+
+@media (max-width: 576px) {
+  .admin-table th,
+  .admin-table td {
+    font-size: 12px;
+    padding: 5px;
+  }
+}
+
+/* --- Tùy chọn: thanh kéo ngang thẩm mỹ hơn (Chrome, Edge, Safari) --- */
+.admin-control-bottom::-webkit-scrollbar {
+  height: 8px;
+}
+.admin-control-bottom::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  border-radius: 10px;
+}
+.admin-control-bottom::-webkit-scrollbar-thumb:hover {
+  background-color: #888;
+}

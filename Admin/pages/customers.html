@@ -256,7 +256,7 @@
           <input 
             type="tel" 
             id="customerPhone" 
-            name="phone" 
+            name="customerPhone" 
             required 
             pattern="[0-9]{10,}" 
             title="Số điện thoại phải có ít nhất 10 chữ số"
@@ -307,13 +307,6 @@
             oninput="this.setCustomValidity(this.value !== document.getElementById('initialPassword').value ? 'Mật khẩu xác nhận không khớp' : '')"
           />
         </div>
-      </div>
-
-      <div class="form-row checkbox-row">
-        <label>
-          <input type="checkbox" required />
-          Tôi đồng ý với chính sách của trang web
-        </label>
       </div>
 
       <button type="submit" class="save-button red" style="width:100%;">
